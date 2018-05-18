@@ -8,7 +8,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private Integer id;
+    private Integer uid;
 
     @Column
     private String username;
@@ -16,12 +16,21 @@ public class User {
     @Column
     private String password;
 
-    public Integer getId() {
-        return id;
+    @Column
+    private String nickname;
+
+    @Column
+    private String upower;
+
+    @Column
+    private String upoint;
+
+    public Integer getUid() {
+        return uid;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setUid(Integer uid) {
+        this.uid = uid;
     }
 
     public String getUsername() {
@@ -38,5 +47,29 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public String getUpower() {
+        return upower;
+    }
+
+    public void setUpower(String upower) {
+        this.upower = upower;
+    }
+
+    public String getUpoint() {
+        return upoint;
+    }
+
+    public void setUpoint(String upoint) {
+        this.upoint = upoint;
     }
 }
