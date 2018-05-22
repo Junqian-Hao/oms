@@ -9,6 +9,8 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer uid;
+    @Column
+    private Integer gid;
 
     @Column
     private String username;
@@ -20,9 +22,6 @@ public class User {
     private String nickname;
 
     @Column
-    private String upower;
-
-    @Column
     private String upoint;
 
     public Integer getUid() {
@@ -31,6 +30,14 @@ public class User {
 
     public void setUid(Integer uid) {
         this.uid = uid;
+    }
+
+    public Integer getGid() {
+        return gid;
+    }
+
+    public void setGid(Integer gid) {
+        this.gid = gid;
     }
 
     public String getUsername() {
@@ -55,14 +62,6 @@ public class User {
 
     public void setNickname(String nickname) {
         this.nickname = nickname;
-    }
-
-    public String getUpower() {
-        return upower;
-    }
-
-    public void setUpower(String upower) {
-        this.upower = upower;
     }
 
     public String getUpoint() {
