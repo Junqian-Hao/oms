@@ -1,59 +1,95 @@
 package com.nuc.oms.entity;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+import java.io.Serializable;
 import java.util.Date;
 
 @Entity
 @Table
-public class Music {
+public class Music implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
-    private int mid;
-    @Column
-    private int uid;
-    @Column
-    private int cid;
+    private Integer mid;
+    /**
+     * 用户
+     */
+    @ManyToOne
+    @JoinColumn(name = "uid",referencedColumnName = "uid")
+    private User user;
+    /**
+     * 类别
+     */
+    @ManyToOne
+    @JoinColumn(name = "cid",referencedColumnName = "cid")
+    private Category category;
+    /**
+     * 标题
+     */
     @Column
     private String mtitle;
+    /**
+     * 简介
+     */
     @Column
     private String msummary;
+    /**
+     * 封面图片
+     */
     @Column
     private String mpicurl;
+    /**
+     * 歌曲url
+     */
     @Column
     private String murl;
+    /**
+     * 点赞次数
+     */
     @Column
-    private int mgood;
+    private Integer mgood;
+    /**
+     * 播放次数
+     */
     @Column
-    private int mtimes;
+    private Integer mtimes;
+    /**
+     * 上传时间
+     */
     @Column
     private Date muploaddate;
+    /**
+     * 删除标识
+     */
     @Column
-    private int is_deleted;
+    private Integer is_deleted;
 
-    public int getMid() {
+    public static final Integer DELETED = 1;
+    public static final Integer NO_DELETED = 0;
+
+
+    public Integer getMid() {
         return mid;
     }
 
-    public void setMid(int mid) {
+    public void setMid(Integer mid) {
         this.mid = mid;
     }
 
-    public int getUid() {
-        return uid;
+    public User getUser() {
+        return user;
     }
 
-    public void setUid(int uid) {
-        this.uid = uid;
+    public void setUser(User user) {
+        this.user = user;
     }
 
-    public int getCid() {
-        return cid;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setCid(int cid) {
-        this.cid = cid;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public String getMtitle() {
@@ -88,19 +124,19 @@ public class Music {
         this.murl = murl;
     }
 
-    public int getMgood() {
+    public Integer getMgood() {
         return mgood;
     }
 
-    public void setMgood(int mgood) {
+    public void setMgood(Integer mgood) {
         this.mgood = mgood;
     }
 
-    public int getMtimes() {
+    public Integer getMtimes() {
         return mtimes;
     }
 
-    public void setMtimes(int mtimes) {
+    public void setMtimes(Integer mtimes) {
         this.mtimes = mtimes;
     }
 
@@ -112,11 +148,11 @@ public class Music {
         this.muploaddate = muploaddate;
     }
 
-    public int getIs_deleted() {
+    public Integer getIs_deleted() {
         return is_deleted;
     }
 
-    public void setIs_deleted(int is_deleted) {
+    public void setIs_deleted(Integer is_deleted) {
         this.is_deleted = is_deleted;
     }
 }

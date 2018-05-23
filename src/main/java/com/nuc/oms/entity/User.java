@@ -1,14 +1,18 @@
 package com.nuc.oms.entity;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
 @Table
-public class User {
+public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
     private Integer uid;
+    /**
+     * 没用
+     */
     @Column
     private Integer gid;
 
@@ -21,8 +25,29 @@ public class User {
     @Column
     private String nickname;
 
+    /**
+     * 积分
+     */
     @Column
-    private String upoint;
+    private Integer upoInter;
+    /**
+     * 以用空间
+     */
+    @Column
+    private Double uspace;
+
+    private Integer level;
+
+    private Double totalSpace;
+
+
+    public Integer getLevel() {
+        return level;
+    }
+
+    public Double getTotalSpace() {
+        return totalSpace;
+    }
 
     public Integer getUid() {
         return uid;
@@ -64,11 +89,29 @@ public class User {
         this.nickname = nickname;
     }
 
-    public String getUpoint() {
-        return upoint;
+    public Integer getUpoInter() {
+        return upoInter;
     }
 
-    public void setUpoint(String upoint) {
-        this.upoint = upoint;
+    public void setUpoInter(Integer upoInter) {
+        this.upoInter = upoInter;
+        if (upoInter < 100) {
+            this.level = 1;
+            this.totalSpace = 100d;
+        } else if (100 <= upoInter && upoInter <= 1000) {
+            this.level = 2;
+            this.totalSpace = 500d;
+        } else {
+            this.level = 3;
+            this.totalSpace = 1024d;
+        }
+    }
+
+    public Double getUspace() {
+        return uspace;
+    }
+
+    public void setUspace(Double uspace) {
+        this.uspace = uspace;
     }
 }
