@@ -1,11 +1,13 @@
 package com.nuc.oms.entity;
 
+import jdk.nashorn.internal.ir.annotations.Ignore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
 @Table
-public class User implements Serializable{
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column
@@ -35,9 +37,9 @@ public class User implements Serializable{
      */
     @Column
     private Double uspace;
-
+    @Ignore
     private Integer level;
-
+    @Ignore
     private Double totalSpace;
 
 
@@ -89,16 +91,16 @@ public class User implements Serializable{
         this.nickname = nickname;
     }
 
-    public Integer getUpoInter() {
+    public Integer getUpointer() {
         return upointer;
     }
 
-    public void setUpoInter(Integer upoInter) {
-        this.upointer = upoInter;
-        if (upoInter < 100) {
+    public void setUpointer(Integer upointer) {
+        this.upointer = upointer;
+        if (upointer < 100) {
             this.level = 1;
             this.totalSpace = 100d;
-        } else if (100 <= upoInter && upoInter <= 1000) {
+        } else if (100 <= upointer && upointer <= 1000) {
             this.level = 2;
             this.totalSpace = 500d;
         } else {

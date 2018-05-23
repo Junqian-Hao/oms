@@ -40,7 +40,7 @@ public class UserServiceImpTest {
         user.setUsername("test");
         user.setPassword("test");
         user.setNickname("test");
-        user.setUpoInter(0);
+        user.setUpointer(0);
         user.setUspace(0d);
         User save = userJPA.save(user);
         User login = userService.login(save);
