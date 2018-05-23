@@ -72,87 +72,20 @@
             </div>
             <!--<span class="more"><a href="#">更多</a></span>-->
           </div>
+          <!--热门推荐-->
           <ul class="music-list clearfix">
+            <c:forEach items="${firstPageMap.hotMusicList}" var="music" varStatus="vs">
             <li>
               <div class="u-cover">
-                <img src="http://p3.music.126.net/fNtMX44fvaGByURP0AbOZQ==/836728348761063.jpg">
-                <a title="Refrain - Anan Ryoko" href="./music/22712173.html" class="msk"></a>
+                <img src="${music.mpicurl}">
+                <a title="Refrain - Anan Ryoko" href="#" class="msk"></a>
               </div>
               <p class="dec">
-                <a title="Refrain - Anan Ryoko" href="./music/22712173.html">Refrain</a>
+                <a title="Refrain - Anan Ryoko" href="#">${music.mtitle}</a>
               </p>
-              <div class="author">HaPBoy</div>
+              <div class="author">${music.mauthor}</div>
             </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p4.music.126.net/ap7KvRE0-V4kfThDVVor9A==/18777459579736085.jpg">
-                <a title="風の住む街 - 磯村由纪子" href="./music/586299.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="風の住む街 - 磯村由纪子" href="./music/586299.html">風の住む街</a>
-              </p>
-              <div class="author">Hapon</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p3.music.126.net/hNJFmhHzaGxYYwVbQbALNw==/79164837215733.jpg">
-                <a title="夜的钢琴曲五 - 石进" href="./music/149297.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="夜的钢琴曲五 - 石进" href="./music/149297.html">夜的钢琴曲五</a>
-              </p>
-              <div class="author">超级无敌帅气苗</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p3.music.126.net/l5-9FCPKx9xrUtzyKCMPPw==/81363860481074.jpg">
-                <a title="流れ行く云 - 岸部眞明" href="./music/441532.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="流れ行く云 - 岸部眞明" href="./music/441532.html">流れ行く云</a>
-              </p>
-              <div class="author">Hapon</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p3.music.126.net/N0b8fzm7vl6tkj1Rfqa3hQ==/794946906935600.jpg">
-                <a title="Remember - 7AND5" href="./music/2116537.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="Remember - 7AND5" href="./music/2116537.html">Remember</a>
-              </p>
-              <div class="author">HaPBoy</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p4.music.126.net/Kcxcv0cfsdAx30HZ_6tDGQ==/827932255715549.jpg">
-                <a title="A Little Story - Valentin" href="./music/857896.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="A Little Story - Valentin" href="./music/857896.html">A Little Story</a>
-              </p>
-              <div class="author">LoveMiao</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p3.music.126.net/P1ac-TWkFzjDqcvl5_oK7Q==/881808325476577.jpg">
-                <a title="Flower Dance - DJ OKAWARI" href="./music/406238.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="Flower Dance - DJ OKAWARI" href="./music/406238.html">Flower Dance</a>
-              </p>
-              <div class="author">HaPBoy</div>
-            </li>
-            <li>
-              <div class="u-cover">
-                <img src="http://p4.music.126.net/8dzD62VK8jLDbhEqkmpIAg==/18277181788626198.jpg">
-                <a title="Faded - Alan Walker" href="./music/36990266.html" class="msk"></a>
-              </div>
-              <p class="dec">
-                <a title="Faded - Alan Walker" href="./music/36990266.html">Faded</a>
-              </p>
-              <div class="author">HaPBoy</div>
-            </li>
+            </c:forEach>
           </ul>
         </div>
         <!-- 分类榜单 -->
@@ -166,71 +99,21 @@
                 🎹 钢琴
               </div>
               <ul>
+                <c:forEach items="${firstPageMap.painoMusicList}" var="music" varStatus="vs">
                 <li class="music-list-item">
                   <div class="title">
                     <div class="title_wrap">
-                      <span class="rank">1</span>
-                      <a href="./music/22712173.html" title="Refrain">Refrain</a>
+                      <span class="rank">${vs}</span>
+                      <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
                     </div>
                   </div>
                   <div class="info">
-                    <span class="date">12-26</span>
+                    <span class="date">${music.muploaddate}</span>
                     <span class="avatar"><img
-                        src="./storage/avatar/18.jpg"></span>
+                        src="${music.mpicurl}"></span>
                   </div>
                 </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">2</span>
-                      <a href="./music/586299.html" title="風の住む街">風の住む街</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-20</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/10.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">3</span>
-                      <a href="./music/357126.html" title="Tassel">Tassel</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-25</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/25.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">4</span>
-                      <a href="./music/139730.html" title="安静的午后">安静的午后</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-17</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/5.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">5</span>
-                      <a href="./music/139774.html" title="The truth that you leave">The truth that you leave</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-13</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/24.jpg"></span>
-                  </div>
-                </li>
+                </c:forEach>
               </ul>
             </div>
             <div class="category-music-list">
@@ -238,71 +121,21 @@
                 🎸 吉他
               </div>
               <ul>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">1</span>
-                      <a href="./music/22822602.html" title="風の詩">風の詩</a>
+                <c:forEach items="${firstPageMap.gituarMusicList}" var="music" varStatus="vs">
+                  <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_wrap">
+                        <span class="rank">${vs}</span>
+                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-12</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/20.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">2</span>
-                      <a href="./music/709386.html" title="晴れ 时どき 雪">晴れ 时どき 雪</a>
+                    <div class="info">
+                      <span class="date">${music.muploaddate}</span>
+                      <span class="avatar"><img
+                              src="${music.mpicurl}"></span>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-22</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/3.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">3</span>
-                      <a href="./music/22688487.html" title="風見鶏">風見鶏</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-23</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/1.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">4</span>
-                      <a href="./music/441552.html" title="奇迹の山">奇迹の山</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-22</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/2.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">5</span>
-                      <a href="./music/441532.html" title="流れ行く云">流れ行く云</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-21</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/6.jpg"></span>
-                  </div>
-                </li>
+                  </li>
+                </c:forEach>
               </ul>
             </div>
           </div>
@@ -312,71 +145,21 @@
                 🍡 动漫
               </div>
               <ul>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">1</span>
-                      <a href="./music/426341675.html" title="秒速五厘米">秒速五厘米</a>
+                <c:forEach items="${firstPageMap.comicMusicList}" var="music" varStatus="vs">
+                  <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_wrap">
+                        <span class="rank">${vs}</span>
+                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-23</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/12.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">2</span>
-                      <a href="./music/22707001.html" title="白詰草">白詰草</a>
+                    <div class="info">
+                      <span class="date">${music.muploaddate}</span>
+                      <span class="avatar"><img
+                              src="${music.mpicurl}"></span>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-14</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/1.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">3</span>
-                      <a href="./music/761323.html" title="鸟の诗 ~">鸟の诗 ~</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-26</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/4.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">4</span>
-                      <a href="./music/528283.html" title="桜花抄">桜花抄</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-25</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/17.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">5</span>
-                      <a href="./music/442454.html" title="人生的回转木马">人生的回转木马</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-17</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/9.jpg"></span>
-                  </div>
-                </li>
+                  </li>
+                </c:forEach>
               </ul>
             </div>
             <div class="category-music-list">
@@ -384,71 +167,21 @@
                 ⚡️ 电子
               </div>
               <ul>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">1</span>
-                      <a href="./music/28828074.html" title="Because of You">Because of You</a>
+                <c:forEach items="${firstPageMap.electricMusicList}" var="music" varStatus="vs">
+                  <li class="music-list-item">
+                    <div class="title">
+                      <div class="title_wrap">
+                        <span class="rank">${vs}</span>
+                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                      </div>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-23</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/17.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">2</span>
-                      <a href="./music/29207817.html" title="Easy Breeze">Easy Breeze</a>
+                    <div class="info">
+                      <span class="date">${music.muploaddate}</span>
+                      <span class="avatar"><img
+                              src="${music.mpicurl}"></span>
                     </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-12</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/14.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">3</span>
-                      <a href="./music/16345145.html" title="Levels - Radio Edit">Levels - Radio Edit</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-13</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/5.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">4</span>
-                      <a href="./music/2116537.html" title="Remember">Remember</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">11-25</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/2.jpg"></span>
-                  </div>
-                </li>
-                <li class="music-list-item">
-                  <div class="title">
-                    <div class="title_wrap">
-                      <span class="rank">5</span>
-                      <a href="./music/36990266.html" title="Faded">Faded</a>
-                    </div>
-                  </div>
-                  <div class="info">
-                    <span class="date">12-24</span>
-                    <span class="avatar"><img
-                        src="./storage/avatar/10.jpg"></span>
-                  </div>
-                </li>
+                  </li>
+                </c:forEach>
               </ul>
             </div>
           </div>
@@ -462,111 +195,35 @@
     <div class="right-module">
       <h4>最新单曲</h4>
       <ul class="new-artist-songs">
+        <c:forEach items="${firstPageMap.newMusicList}" var="music" varStatus="vs">
         <li class="artist-song">
           <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/0.jpg">
+            <img src="${music.mpicurl}">
           </div>
           <div class="info">
-            <h3>Refrain</h3>
-            <p>HaPBoy / <span>1595</span>次播放</p>
+            <h3>${music.mtitle}</h3>
+            <p>${music.mauthor} / <span>${music.mtimes}</span>次播放</p>
           </div>
-          <a href="${pageContext.request.contextPath}/music/22712173.html" title="Refrain" class="cover-link"></a>
+          <a href="#" title="${music.mtitle}" class="cover-link"></a>
         </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/4.jpg">
-          </div>
-          <div class="info">
-            <h3>A Little Story</h3>
-            <p>LoveMiao / <span>1052</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/857896.html" title="A Little Story" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/3.jpg">
-          </div>
-          <div class="info">
-            <h3>晴れ 时どき 雪</h3>
-            <p>Annie雀 / <span>349</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/709386.html" title="晴れ 时どき 雪" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="./storage/avatar/14.jpg">
-          </div>
-          <div class="info">
-            <h3>Easy Breeze</h3>
-            <p>Hannah / <span>420</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/29207817.html" title="Easy Breeze" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="./storage/avatar/5.jpg">
-          </div>
-          <div class="info">
-            <h3>安静的午后</h3>
-            <p>Wing / <span>1356</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/139730.html" title="安静的午后" class="cover-link"></a>
-        </li>
+        </c:forEach>
       </ul>
     </div>
     <div class="right-module">
       <h4>热门单曲</h4>
       <ul class="new-artist-songs">
+        <c:forEach items="${firstPageMap.timeMusicList}" var="music" varStatus="vs">
         <li class="artist-song">
           <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/20.jpg">
+            <img src="${music.mpicurl}">
           </div>
           <div class="info">
-            <h3>風の詩</h3>
-            <p>苗^v^ / <span>1167</span>次播放</p>
+            <h3>${music.mtitle}</h3>
+            <p>${music.mauthor} / <span>${music.mtimes}</span>次播放</p>
           </div>
-          <a href="${pageContext.request.contextPath}/music/22822602.html" title="風の詩" class="cover-link"></a>
+          <a href="#" title="${music.mtitle}" class="cover-link"></a>
         </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/0.jpg">
-          </div>
-          <div class="info">
-            <h3>Remember</h3>
-            <p>HaPBoy / <span>1008</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/2116537.html" title="Remember" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="./storage/avatar/9.jpg">
-          </div>
-          <div class="info">
-            <h3>夜的钢琴曲五</h3>
-            <p>超级无敌帅气苗 / <span>864</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/149297.html" title="夜的钢琴曲五" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="${pageContext.request.contextPath}/storage/avatar/00.jpg">
-          </div>
-          <div class="info">
-            <h3>奇迹の山</h3>
-            <p>Hapon / <span>838</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/441552.html" title="奇迹の山" class="cover-link"></a>
-        </li>
-        <li class="artist-song">
-          <div class="avatar">
-            <img src="./storage/avatar/17.jpg">
-          </div>
-          <div class="info">
-            <h3>Because of You</h3>
-            <p>Octobse_Idy / <span>821</span>次播放</p>
-          </div>
-          <a href="${pageContext.request.contextPath}/music/28828074.html" title="Because of You" class="cover-link"></a>
-        </li>
+        </c:forEach>
       </ul>
     </div>
   </div>

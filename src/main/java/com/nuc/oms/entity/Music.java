@@ -34,6 +34,11 @@ public class Music implements Serializable{
     @Column
     private String msummary;
     /**
+     * 作者
+     */
+    @Column
+    private String mauthor;
+    /**
      * 封面图片
      */
     @Column
@@ -154,5 +159,13 @@ public class Music implements Serializable{
 
     public void setIs_deleted(Integer is_deleted) {
         this.is_deleted = is_deleted;
+    }
+
+    public String getMauthor() {
+        return mauthor;
+    }
+
+    public void setMauthor(String mauthor) {
+        this.mauthor = mauthor;
     }
 }

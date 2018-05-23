@@ -29,7 +29,7 @@ public class User implements Serializable{
      * 积分
      */
     @Column
-    private Integer upoInter;
+    private Integer upointer;
     /**
      * 以用空间
      */
@@ -90,11 +90,11 @@ public class User implements Serializable{
     }
 
     public Integer getUpoInter() {
-        return upoInter;
+        return upointer;
     }
 
     public void setUpoInter(Integer upoInter) {
-        this.upoInter = upoInter;
+        this.upointer = upoInter;
         if (upoInter < 100) {
             this.level = 1;
             this.totalSpace = 100d;
