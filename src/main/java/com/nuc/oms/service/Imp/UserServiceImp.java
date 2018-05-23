@@ -19,7 +19,7 @@ public class UserServiceImp implements UserService {
 
     @Override
     public User register(User user) {
-        user.setUpoInter(0);
+        user.setUpointer(0);
         user.setUspace(0d);
         User byUsername = userJpa.findByUsername(user.getUsername());
         if (byUsername != null) {

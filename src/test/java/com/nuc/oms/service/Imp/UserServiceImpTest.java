@@ -3,8 +3,6 @@ package com.nuc.oms.service.Imp;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.UserJpa;
 import com.nuc.oms.service.UserService;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +40,7 @@ public class UserServiceImpTest {
         user.setUsername("test");
         user.setPassword("test");
         user.setNickname("test");
-        user.setUpoInter(0);
+        user.setUpointer(0);
         user.setUspace(0d);
         User save = userJpa.save(user);
         User login = userService.login(save);

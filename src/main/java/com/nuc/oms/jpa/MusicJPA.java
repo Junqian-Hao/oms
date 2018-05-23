@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface MusicJpa extends BaseJPA<Music,Integer>{
+public interface MusicJPA extends BaseJPA<Music,Integer>{
     @Query(value = "select * from music order by mgood desc limit 5",nativeQuery = true)
     List<Music> findBymgoodDESC();
 
