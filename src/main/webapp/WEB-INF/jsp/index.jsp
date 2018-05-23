@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <html>
 <head>
   <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
@@ -78,10 +79,10 @@
             <li>
               <div class="u-cover">
                 <img src="${music.mpicurl}">
-                <a title="Refrain - Anan Ryoko" href="#" class="msk"></a>
+                <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}" class="msk"></a>
               </div>
               <p class="dec">
-                <a title="Refrain - Anan Ryoko" href="#">${music.mtitle}</a>
+                <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
               </p>
               <div class="author">${music.mauthor}</div>
             </li>
@@ -99,16 +100,16 @@
                 🎹 钢琴
               </div>
               <ul>
-                <c:forEach items="${firstPageMap.painoMusicList}" var="music" varStatus="vs">
+                <c:forEach items="${firstPageMap.pianoMusicList}" var="music" varStatus="vs">
                 <li class="music-list-item">
                   <div class="title">
                     <div class="title_wrap">
-                      <span class="rank">${vs}</span>
-                      <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                      <span class="rank">${vs.count}</span>
+                      <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}">${music.mtitle}</a>
                     </div>
                   </div>
                   <div class="info">
-                    <span class="date">${music.muploaddate}</span>
+                    <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                     <span class="avatar"><img
                         src="${music.mpicurl}"></span>
                   </div>
@@ -121,16 +122,16 @@
                 🎸 吉他
               </div>
               <ul>
-                <c:forEach items="${firstPageMap.gituarMusicList}" var="music" varStatus="vs">
+                <c:forEach items="${firstPageMap.guitarMusicList}" var="music" varStatus="vs">
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
-                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                        <span class="rank">${vs.count}</span>
+                        <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
@@ -149,12 +150,12 @@
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
-                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                        <span class="rank">${vs.count}</span>
+                        <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
@@ -171,12 +172,12 @@
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
-                        <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
+                        <span class="rank">${vs.count}</span>
+                        <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
@@ -195,7 +196,7 @@
     <div class="right-module">
       <h4>最新单曲</h4>
       <ul class="new-artist-songs">
-        <c:forEach items="${firstPageMap.newMusicList}" var="music" varStatus="vs">
+        <c:forEach items="${rightslideMap.newMusicList}" var="music" varStatus="vs">
         <li class="artist-song">
           <div class="avatar">
             <img src="${music.mpicurl}">
@@ -204,7 +205,7 @@
             <h3>${music.mtitle}</h3>
             <p>${music.mauthor} / <span>${music.mtimes}</span>次播放</p>
           </div>
-          <a href="#" title="${music.mtitle}" class="cover-link"></a>
+          <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}" class="cover-link"></a>
         </li>
         </c:forEach>
       </ul>
@@ -212,7 +213,7 @@
     <div class="right-module">
       <h4>热门单曲</h4>
       <ul class="new-artist-songs">
-        <c:forEach items="${firstPageMap.timeMusicList}" var="music" varStatus="vs">
+        <c:forEach items="${rightslideMap.timeMusicList}" var="music" varStatus="vs">
         <li class="artist-song">
           <div class="avatar">
             <img src="${music.mpicurl}">
@@ -221,7 +222,7 @@
             <h3>${music.mtitle}</h3>
             <p>${music.mauthor} / <span>${music.mtimes}</span>次播放</p>
           </div>
-          <a href="#" title="${music.mtitle}" class="cover-link"></a>
+          <a href="/singlemusicView?Mid=${music.mid}" title="${music.mtitle}" class="cover-link"></a>
         </li>
         </c:forEach>
       </ul>

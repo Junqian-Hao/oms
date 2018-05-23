@@ -5,8 +5,10 @@ package com.nuc.oms;
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.io.File;
@@ -61,10 +63,15 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
             return linux_path;
         }
     }
-
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
 //        registry.addInterceptor(new UserLoginInterceptor()).addPathPatterns("/user/**");
     }
 
+    @Override
+    public void addViewControllers(ViewControllerRegistry registry) {
+        registry.addViewController("/").setViewName("forward:/firstpageRequest");
+        registry.setOrder(Ordered.HIGHEST_PRECEDENCE);
+        WebMvcConfigurer.super.addViewControllers(registry);
+    }
 }

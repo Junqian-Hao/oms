@@ -23,19 +23,29 @@ public class MusicServiceImp implements MusicService {
     @Override
     public Map<String, List<Music>> firstpage() {
         Map<String,List<Music>> firstpagemap=new LinkedHashMap<>();
-        List<Music> newMusicList=musicJPA.findTop5music();
-        firstpagemap.put("newMusicList",newMusicList);
-        List<Music> hotMusicList=musicJPA.findBymgoodDESC();
+        List<Music> hotMusicList= musicJPA.findBymgoodDESC();
         firstpagemap.put("hotMusicList",hotMusicList);
-        List<Music> timesMusicList=musicJPA.findBytimesDESC();
-        firstpagemap.put("timeMusicList",timesMusicList);
         //暂时
         String categorys[]={"piano","guitar","comic","electric"};
-        for (String category:categorys){
-            List<Music> categoryMusicList=musicJPA.findTop5ByCategoryOrderByMgoodDesc(categoryJPA.findByCname(category));
-            firstpagemap.put(category+"MusicList",categoryMusicList);
+        for (int i=0;i<categorys.length;i++){
+            List<Music> categoryMusicList= musicJPA.findTop5ByCategoryOrderByMgoodDesc(categoryJPA.findByCname(categorys[i]));
+            firstpagemap.put(categorys[i]+"MusicList",categoryMusicList);
             log.info(categoryMusicList.toString());
         }
         return firstpagemap;
+    }
+    public Map<String,List<Music>> rightslide(){
+        Map<String,List<Music>> rightslideMap=new LinkedHashMap<>();
+        List<Music> newMusicList= musicJPA.findTop5music();
+        rightslideMap.put("newMusicList",newMusicList);
+        List<Music> timesMusicList= musicJPA.findBytimesDESC();
+        rightslideMap.put("timeMusicList",timesMusicList);
+        return rightslideMap;
+    }
+
+
+    @Override
+    public Music getMusicByMid(int Mid) {
+        return musicJPA.findMusicByMid(Mid);
     }
 }

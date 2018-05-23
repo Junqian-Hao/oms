@@ -18,4 +18,5 @@ public interface MusicJPA extends BaseJPA<Music,Integer>{
 
     List<Music> findTop5ByCategoryOrderByMgoodDesc(Category category);
 
+    Music findMusicByMid(int mid);
 }
