@@ -1,7 +1,7 @@
 package com.nuc.oms.service.Imp;
 
 import com.nuc.oms.entity.User;
-import com.nuc.oms.jpa.UserJpa;
+import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserServiceImp implements UserService {
     @Autowired
-    UserJpa userJpa;
+    UserJPA userJPA;
 
     @Override
     public User login(User user) {
-        return userJpa.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+        return userJPA.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 
     }
 
@@ -21,11 +21,11 @@ public class UserServiceImp implements UserService {
     public User register(User user) {
         user.setUpoInter(0);
         user.setUspace(0d);
-        User byUsername = userJpa.findByUsername(user.getUsername());
+        User byUsername = userJPA.findByUsername(user.getUsername());
         if (byUsername != null) {
             return null;
         } else {
-            return userJpa.save(user);
+            return userJPA.save(user);
         }
     }
 

@@ -1,10 +1,8 @@
 package com.nuc.oms.service.Imp;
 
 import com.nuc.oms.entity.User;
-import com.nuc.oms.jpa.UserJpa;
+import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.UserService;
-import org.junit.AfterClass;
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -22,7 +20,7 @@ public class UserServiceImpTest {
     @Autowired
     UserService userService;
     @Autowired
-    UserJpa userJpa;
+    UserJPA userJPA;
 
 
     @Test
@@ -33,7 +31,7 @@ public class UserServiceImpTest {
         user.setNickname("test");
         User register = userService.register(user);
         assertNotNull(register);
-        userJpa.delete(register);
+        userJPA.delete(register);
     }
 
     @Test
@@ -44,10 +42,10 @@ public class UserServiceImpTest {
         user.setNickname("test");
         user.setUpoInter(0);
         user.setUspace(0d);
-        User save = userJpa.save(user);
+        User save = userJPA.save(user);
         User login = userService.login(save);
         assertNotNull(login);
-        userJpa.delete(save);
+        userJPA.delete(save);
     }
 
 

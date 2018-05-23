@@ -1,9 +1,8 @@
 package com.nuc.oms.service.Imp;
 
-import com.nuc.oms.controller.MusicController;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.jpa.CategoryJPA;
-import com.nuc.oms.jpa.MusicJpa;
+import com.nuc.oms.jpa.MusicJPA;
 import com.nuc.oms.service.MusicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,23 +17,25 @@ import java.util.Map;
 public class MusicServiceImp implements MusicService {
     Logger log = LoggerFactory.getLogger(MusicServiceImp.class);
     @Autowired
-    private MusicJpa musicJpa;
+    private MusicJPA musicJPA;
     @Autowired
     private CategoryJPA categoryJPA;
     @Override
     public Map<String, List<Music>> firstpage() {
         Map<String,List<Music>> firstpagemap=new LinkedHashMap<>();
-        List<Music> newMusicList=musicJpa.findTop5music();
+        List<Music> newMusicList= musicJPA.findTop5music();
         firstpagemap.put("newMusicList",newMusicList);
-        List<Music> hotMusicList=musicJpa.findBymgoodDESC();
+        List<Music> hotMusicList= musicJPA.findBymgoodDESC();
         firstpagemap.put("hotMusicList",hotMusicList);
-        List<Music> timesMusicList=musicJpa.findBytimesDESC();
+        List<Music> timesMusicList= musicJPA.findBytimesDESC();
         firstpagemap.put("timeMusicList",timesMusicList);
         //暂时
         String categorys[]={"piano","guitar","comic","electric"};
-        for (String category:categorys){
-            List<Music> categoryMusicList=musicJpa.findTop5ByCategoryOrderByMgoodDesc(categoryJPA.findByCname(category));
-            firstpagemap.put(category+"MusicList",categoryMusicList);
+        for (int i=0;i<categorys.length;i++){
+
+            List<Music> categoryMusicList= musicJPA.findTop5ByCategoryOrderByMgoodDesc(categoryJPA.findByCname(categorys[i]));
+            firstpagemap.put(categorys[i]+"MusicList",categoryMusicList);
+            System.out.println(categorys[i]+"::::::");
             log.info(categoryMusicList.toString());
         }
         return firstpagemap;

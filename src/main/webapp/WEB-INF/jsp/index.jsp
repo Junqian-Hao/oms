@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <html>
 <head>
   <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
@@ -99,16 +100,16 @@
                 🎹 钢琴
               </div>
               <ul>
-                <c:forEach items="${firstPageMap.painoMusicList}" var="music" varStatus="vs">
+                <c:forEach items="${firstPageMap.pianoMusicList}" var="music" varStatus="vs">
                 <li class="music-list-item">
                   <div class="title">
                     <div class="title_wrap">
-                      <span class="rank">${vs}</span>
+                      <span class="rank">${vs.count}</span>
                       <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
                     </div>
                   </div>
                   <div class="info">
-                    <span class="date">${music.muploaddate}</span>
+                    <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                     <span class="avatar"><img
                         src="${music.mpicurl}"></span>
                   </div>
@@ -121,16 +122,16 @@
                 🎸 吉他
               </div>
               <ul>
-                <c:forEach items="${firstPageMap.gituarMusicList}" var="music" varStatus="vs">
+                <c:forEach items="${firstPageMap.guitarMusicList}" var="music" varStatus="vs">
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
+                        <span class="rank">${vs.count}</span>
                         <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
@@ -149,12 +150,12 @@
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
+                        <span class="rank">${vs.count}</span>
                         <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
@@ -171,12 +172,12 @@
                   <li class="music-list-item">
                     <div class="title">
                       <div class="title_wrap">
-                        <span class="rank">${vs}</span>
+                        <span class="rank">${vs.count}</span>
                         <a href="${music.murl}" title="${music.mtitle}">${music.mtitle}</a>
                       </div>
                     </div>
                     <div class="info">
-                      <span class="date">${music.muploaddate}</span>
+                      <span class="date"><fmt:formatDate value="${music.muploaddate}" pattern="MM-dd"/></span>
                       <span class="avatar"><img
                               src="${music.mpicurl}"></span>
                     </div>
