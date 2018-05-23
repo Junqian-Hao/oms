@@ -1,12 +1,14 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <html>
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
     <title>APlayer</title>
-    <link rel="stylesheet" href="../assets/css/APlayer_files/docute.css">
-    <link rel="stylesheet" href="../assets/css/APlayer_files/theme-github.css"/>
+    <link rel="stylesheet" href="../../assets/css/APlayer_files/docute.css">
+    <link rel="stylesheet" href="../../assets/css/APlayer_files/theme-github.css"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48084758-8"></script>
     <script>
@@ -18,11 +20,11 @@
 
         gtag('config', 'UA-48084758-8');
     </script>
-    <link rel="stylesheet" href="../assets/css/APlayer_files/APlayer.min.css">
-    <link rel="stylesheet" href="../assets/css/login.css">
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-    <script src="../assets/js/APlayer_files/hls.min.js"></script>
-    <script src="../assets/js/APlayer_files/color-thief.js"></script>
+    <link rel="stylesheet" href="../../assets/css/APlayer_files/APlayer.min.css">
+    <link rel="stylesheet" href="../../assets/css/login.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
+    <script src="../../assets/js/APlayer_files/hls.min.js"></script>
+    <script src="../../assets/js/APlayer_files/color-thief.js"></script>
     <style>
         body {
 
@@ -76,12 +78,12 @@
     </div>
 
 </div>
-<script src="../assets/js/APlayer_files/docsearch.js"></script>
-<script src="../assets/js/APlayer_files/evanyou.min.js"></script>
-<script src="../assets/js/APlayer_files/docute.js"></script>
-<script src="../assets/js/APlayer_files/config.js"></script>
-<script src="../assets/js/APlayer_files/APlayer.min.js"></script>
-<script src="../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/js/APlayer_files/docsearch.js"></script>
+<script src="../../assets/js/APlayer_files/evanyou.min.js"></script>
+<script src="../../assets/js/APlayer_files/docute.js"></script>
+<script src="../../assets/js/APlayer_files/config.js"></script>
+<script src="../../assets/js/APlayer_files/APlayer.min.js"></script>
+<script src="../../assets/js/bootstrap.min.js"></script>
 <SCRIPT>
     const ap = new APlayer({
         container: document.getElementById('aplayer'),

@@ -10,4 +10,14 @@ public interface MusicService {
      * 查询首页数据
      */
     Map<String,List<Music>> firstpage();
+
+    /**
+     * 侧边栏
+     */
+    Map<String,List<Music>> rightslide();
+
+    /**
+     * 根据ID查询相关音乐
+     */
+    Music getMusicByMid(int Mid);
 }

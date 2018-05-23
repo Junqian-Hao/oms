@@ -22,7 +22,7 @@ public class LoginControlle {
     @RequestMapping("/login")
     public ModelAndView login(User user) {
         log.info("登录");
-        ModelAndView modelAndView = new ModelAndView("test");
+        ModelAndView modelAndView = new ModelAndView("login");
         User login = userService.login(user);
         modelAndView.addObject("user", login);
         return modelAndView;

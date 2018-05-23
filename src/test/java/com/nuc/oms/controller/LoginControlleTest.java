@@ -1,21 +1,16 @@
 package com.nuc.oms.controller;
 
-import com.nuc.oms.entity.User;
-import com.nuc.oms.jpa.UserJpa;
-import org.junit.Before;
+
+import com.nuc.oms.jpa.UserJPA;
 import org.junit.FixMethodOrder;
-import org.junit.Test;
+
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
-import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 
 @RunWith(SpringRunner.class)
@@ -29,7 +24,7 @@ public class LoginControlleTest {
     private WebApplicationContext wac;
     private MockMvc mockMvc;
     @Autowired
-    UserJpa userJpa;
+    UserJPA userJpa;
 
 //    @Before
 //    public void setup() {
