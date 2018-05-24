@@ -4,7 +4,7 @@
 <html>
 <head>
   <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
-  <title>静听网 - 140202011032_陈晓东</title>
+  <title>千千静听</title>
   <link rel="icon" href="${pageContext.request.contextPath}" mce_href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="./favicon.ico" mce_href="http://jt.hapboy.xyz/favicon.ico" type="image/x-icon">
   <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css" type="text/css">
@@ -23,16 +23,16 @@
     </div>
     <nav>
       <ul class="nav navbar-nav navbar-link">
-        <li class="active"><a href="index.jsp">首页</a></li>
-        <li><a href="category/piano">钢琴</a></li>
-        <li><a href="category/guitar">吉他</a></li>
-        <li><a href="category/cartoon">动漫</a></li>
-        <li><a href="category/elect">电子</a></li>
+        <li class="active"><a href="/firstpageRequest">首页</a></li>
+        <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
+        <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
+        <li><a href="/categorymusicView?cname=comic">动漫</a></li>
+        <li><a href="/categorymusicView?cname=electric">电子</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-sm">
-        <!--<li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>-->
-        <!--<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>-->
-        <!--<li><a href="#">注册 / 登录</a></li>-->
+        <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
+        <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        <li><a href="#">注册 / 登录</a></li>
       </ul>
     </nav>
   </div>

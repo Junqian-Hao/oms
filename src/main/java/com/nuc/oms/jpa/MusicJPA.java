@@ -2,6 +2,7 @@ package com.nuc.oms.jpa;
 
 import com.nuc.oms.entity.Category;
 import com.nuc.oms.entity.Music;
+import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
@@ -18,5 +19,11 @@ public interface MusicJPA extends BaseJPA<Music,Integer>{
 
     List<Music> findTop5ByCategoryOrderByMgoodDesc(Category category);
 
+    List<Music> findTop8ByCategoryOrderByMgoodDesc(Category category);
+
     Music findMusicByMid(int mid);
+
+    @Query(value = "select * from music where mtitle like CONCAT('%',:keyname,'%') or mauthor like CONCAT('%',:keyname,'%') " ,nativeQuery = true)
+    List<Music> searchMusic(@Param("keyname") String input);
+
 }

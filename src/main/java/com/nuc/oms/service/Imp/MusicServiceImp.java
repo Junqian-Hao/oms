@@ -43,9 +43,18 @@ public class MusicServiceImp implements MusicService {
         return rightslideMap;
     }
 
+    @Override
+    public List<Music> getMusicByCategory(String cname) {
+        return musicJPA.findTop8ByCategoryOrderByMgoodDesc(categoryJPA.findByCname(cname));
+    }
 
     @Override
     public Music getMusicByMid(int Mid) {
         return musicJPA.findMusicByMid(Mid);
+    }
+
+    @Override
+    public List<Music> searchMusic(String input) {
+        return musicJPA.searchMusic(input);
     }
 }
