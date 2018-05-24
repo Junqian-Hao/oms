@@ -35,6 +35,16 @@ public class UserServiceImpTest {
     }
 
     @Test
+    public void regi() {
+        User user = new User();
+        user.setUid(1);
+        user.setUsername("1");
+        user.setPassword("1");
+        user.setNickname("222");
+        userJPA.save(user);
+    }
+
+    @Test
     public void login() {
         User user = new User();
         user.setUsername("test");

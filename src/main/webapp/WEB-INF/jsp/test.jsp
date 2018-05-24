@@ -12,13 +12,15 @@
     <title>测试界面</title>
 </head>
 <body>
-${a}
-${user.id}
-
-<form action="${pageContext.request.contextPath}/login">
-    <input type="text" name="username">
-    <input type="password" name="password">
-    <input type="submit">
-</form>
+<%--${a}--%>
+<%--${user.id}--%>
+<audio src="http://localhost:8080/user/music/1" controls="controls">
+    Your browser does not support the audio element.
+</audio>
+<%--<form action="${pageContext.request.contextPath}/login">--%>
+    <%--<input type="text" name="username">--%>
+    <%--<input type="password" name="password">--%>
+    <%--<input type="submit">--%>
+<%--</form>--%>
 </body>
 </html>
