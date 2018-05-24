@@ -1,6 +1,7 @@
 package com.nuc.oms.controller;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
@@ -18,15 +20,18 @@ import java.util.List;
  */
 
 @Controller
+@SessionAttributes("user")
 public class MusicController {
     Logger log = LoggerFactory.getLogger(MusicController.class);
     @Autowired
     private MusicService musicService;
 
     @RequestMapping("/firstpageRequest")
-    public ModelAndView getFirstPage(){
+    public ModelAndView getFirstPage(HttpServletRequest request){
+        User login=(User)request.getSession().getAttribute("user");
         log.info("进入首页");
         ModelAndView modelAndView = new ModelAndView("index");
+        modelAndView.addObject("user",login);
         modelAndView.addObject("firstPageMap",musicService.firstpage());
         modelAndView.addObject("rightslideMap",musicService.rightslide());
         return modelAndView;
@@ -36,6 +41,7 @@ public class MusicController {
     public ModelAndView singlemusicPage(HttpServletRequest request){
         log.info("进入音乐");
         int Mid=Integer.parseInt(request.getParameter("Mid"));
+        User user=(User)request.getSession().getAttribute("user");
         ModelAndView modelAndView=new ModelAndView("showmusic");
         modelAndView.addObject("music",musicService.getMusicByMid(Mid));
         modelAndView.addObject("rightslideMap",musicService.rightslide());

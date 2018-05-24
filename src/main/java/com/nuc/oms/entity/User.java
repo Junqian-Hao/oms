@@ -116,4 +116,5 @@ public class User implements Serializable {
     public void setUspace(Double uspace) {
         this.uspace = uspace;
     }
+
 }

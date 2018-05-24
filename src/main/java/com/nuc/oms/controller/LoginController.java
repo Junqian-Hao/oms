@@ -16,8 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller
-public class LoginControlle {
-    Logger log = LoggerFactory.getLogger(LoginControlle.class);
+public class LoginController {
+    Logger log = LoggerFactory.getLogger(LoginController.class);
     @Autowired
     UserService userService;
 

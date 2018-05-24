@@ -16,10 +16,10 @@ import org.springframework.web.context.WebApplicationContext;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.JVM)
-@WebMvcTest(LoginControlle.class)
-public class LoginControlleTest {
+@WebMvcTest(LoginController.class)
+public class LoginControllerTest {
     @Autowired
-    LoginControlle loginControlle;
+    LoginController loginControlle;
     @Autowired
     private WebApplicationContext wac;
     private MockMvc mockMvc;
