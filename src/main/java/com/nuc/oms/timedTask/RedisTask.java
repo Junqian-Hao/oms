@@ -30,7 +30,7 @@ public class RedisTask {
 
 
 
-    @Scheduled(fixedDelay = 1000)        //fixedDelay = 1000表示当前方法执行完毕1000ms后，Spring scheduling会再次调用该方法
+    @Scheduled(fixedDelay = 100000)        //fixedDelay = 1000表示当前方法执行完毕1000ms后，Spring scheduling会再次调用该方法
     public void testFixDelay() {
         logger.info("redis数据刷新计划");
         Set<String> keys = stringRedisTemplate.keys("like:*");
@@ -39,7 +39,6 @@ public class RedisTask {
                 String s = stringRedisTemplate.opsForValue().get(key);
                 String mid = key.replaceAll("like:", "");
                 Music music = musicJPA.getOne(Integer.valueOf(mid));
-                logger.info(String.valueOf(music.getMid())+music.getMpicurl());
                 music.setMgood(Integer.valueOf(s));
                 musicJPA.save(music);
             } catch (Exception e) {
