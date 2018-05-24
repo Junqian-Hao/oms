@@ -44,8 +44,10 @@
 </header>
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
-    <img id="download-music" src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
-    <input id="mid" type="hidden" value="${music.mid}">
+    <form action="/downloadMusic" id="download-music-form" method="post">
+        <input name="mid" type="hidden" value="${music.mid}">
+        <img id="download-music-img" src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
+    </form>
 </div>
 <div class="container-sm box">
     <div class="main">

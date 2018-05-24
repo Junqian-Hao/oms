@@ -10,10 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.ServletOutputStream;
@@ -39,64 +36,63 @@ public class MusicController {
     private MusicService musicService;
 
     @RequestMapping("/firstpageRequest")
-    public ModelAndView getFirstPage(HttpServletRequest request){
-        User login=(User)request.getSession().getAttribute("user");
+    public ModelAndView getFirstPage(HttpServletRequest request) {
+        User login = (User) request.getSession().getAttribute("user");
         log.info("进入首页");
         ModelAndView modelAndView = new ModelAndView("index");
-        modelAndView.addObject("user",login);
-        modelAndView.addObject("firstPageMap",musicService.firstpage());
-        modelAndView.addObject("rightslideMap",musicService.rightslide());
+        modelAndView.addObject("user", login);
+        modelAndView.addObject("firstPageMap", musicService.firstpage());
+        modelAndView.addObject("rightslideMap", musicService.rightslide());
         return modelAndView;
     }
- 
+
     @RequestMapping("/singlemusicView")
-    public ModelAndView singlemusicPage(HttpServletRequest request){
+    public ModelAndView singlemusicPage(HttpServletRequest request) {
         log.info("进入音乐");
-        int Mid=Integer.parseInt(request.getParameter("Mid"));
-        User user=(User)request.getSession().getAttribute("user");
-        ModelAndView modelAndView=new ModelAndView("showmusic");
-        modelAndView.addObject("music",musicService.getMusicByMid(Mid));
-        modelAndView.addObject("rightslideMap",musicService.rightslide());
+        int Mid = Integer.parseInt(request.getParameter("Mid"));
+        User user = (User) request.getSession().getAttribute("user");
+        ModelAndView modelAndView = new ModelAndView("showmusic");
+        modelAndView.addObject("music", musicService.getMusicByMid(Mid));
+        modelAndView.addObject("rightslideMap", musicService.rightslide());
         return modelAndView;
     }
 
     @RequestMapping("/addmusictime")
     @ResponseBody
-    public Map<String,String> addtime(@RequestBody String json){
-        Map<String,String> returnMap=new LinkedHashMap<>();
-        JSONObject object= JSON.parseObject(json);
-        Integer mid=object.getInteger("mid");
+    public Map<String, String> addtime(@RequestBody String json) {
+        Map<String, String> returnMap = new LinkedHashMap<>();
+        JSONObject object = JSON.parseObject(json);
+        Integer mid = object.getInteger("mid");
         musicService.addTimes(mid);
-        returnMap.put("code","1");
+        returnMap.put("code", "1");
         return returnMap;
     }
 
     @RequestMapping("/categorymusicView")
-    public ModelAndView categorymusicPage(HttpServletRequest request){
+    public ModelAndView categorymusicPage(HttpServletRequest request) {
         log.info("进入分类音乐");
         log.info(request.getParameter("cname"));
-        String cname=request.getParameter("cname");
-        ModelAndView modelAndView=new ModelAndView(cname);
-        modelAndView.addObject("categorymusicList",musicService.getMusicByCategory(cname));
+        String cname = request.getParameter("cname");
+        ModelAndView modelAndView = new ModelAndView(cname);
+        modelAndView.addObject("categorymusicList", musicService.getMusicByCategory(cname));
         return modelAndView;
     }
 
     @RequestMapping("/searchMusic")
-    public ModelAndView searchMusicPage(HttpServletRequest request){
+    public ModelAndView searchMusicPage(HttpServletRequest request) {
         log.info("搜索音乐");
-        String input=request.getParameter("input");
-        ModelAndView modelAndView=new ModelAndView("search");
-        modelAndView.addObject("searchMusicList",musicService.searchMusic(input));
+        String input = request.getParameter("input");
+        ModelAndView modelAndView = new ModelAndView("search");
+        modelAndView.addObject("searchMusicList", musicService.searchMusic(input));
         return modelAndView;
     }
 
     @RequestMapping("/downloadMusic")
-    public void downLoadMusic(HttpServletRequest request, HttpServletResponse response)throws Exception{
+    public void downLoadMusic(@RequestParam Integer mid, HttpServletResponse response) throws Exception {
         log.info("下载音乐");
-//        JSONObject object=JSON.parseObject(json);
         byte[] buffer = new byte[8192];
         int bytesRead = 0;
-        Music music = musicService.getMusicByMid(5);
+        Music music = musicService.getMusicByMid(mid);
         String murl = music.getMurl();
         String s = murl.replaceAll("omsFile/", "");
         File serverfile = new File(MyWebAppConfigurer.picsPath() + s);
@@ -105,24 +101,25 @@ public class MusicController {
         response.setHeader("Pragma", "no-cache");
         response.setDateHeader("Expires", 0);
         //response.setContentType("audio/mpeg");
-        String filename= (music.getMtitle()+
+        String filename = (music.getMtitle() +
                 music.getMurl().substring(music.getMurl().lastIndexOf('.')));
-        filename=URLEncoder.encode(filename,"UTF-8");
-        filename.replace("\\+","%20");
+        filename = URLEncoder.encode(filename, "UTF-8");
+        filename.replace("\\+", "%20");
         System.out.println(filename);
-        response.setHeader("Content-Disposition","attachment;filename="+filename);
+        response.setHeader("Content-Disposition", "attachment;filename=" + filename);
         ServletOutputStream responseOutputStream =
                 response.getOutputStream();
-        while((bytesRead = fileInputStream.read(buffer, 0, 8192)) != -1){
+        while ((bytesRead = fileInputStream.read(buffer, 0, 8192)) != -1) {
             responseOutputStream.write(buffer, 0, bytesRead);
         }
         responseOutputStream.flush();
         responseOutputStream.close();
     }
+
     @RequestMapping("/testSearch")
     @ResponseBody
-    public List<Music> testttt(HttpServletRequest request){
-        String input=request.getParameter("input");
+    public List<Music> testttt(HttpServletRequest request) {
+        String input = request.getParameter("input");
         return musicService.searchMusic(input);
     }
 }
