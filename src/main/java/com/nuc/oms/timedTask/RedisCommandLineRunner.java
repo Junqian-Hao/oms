@@ -1,9 +1,12 @@
 package com.nuc.oms.timedTask;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.MusicJPA;
+import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.Imp.MusicServiceImp;
 import com.nuc.oms.service.Imp.UpvoteServiceImp;
+import com.nuc.oms.service.UpvoteService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,13 +26,18 @@ public class RedisCommandLineRunner implements CommandLineRunner {
     StringRedisTemplate stringRedisTemplate;
     @Autowired
     MusicJPA musicJPA;
+    @Autowired
+    UserJPA userJPA;
     @Override
     public void run(String... args) throws Exception {
         logger.info("redis数据库初始化");
-        List<Music> all = musicJPA.findAll();
-        for (Music music : all) {
+        List<Music> allmusic = musicJPA.findAll();
+        for (Music music : allmusic) {
             stringRedisTemplate.opsForValue().set(UpvoteServiceImp.generateKey(music.getMid()), String.valueOf(music.getMgood()));
             stringRedisTemplate.opsForValue().set(MusicServiceImp.generateKey(music.getMid()),String.valueOf(music.getMtimes()));
         }
+        List<User> alluser =userJPA.findAll();
+        for(User user : alluser)
+            stringRedisTemplate.opsForValue().set(UpvoteServiceImp.generatePointKey(user.getUid()),String.valueOf(user.getUpointer()));
     }
 }

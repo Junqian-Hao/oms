@@ -32,4 +32,14 @@ public interface UpvoteService {
      * @return
      */
     Long decrementBymid(Integer mid);
+
+    /**
+     * redis中积分自增方法
+     */
+    Long incrementByuid(Integer uid);
+
+    /**
+     *redis中积分减少方法
+     */
+    Long decrementByuid(Integer uid);
 }

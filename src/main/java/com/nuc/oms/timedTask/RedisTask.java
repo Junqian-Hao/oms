@@ -1,6 +1,7 @@
 package com.nuc.oms.timedTask;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.MusicJPA;
 import com.nuc.oms.jpa.UserJPA;
 import org.slf4j.Logger;
@@ -41,6 +42,7 @@ public class RedisTask {
         keys = stringRedisTemplate.keys("times:*");
         flushtimes(keys);
         keys = stringRedisTemplate.keys("points:*");
+        flushpoints(keys);
     }
 
     public void flushlike(Set<String> keys){
@@ -64,6 +66,20 @@ public class RedisTask {
                 Music music = musicJPA.getOne(Integer.valueOf(mid));
                 music.setMtimes(Integer.valueOf(s));
                 musicJPA.save(music);
+            } catch (Exception e) {
+                logger.error("redis数据刷入异常", e);
+            }
+        }
+    }
+
+    public void flushpoints(Set<String> keys){
+        for (String key : keys) {
+            try {
+                String s = stringRedisTemplate.opsForValue().get(key);
+                String uid = key.replaceAll("points:", "");
+                User user=userJPA.getOne(Integer.valueOf(uid));
+                user.setUpointer(Integer.valueOf(s));
+                userJPA.save(user);
             } catch (Exception e) {
                 logger.error("redis数据刷入异常", e);
             }

@@ -51,9 +51,10 @@ public class UpvoteServiceImp implements UpvoteService {
         goodRelate.setUser(user);
         goodRelateJPA.save(goodRelate);
         //积分自增
-        User one = userJPA.getOne(uid);
+        /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()+1);
-        userJPA.save(one);
+        userJPA.save(one);*/
+        incrementByuid(uid);
         return true;
     }
 
@@ -72,9 +73,10 @@ public class UpvoteServiceImp implements UpvoteService {
         }
         goodRelateJPA.delete(byUserAndMusic);
         //扣除相应积分
-        User one = userJPA.getOne(uid);
+        /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()-1);
-        userJPA.save(one);
+        userJPA.save(one);*/
+        decrementByuid(uid);
         return true;
     }
 
@@ -84,11 +86,26 @@ public class UpvoteServiceImp implements UpvoteService {
     }
 
     @Override
+    public Long incrementByuid(Integer uid){
+        return redisTemplate.opsForValue().increment(generatePointKey(uid),1);
+    }
+
+
+    @Override
     public Long decrementBymid(Integer mid) {
         return redisTemplate.opsForValue().increment(generateKey(mid), -1);
     }
 
+    @Override
+    public Long decrementByuid(Integer uid){
+        return redisTemplate.opsForValue().increment(generatePointKey(uid),-1);
+    }
+
     public static String generateKey(Integer mid) {
         return "like:" + mid;
+    }
+
+    public static String generatePointKey(Integer uid){
+        return "points:"+uid;
     }
 }
