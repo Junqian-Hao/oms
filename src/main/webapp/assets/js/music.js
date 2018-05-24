@@ -11,3 +11,23 @@ $(document).ready(function () {
         }
     });
 });
+
+$("#download-music").click(function () {
+    var mid = $("#mid").val();
+    var json={
+        mid : mid
+    }
+    $.ajax({
+        url: "/downloadMusic",
+        type: "post",
+        contentType: "application/json",
+        data: JSON.stringify(json),
+        success: function (res) {
+            if (res.code == 1) {
+                console.log("下载成功");
+            }else {
+                console.log("下载失败");
+            }
+        }
+    })
+});

@@ -44,7 +44,8 @@
 </header>
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
-    <img src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
+    <img id="download-music" src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
+    <input id="mid" type="hidden" value="${music.mid}">
 </div>
 <div class="container-sm box">
     <div class="main">
@@ -122,6 +123,7 @@
 
 <script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
 <script>
+    var is_first=true;
     var ap = new APlayer({
         element: document.getElementById('music-player'), // Optional, player element
         narrow: false,                                    // Optional, narrow style
@@ -141,6 +143,7 @@
     });
 
     ap.on('play',function () {
+        if(is_first==true){
         var json = {
             mid : ${music.mid}
         }
@@ -148,8 +151,18 @@
             url: "/addmusictime",
             type: "post",
             contentType: "application/json",
-            data: JSON.stringify(json)
+            data: JSON.stringify(json),
+            success: function (res) {
+                console.log()
+                if (res.code == 1) {
+                    is_first=false;
+                }else {
+                    log.debug("增加失败");
+                }
+            }
         })
+
+        }
     });
 </script>
 </body>

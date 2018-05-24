@@ -102,7 +102,7 @@
             {
                 name: '成都',
                 artist: '赵雷',
-                url: 'http://localhost:8080/user/music/1',
+                url: 'music/chengdu.mp3',
                 cover: 'storage/category/piane.jpg',
                 theme: '#ebd0c2'
             },

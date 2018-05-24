@@ -2,6 +2,7 @@ package com.nuc.oms.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.nuc.oms.MyWebAppConfigurer;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
@@ -15,7 +16,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.File;
+import java.io.FileInputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -55,11 +61,14 @@ public class MusicController {
     }
 
     @RequestMapping("/addmusictime")
-    public void addtime(@RequestBody String json){
+    @ResponseBody
+    public Map<String,String> addtime(@RequestBody String json){
         Map<String,String> returnMap=new LinkedHashMap<>();
         JSONObject object= JSON.parseObject(json);
         Integer mid=object.getInteger("mid");
         musicService.addTimes(mid);
+        returnMap.put("code","1");
+        return returnMap;
     }
 
     @RequestMapping("/categorymusicView")
@@ -79,6 +88,36 @@ public class MusicController {
         ModelAndView modelAndView=new ModelAndView("search");
         modelAndView.addObject("searchMusicList",musicService.searchMusic(input));
         return modelAndView;
+    }
+
+    @RequestMapping("/downloadMusic")
+    public void downLoadMusic(HttpServletRequest request, HttpServletResponse response)throws Exception{
+        log.info("下载音乐");
+//        JSONObject object=JSON.parseObject(json);
+        byte[] buffer = new byte[8192];
+        int bytesRead = 0;
+        Music music = musicService.getMusicByMid(5);
+        String murl = music.getMurl();
+        String s = murl.replaceAll("omsFile/", "");
+        File serverfile = new File(MyWebAppConfigurer.picsPath() + s);
+        FileInputStream fileInputStream = new FileInputStream(serverfile);
+        response.setHeader("Cache-Control", "no-store");
+        response.setHeader("Pragma", "no-cache");
+        response.setDateHeader("Expires", 0);
+        //response.setContentType("audio/mpeg");
+        String filename= (music.getMtitle()+
+                music.getMurl().substring(music.getMurl().lastIndexOf('.')));
+        filename=URLEncoder.encode(filename,"UTF-8");
+        filename.replace("\\+","%20");
+        System.out.println(filename);
+        response.setHeader("Content-Disposition","attachment;filename="+filename);
+        ServletOutputStream responseOutputStream =
+                response.getOutputStream();
+        while((bytesRead = fileInputStream.read(buffer, 0, 8192)) != -1){
+            responseOutputStream.write(buffer, 0, bytesRead);
+        }
+        responseOutputStream.flush();
+        responseOutputStream.close();
     }
     @RequestMapping("/testSearch")
     @ResponseBody
