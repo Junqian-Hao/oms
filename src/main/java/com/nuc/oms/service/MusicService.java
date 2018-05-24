@@ -30,4 +30,9 @@ public interface MusicService {
      * 搜索音乐
      */
     List<Music> searchMusic(String input);
+
+    /**
+     * 音乐播放次数+1
+     */
+    void addTimes(Integer mid);
 }

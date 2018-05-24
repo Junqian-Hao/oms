@@ -2,6 +2,7 @@ package com.nuc.oms.timedTask;
 
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.jpa.MusicJPA;
+import com.nuc.oms.service.Imp.MusicServiceImp;
 import com.nuc.oms.service.Imp.UpvoteServiceImp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -28,6 +29,7 @@ public class RedisCommandLineRunner implements CommandLineRunner {
         List<Music> all = musicJPA.findAll();
         for (Music music : all) {
             stringRedisTemplate.opsForValue().set(UpvoteServiceImp.generateKey(music.getMid()), String.valueOf(music.getMgood()));
+            stringRedisTemplate.opsForValue().set(MusicServiceImp.generateKey(music.getMid()),String.valueOf(music.getMtimes()));
         }
     }
 }

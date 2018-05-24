@@ -7,6 +7,9 @@ import com.nuc.oms.service.MusicService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.serializer.RedisSerializer;
+import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
 import java.util.LinkedHashMap;
@@ -16,10 +19,23 @@ import java.util.Map;
 @Service
 public class MusicServiceImp implements MusicService {
     Logger log = LoggerFactory.getLogger(MusicServiceImp.class);
+    RedisTemplate redisTemplate;
     @Autowired
     private MusicJPA musicJPA;
     @Autowired
     private CategoryJPA categoryJPA;
+
+    @Autowired(required = false)
+    public void setRedisTemplate(RedisTemplate redisTemplate) {
+        RedisSerializer stringSerializer = new StringRedisSerializer();
+        redisTemplate.setKeySerializer(stringSerializer);
+        redisTemplate.setValueSerializer(stringSerializer);
+        redisTemplate.setHashKeySerializer(stringSerializer);
+        redisTemplate.setHashValueSerializer(stringSerializer);
+
+        this.redisTemplate = redisTemplate;
+    }
+
     @Override
     public Map<String, List<Music>> firstpage() {
         Map<String,List<Music>> firstpagemap=new LinkedHashMap<>();
@@ -57,4 +73,14 @@ public class MusicServiceImp implements MusicService {
     public List<Music> searchMusic(String input) {
         return musicJPA.searchMusic(input);
     }
+
+    @Override
+    public void addTimes(Integer mid) {
+        redisTemplate.opsForValue().increment(generateKey(mid),1);
+    }
+
+    public static String generateKey(Integer mid) {
+        return "times:" + mid;
+    }
+
 }

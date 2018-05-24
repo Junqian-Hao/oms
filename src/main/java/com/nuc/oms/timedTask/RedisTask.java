@@ -34,6 +34,12 @@ public class RedisTask {
     public void testFixDelay() {
         logger.info("redis数据刷新计划");
         Set<String> keys = stringRedisTemplate.keys("like:*");
+        flushlike(keys);
+        keys = stringRedisTemplate.keys("times:*");
+        flushtimes(keys);
+    }
+
+    public void flushlike(Set<String> keys){
         for (String key : keys) {
             try {
                 String s = stringRedisTemplate.opsForValue().get(key);
@@ -45,6 +51,18 @@ public class RedisTask {
                 logger.error("redis数据刷入异常", e);
             }
         }
-
+    }
+    public void flushtimes(Set<String> keys){
+        for (String key : keys) {
+            try {
+                String s = stringRedisTemplate.opsForValue().get(key);
+                String mid = key.replaceAll("times:", "");
+                Music music = musicJPA.getOne(Integer.valueOf(mid));
+                music.setMtimes(Integer.valueOf(s));
+                musicJPA.save(music);
+            } catch (Exception e) {
+                logger.error("redis数据刷入异常", e);
+            }
+        }
     }
 }
