@@ -16,4 +16,11 @@ public interface UserService {
      * @return 注册成功的用户
      */
     User register(User user);
+
+    /**
+     * 更新用户信息
+     * @param user 用户
+     * @return 更新结果
+     */
+    User upadte(User user);
 }

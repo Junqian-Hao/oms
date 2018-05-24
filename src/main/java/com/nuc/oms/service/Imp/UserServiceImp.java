@@ -29,4 +29,12 @@ public class UserServiceImp implements UserService {
         }
     }
 
+    @Override
+    public User upadte(User user) {
+        if (user == null || user.getUid() == null || user.getUid() == 0) {
+            return null;
+        }
+        return userJPA.save(user);
+    }
+
 }

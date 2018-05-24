@@ -14,7 +14,7 @@ public class UpvoteServiceImpController {
     @Autowired
     UpvoteService upvoteService;
 
-    @RequestMapping("like")
+    @RequestMapping("/like")
     @ResponseBody
     public Map<String, String> like(Integer uid, Integer mid) {
         HashMap<String, String> map = new HashMap<>();
@@ -27,7 +27,7 @@ public class UpvoteServiceImpController {
         return map;
     }
 
-    @RequestMapping("unlike")
+    @RequestMapping("/unlike")
     @ResponseBody
     public Map<String, String> unlike(Integer uid, Integer mid) {
         HashMap<String, String> map = new HashMap<>();

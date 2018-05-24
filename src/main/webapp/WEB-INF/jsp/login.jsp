@@ -57,7 +57,7 @@
 
         <div class="login">
 
-                <form action="${pageContext.request.contextPath}/login" method="post">
+                <form action="${pageContext.request.contextPath}/dologin" method="post">
                     <div class="form-group">
                         <label for="username"></label>
                         <input type="text" class="form-control" name="username" id="username" placeholder="你的音乐账号，你的视听窗口">
