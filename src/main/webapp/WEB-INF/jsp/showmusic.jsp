@@ -52,9 +52,9 @@
             <div class="content-box article">
                 <div class="title">
                     <img src="../../assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24" width="24"/>
-                    <h2>${music.mtitle} - ${music.user.nickname}</h2>
+                    <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">
-                        <span class="author">${music.mauthor}</span> / <span class="date">
+                        <span class="author">${music.user.nickname}</span> / <span class="date">
                         <fmt:formatDate value="${music.muploaddate}" pattern="yy-MM-dd"/>
                         </span>
                     </div>
@@ -125,19 +125,31 @@
     var ap = new APlayer({
         element: document.getElementById('music-player'), // Optional, player element
         narrow: false,                                    // Optional, narrow style
-        autoplay: true,                                   // Optional, autoplay song(s), not supported by mobile browsers
+        autoplay: false,                                   // Optional, autoplay song(s), not supported by mobile browsers
         showlrc: 0,                                       // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
         mutex: true,                                      // Optional, pause other players when this player playing
         theme: '#B72712',                                 // Optional, theme color, default: #b7daff
         mode: 'circulation',                              // Optional, play mode, `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
-        preload: 'metadata',                              // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+        preload: 'none',                              // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
         listmaxheight: '513px',                           // Optional, max height of play list
         music: {                                          // Required, music info
             title: '${music.mtitle}',                                 // Required, music title
             author: '${music.mauthor}',                          // Required, music author
-            url: '../music/chengdu.mp3',  // Required, music url
+            url: '${music.murl}',  // Required, music url
             pic: '${music.mpicurl}'  // Optional, music picture
         }
+    });
+
+    ap.on('play',function () {
+        var json = {
+            mid : ${music.mid}
+        }
+        $.ajax({
+            url: "/addmusictime",
+            type: "post",
+            contentType: "application/json",
+            data: JSON.stringify(json)
+        })
     });
 </script>
 </body>

@@ -20,14 +20,13 @@ import java.io.IOException;
 import java.util.UUID;
 
 @Controller
-@RequestMapping("/user")
 public class UserMusicController {
     @Autowired
     UserMusicService userMusicService;
 
     Logger log = LoggerFactory.getLogger(UserMusicController.class);
 
-    @RequestMapping("/uploadMusic")
+    @RequestMapping("/user/uploadMusic")
     public ModelAndView uploadMusic(Music music, MultipartFile musicfile, MultipartFile mpic) {
         ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
         String musicUrl = saveFile(musicfile);

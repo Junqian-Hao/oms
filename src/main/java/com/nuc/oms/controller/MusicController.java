@@ -1,5 +1,7 @@
 package com.nuc.oms.controller;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
@@ -7,13 +9,17 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 音乐相关控制器
@@ -41,12 +47,19 @@ public class MusicController {
     public ModelAndView singlemusicPage(HttpServletRequest request){
         log.info("进入音乐");
         int Mid=Integer.parseInt(request.getParameter("Mid"));
-        musicService.addTimes(Mid);
         User user=(User)request.getSession().getAttribute("user");
         ModelAndView modelAndView=new ModelAndView("showmusic");
         modelAndView.addObject("music",musicService.getMusicByMid(Mid));
         modelAndView.addObject("rightslideMap",musicService.rightslide());
         return modelAndView;
+    }
+
+    @RequestMapping("/addmusictime")
+    public void addtime(@RequestBody String json){
+        Map<String,String> returnMap=new LinkedHashMap<>();
+        JSONObject object= JSON.parseObject(json);
+        Integer mid=object.getInteger("mid");
+        musicService.addTimes(mid);
     }
 
     @RequestMapping("/categorymusicView")
