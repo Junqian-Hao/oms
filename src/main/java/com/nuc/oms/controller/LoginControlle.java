@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -20,11 +21,11 @@ public class LoginControlle {
     UserService userService;
 
     @RequestMapping("/login")
-    public ModelAndView login(User user) {
+    public ModelAndView login(User user, HttpSession session) {
         log.info("登录");
-        ModelAndView modelAndView = new ModelAndView("login");
+        ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
         User login = userService.login(user);
-        modelAndView.addObject("user", login);
+        session.setAttribute("user", login);
         return modelAndView;
     }
 
