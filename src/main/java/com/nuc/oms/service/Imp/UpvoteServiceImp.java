@@ -18,6 +18,7 @@ public class UpvoteServiceImp implements UpvoteService {
         redisTemplate.setValueSerializer(stringSerializer);
         redisTemplate.setHashKeySerializer(stringSerializer);
         redisTemplate.setHashValueSerializer(stringSerializer);
+
         this.redisTemplate = redisTemplate;
     }
 
