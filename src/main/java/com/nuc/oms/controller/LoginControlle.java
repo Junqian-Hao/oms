@@ -38,7 +38,7 @@ public class LoginControlle {
 
     @RequestMapping("/register")
     @ResponseBody
-    public Map<String,String> register(User user) {
+    public Map<String, String> register(User user) {
         log.info("注册");
         Map<String, String> map = new HashMap<>();
         User register = userService.register(user);
@@ -48,5 +48,12 @@ public class LoginControlle {
             map.put("code", "0");
         }
         return map;
+    }
+
+    @RequestMapping("/exit")
+    public ModelAndView exit(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
+        session.setAttribute("user", null);
+        return modelAndView;
     }
 }
