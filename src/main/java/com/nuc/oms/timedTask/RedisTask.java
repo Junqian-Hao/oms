@@ -2,6 +2,7 @@ package com.nuc.oms.timedTask;
 
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.jpa.MusicJPA;
+import com.nuc.oms.jpa.UserJPA;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,16 +28,19 @@ public class RedisTask {
     StringRedisTemplate stringRedisTemplate;
     @Autowired
     MusicJPA musicJPA;
+    @Autowired
+    UserJPA userJPA;
 
 
 
-    @Scheduled(fixedDelay = 100000)        //fixedDelay = 1000表示当前方法执行完毕1000ms后，Spring scheduling会再次调用该方法
+    @Scheduled(fixedDelay = 1000)        //fixedDelay = 1000表示当前方法执行完毕1000ms后，Spring scheduling会再次调用该方法
     public void testFixDelay() {
         logger.info("redis数据刷新计划");
         Set<String> keys = stringRedisTemplate.keys("like:*");
         flushlike(keys);
         keys = stringRedisTemplate.keys("times:*");
         flushtimes(keys);
+        keys = stringRedisTemplate.keys("points:*");
     }
 
     public void flushlike(Set<String> keys){

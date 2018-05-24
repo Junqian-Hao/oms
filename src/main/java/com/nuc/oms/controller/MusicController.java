@@ -41,6 +41,7 @@ public class MusicController {
     public ModelAndView singlemusicPage(HttpServletRequest request){
         log.info("进入音乐");
         int Mid=Integer.parseInt(request.getParameter("Mid"));
+        musicService.addTimes(Mid);
         User user=(User)request.getSession().getAttribute("user");
         ModelAndView modelAndView=new ModelAndView("showmusic");
         modelAndView.addObject("music",musicService.getMusicByMid(Mid));
