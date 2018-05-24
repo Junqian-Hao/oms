@@ -6,6 +6,8 @@ import com.nuc.oms.MyWebAppConfigurer;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
+import com.nuc.oms.service.UpvoteService;
+import com.nuc.oms.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -34,6 +36,8 @@ public class MusicController {
     Logger log = LoggerFactory.getLogger(MusicController.class);
     @Autowired
     private MusicService musicService;
+    @Autowired
+    private UserService userService;
 
     @RequestMapping("/firstpageRequest")
     public ModelAndView getFirstPage(HttpServletRequest request) {
@@ -86,9 +90,24 @@ public class MusicController {
         modelAndView.addObject("searchMusicList", musicService.searchMusic(input));
         return modelAndView;
     }
-
+    @RequestMapping("/judgePoints")
+    @ResponseBody
+    public Map<String,String> judgePoints(HttpServletRequest request){
+        Map<String,String> returnMap=new LinkedHashMap<>();
+        User user=(User)request.getSession().getAttribute("user");
+        if(user.getUpointer()>=20){
+            userService.decreasePoints(user);
+            request.getSession().setAttribute("user",user);
+            returnMap.put("code","1");
+            return returnMap;
+        }
+        else {
+            returnMap.put("code","0");
+            return returnMap;
+        }
+    }
     @RequestMapping("/downloadMusic")
-    public void downLoadMusic(@RequestParam Integer mid, HttpServletResponse response) throws Exception {
+    public void downLoadMusic(@RequestParam Integer mid,HttpServletRequest request, HttpServletResponse response) throws Exception {
         log.info("下载音乐");
         byte[] buffer = new byte[8192];
         int bytesRead = 0;

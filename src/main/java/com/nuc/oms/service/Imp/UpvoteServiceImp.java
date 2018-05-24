@@ -54,7 +54,7 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()+1);
         userJPA.save(one);*/
-        incrementByuid(uid);
+        incrementByuid(uid,1);
         return true;
     }
 
@@ -76,7 +76,7 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()-1);
         userJPA.save(one);*/
-        decrementByuid(uid);
+        decrementByuid(uid,1);
         return true;
     }
 
@@ -86,8 +86,8 @@ public class UpvoteServiceImp implements UpvoteService {
     }
 
     @Override
-    public Long incrementByuid(Integer uid){
-        return redisTemplate.opsForValue().increment(generatePointKey(uid),1);
+    public Long incrementByuid(Integer uid,int increasenum){
+        return redisTemplate.opsForValue().increment(generatePointKey(uid),increasenum);
     }
 
 
@@ -97,8 +97,8 @@ public class UpvoteServiceImp implements UpvoteService {
     }
 
     @Override
-    public Long decrementByuid(Integer uid){
-        return redisTemplate.opsForValue().increment(generatePointKey(uid),-1);
+    public Long decrementByuid(Integer uid,int decreasenum){
+        return redisTemplate.opsForValue().increment(generatePointKey(uid),-decreasenum);
     }
 
     public static String generateKey(Integer mid) {

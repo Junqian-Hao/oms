@@ -37,4 +37,9 @@ public class UserServiceImp implements UserService {
         return userJPA.save(user);
     }
 
+    @Override
+    public void decreasePoints(User user) {
+        user.setUpointer(user.getUpointer()-20);
+        userJPA.save(user);
+    }
 }

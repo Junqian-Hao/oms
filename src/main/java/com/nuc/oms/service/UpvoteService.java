@@ -36,10 +36,10 @@ public interface UpvoteService {
     /**
      * redis中积分自增方法
      */
-    Long incrementByuid(Integer uid);
+    Long incrementByuid(Integer uid,int increasenum);
 
     /**
      *redis中积分减少方法
      */
-    Long decrementByuid(Integer uid);
+    Long decrementByuid(Integer uid,int decreasenum);
 }

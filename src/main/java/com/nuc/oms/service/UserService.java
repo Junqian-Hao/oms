@@ -23,4 +23,9 @@ public interface UserService {
      * @return 更新结果
      */
     User upadte(User user);
+
+    /**
+     * 下载扣除积分
+     */
+    void decreasePoints(User user);
 }
