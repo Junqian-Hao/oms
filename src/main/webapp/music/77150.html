@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>搁浅的心 - 董运昌 - 静听网 - 140202011032_陈晓东</title>
+  <link rel="stylesheet" href="../assets/css/reset.css">
+  <link rel="stylesheet" href="../assets/css/common.css">
+  <link rel="stylesheet" href="../assets/css/music.css">
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" >
+
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <style>
+    body{
+      background-image: url("");
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  </style>
+</head>
+<body >
+<header>
+  <div class="container">
+    <div class="navbar-header">
+      <a href="" class="navbar-brand">
+        <img src="../assets/images/logo.png" alt="">
+      </a>
+    </div>
+    <nav>
+      <ul class="nav navbar-nav navbar-link">
+        <li><a href="../index.jsp">首页</a></li>
+        <li><a href="../category/piano">钢琴</a></li>
+        <li><a href="../category/guitar">吉他</a></li>
+        <li><a href="../category/cartoon">动漫</a></li>
+        <li><a href="../category/elect">电子</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right navbar-sm">
+        <!--<li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>-->
+        <!--<li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>-->
+        <!--<li><a href="#">注册 / 登录</a></li>-->
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="container-sm box">
+  <div class="main">
+    <div class="main-wrap" style="position: relative">
+      <div class="content-box article">
+        <div style=" float:left;width: 40%;margin: 0 10%;margin-top: 0px;text-align: center;">
+          <form >
+
+            <div class="form-group">
+              <div class="form-group">
+                <label for="aaa">Music name</label>
+                <input type="text" class="form-control" id="aaa" placeholder="music">
+              </div>
+              <div class="form-group">
+                <label for="bbb">Author</label>
+                <input type="text" class="form-control" id="bbb" placeholder="author">
+              </div>
+              <div class="form-group">
+                <label for="eee">Sort</label>
+                <input type="text" class="form-control" id="eee" placeholder="sort">
+              </div>
+              <div class="form-group">
+                <label for="fff">Abstract</label>
+                <input type="text" class="form-control" id="fff" placeholder="abstract">
+              </div>
+                <label for="ccc">Music upload</label></br>
+                <input type="file" id="ccc"></br>
+                <p class="help-block">Choose your music.</p>
+              </div>
+
+            <input type="button" class="btn btn-primary btn-lg" value="上传" >
+
+          </form>
+
+      </div>
+      </div>
+      <div>
+        <img src="../assets/images/music.jpg" style="position: relative; width: 230px;height:230px;margin-bottom: 30px" id="myImg"/>
+        <input style="position: relative; " type="file" id="ddd" onchange="changImg(event)">
+      </div>
+
+  </div>
+
+  <script src="../assets/js/jquery.min.js"></script>
+  <script src="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/HBSlider.js"></script>
+<script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
+<script>
+  var ap = new APlayer({
+    element: document.getElementById('music-player'), // Optional, player element
+    narrow: false,                                    // Optional, narrow style
+    autoplay: true,                                   // Optional, autoplay song(s), not supported by mobile browsers
+    showlrc: 0,                                       // Optional, show lrc, can be 0, 1, 2, see: ###With lrc
+    mutex: true,                                      // Optional, pause other players when this player playing
+    theme: '#B72712',                                 // Optional, theme color, default: #b7daff
+    mode: 'circulation',                              // Optional, play mode, `random` `single` `circulation`(loop) `order`(no loop), default: `circulation`
+    preload: 'metadata',                              // Optional, the way to load music, can be 'none' 'metadata' 'auto', default: 'auto'
+    listmaxheight: '513px',                           // Optional, max height of play list
+    music: {                                          // Required, music info
+      title: '搁浅的心',                                 // Required, music title
+      author: '董运昌',                          // Required, music author
+      url: 'http://p2.music.126.net/3Bva8CYDlHXEXGMraqLcWg==/5717460464486258.mp3',  // Required, music url
+      pic: 'http://p3.music.126.net/yz5LVCL7FCpnPaB-OOQ7CA==/63771674423313.jpg'  // Optional, music picture
+    }
+  });
+</script>
+    <script>
+        function changImg(e) {
+            for (var i = 0; i < e.target.files.length; i++) {
+                var file = e.target.files.item(i);
+                if (!(/^image\/.*$/i.test(file.type))) {
+                    continue; //不是图片 就跳出这一次循环
+                }
+                //实例化FileReader API
+                var freader = new FileReader();
+                freader.readAsDataURL(file);
+                freader.onload = function (e) {
+                    $("#myImg").attr("src", e.target.result);
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
