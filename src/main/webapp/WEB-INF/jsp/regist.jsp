@@ -66,7 +66,7 @@
                 <div class="form-group">
                     <label for="username"></label>
                     <input type="text" class="form-control" name="username" id="username" placeholder="你的音乐账号，你的视听窗口">
-                    <div style="opacity: 0; color: rgba(255,42,242,0.6);">${error}</div>
+                    <div style="color: rgba(255,42,242,0.6);">${error}</div>
                 </div>
                 <div class="form-group" >
                     <label for="password"></label>
