@@ -10,7 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Controller("/user")
-public class UpvoteServiceImpController {
+public class UpvoteController {
     @Autowired
     UpvoteService upvoteService;
 
