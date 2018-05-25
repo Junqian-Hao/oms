@@ -1,6 +1,7 @@
 package com.nuc.oms.service;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.Page;
 
 import java.util.List;
 import java.util.Map;
@@ -29,7 +30,7 @@ public interface MusicService {
     /**
      * 搜索音乐
      */
-    List<Music> searchMusic(String input);
+    Page<Music> searchMusic(String input,int thispage,int pagenum);
 
     /**
      * 音乐播放次数+1

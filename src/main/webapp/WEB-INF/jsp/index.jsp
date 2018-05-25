@@ -70,13 +70,13 @@
           <div class="content-header">
             <h2><i class="fa fa-music red"></i>热门推荐</h2>
             <div class="tab">
-              <a href="category/piano">钢琴</a>
+              <a href="/categorymusicView?cname=piano">钢琴</a>
               <span class="line">|</span>
-              <a href="category/guitar">吉他</a>
+              <a href="/categorymusicView?cname=guitar">吉他</a>
               <span class="line">|</span>
-              <a href="category/cartoon">动漫</a>
+              <a href="/categorymusicView?cname=comic">动漫</a>
               <span class="line">|</span>
-              <a href="category/elect">电子</a>
+              <a href="/categorymusicView?cname=electric">电子</a>
             </div>
             <!--<span class="more"><a href="#">更多</a></span>-->
           </div>

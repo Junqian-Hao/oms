@@ -1,6 +1,7 @@
 package com.nuc.oms.service.Imp;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.Page;
 import com.nuc.oms.jpa.CategoryJPA;
 import com.nuc.oms.jpa.MusicJPA;
 import com.nuc.oms.service.MusicService;
@@ -70,8 +71,8 @@ public class MusicServiceImp implements MusicService {
     }
 
     @Override
-    public List<Music> searchMusic(String input) {
-        return musicJPA.searchMusic(input);
+    public Page<Music> searchMusic(String input, int thispage, int pagenum) {
+        return new Page<Music>().getPageList(pagenum,thispage,musicJPA.searchMusic(input));
     }
 
     @Override
