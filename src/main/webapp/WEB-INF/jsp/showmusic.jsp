@@ -45,13 +45,15 @@
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
     <c:if test="${sessionScope.user != null}">
-    <form action="/downloadMusic" id="download-music-form" method="post">
-        <input name="mid" type="hidden" value="${music.mid}">
-        <img id="download-music-img" src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
-    </form>
+        <form action="/downloadMusic" id="download-music-form" method="post">
+            <input name="mid" type="hidden" value="${music.mid}">
+            <img id="download-music-img" src="../../assets/images/download.png"
+                 style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
+        </form>
     </c:if>
     <c:if test="${sessionScope.user == null}">
-        <img id="download-music-img2" src="../../assets/images/download.png" style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
+        <img id="download-music-img2" src="../../assets/images/download.png"
+             style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
     </c:if>
 </div>
 <div class="container-sm box">
@@ -59,7 +61,8 @@
         <div class="main-wrap">
             <div class="content-box article">
                 <div class="title">
-                    <img src="../../assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24" width="24"/>
+                    <img src="../../assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
+                         width="24"/>
                     <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">
                         <span class="author">${music.user.nickname}</span> / <span class="date">
@@ -130,7 +133,7 @@
 
 <script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
 <script>
-    var is_first=true;
+    var is_first = true;
     var ap = new APlayer({
         element: document.getElementById('music-player'), // Optional, player element
         narrow: false,                                    // Optional, narrow style
@@ -149,67 +152,73 @@
         }
     });
 
-    ap.on('play',function () {
-        if(is_first==true){
-        var json = {
-            mid : ${music.mid}
-        }
-        $.ajax({
-            url: "/addmusictime",
-            type: "post",
-            contentType: "application/json",
-            data: JSON.stringify(json),
-            success: function (res) {
-                console.log()
-                if (res.code == 1) {
-                    is_first=false;
-                }else {
-                    log.debug("增加失败");
-                }
+    ap.on('play', function () {
+        if (is_first == true) {
+            var json = {
+                mid: ${music.mid}
             }
-        })
+            $.ajax({
+                url: "/addmusictime",
+                type: "post",
+                contentType: "application/json",
+                data: JSON.stringify(json),
+                success: function (res) {
+                    console.log()
+                    if (res.code == 1) {
+                        is_first = false;
+                    } else {
+                        log.debug("增加失败");
+                    }
+                }
+            })
 
         }
     });
 
-        $("#heart").click(function () {
+
+</script>
+<script>
+
+    $("#heart").on("click",function () {
             var uid =${sessionScope.user.uid};
             var mid =${music.mid};
-            var kv = "uid" + uid + "&mid" + mid;
+            console.log("dianjishijian");
             if ($("#heart").attr("src") == "../assets/images/心.png") {
-
+                console.log("111111111");
                 var settings1 = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://localhost:8080/user/unlike?uid=" + uid+"&mid"+mid,
+                    "url": "http://localhost:8080/user/unlike?uid=" + uid + "&mid=" + mid,
                     "method": "POST"
                 };
 
                 $.ajax(settings1).done(function (response) {
                     if (response.code == 1) {
                         $("#heart").attr("src", "../assets/images/红心.png");
-                    }else {
+                    } else {
                         console.log("变红心失败");
                     }
                 });
             } else {
-
+                console.log("222222");
                 var settings2 = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://localhost:8080/user/like?uid=" + uid+"&mid"+mid,
+                    "url": "http://localhost:8080/user/like?uid=" + uid + "&mid=" + mid,
                     "method": "POST"
                 };
 
                 $.ajax(settings2).done(function (response) {
                     if (response.code == 0) {
                         $("#heart").attr("src", "../assets/images/心.png");
-                    }else {
+                    } else {
                         console.log("变白心失败");
                     }
                 });
             }
         });
+
+
 
 </script>
 </body>

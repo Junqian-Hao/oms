@@ -93,6 +93,9 @@ public class MusicController {
             Page<Music> page=musicService.searchMusic(input,thispage,12);
             if(page!=null){
                 returnMap.put("code","1");
+                returnMap.put("totalpage",page.getTotalpage());
+                returnMap.put("thispage",page.getThispage());
+                returnMap.put("pagenum",page.getPagenum());
                 returnMap.put("musiclist",page.getObjectList());
                 return returnMap;
             }
