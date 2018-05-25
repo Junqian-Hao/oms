@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>${music.mtitle} - ${music.user.nickname} - 静听网 - 140202011032_陈晓东</title>
+    <link rel="stylesheet" href="../../assets/css/reset.css">
+    <link rel="stylesheet" href="../../assets/css/common.css">
+    <link rel="stylesheet" href="../../assets/css/music.css">
+    <link rel="stylesheet" href="../../assets/css/category.css">
+    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/userinfo.css">
+
+    <title>个人主页</title>
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="navbar-header">
+            <a href="" class="navbar-brand">
+                <img src="assets/images/logo.png" alt="">
+            </a>
+        </div>
+        <nav>
+            <ul class="nav navbar-nav navbar-link">
+                <li class="active"><a href="/firstpageRequest">首页</a></li>
+                <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
+                <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
+                <li><a href="/categorymusicView?cname=comic">动漫</a></li>
+                <li><a href="/categorymusicView?cname=electric">电子</a></li>
+            </ul>
+
+            <ul class="nav navbar-nav navbar-right navbar-sm">
+                <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
+                <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <c:if test="${sessionScope.user == null}">
+                    <li><a href="/login">注册 / 登录</a></li>
+                </c:if>
+                <c:if test="${sessionScope.user !=null}">
+                    <li><a href="#">${sessionScope.user.nickname}</a></li>
+                    <li><a href="/exit">退出</a></li>
+                </c:if>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<div class="container-sm category-header-wrap">
+    <div class="category-header-banner">
+        <div class="img" style="background-image: url('../../storage/category/cartoon.jpg')">
+            <div class="content">
+                <h1 style="position: relative">YAO&nbsp;&nbsp;XIANGB <span style="display: inline-block;position: absolute;top: -15px;"><img src="奖章.png" width="60px" height="60px" alt="大会员"></span>
+                    <span style="display: inline;position: absolute;left: 126px; font-weight: 900">叁</span>
+                </h1>
+                <p style="position: relative">所爱隔山海，山有径可寻，海有舟可渡<span style="position: absolute;top: -10px;left: 250px;display: inline">
+                    <a href="#" style="display: inline-block;" ><img src="修改.png" width="25px" height="25px" alt="个人信息修改">
+                        </a></span>
+                    <!--<span style="font-size: 2px;position: absolute;top: 4px;left: 275px">修改</span>-->
+                </p>
+            </div>
+            <div class="mask"></div>
+        </div>
+    </div>
+</div>
+<div class="container-sm box">
+    <div class="main" style="float: left">
+        <div class="main-wrap" style=" width: 700px;float: left">
+            <div class="content-box">
+                <div class="hot-recommand">
+                    <!--我来组成头部-->
+                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed">
+                        <h2>
+                            <i class="fa fa-music red"></i>
+                            我已经上传的歌曲
+                        </h2>
+
+                        <div class="tab" style="position: relative;margin-left: 240px">
+                            <div style="font-size: 15px;color: #74b1ed">容量</div>
+                            <div class="jindutiao"><div class="jindutiao-in"></div></div>
+                            <div style="position: absolute;right: -105px;top: 0px;color: #74b1ed;">123&nbsp;<span style="font-weight: 900">/</span>&nbsp;3213</div>
+                        </div>
+                    </div>
+                    <!--音乐显示区域-->
+                    <ul class="music-list clearfix">
+                        <c:forEach items="${firstPageMap.hotMusicList}" var="music" varStatus="vs">
+                            <li>
+                                <div class="u-cover">
+                                    <img src="${music.mpicurl}">
+                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}" class="msk"></a>
+                                </div>
+                                <p class="dec">
+                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
+                                </p>
+                                <div class="author">${music.mauthor}</div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                    <!--我点赞的歌曲-->
+                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed">
+                        <h2>
+                            <i class="fa fa-music red"></i>
+                            我like的歌曲
+                        </h2>
+                    </div>
+                    <!--歌曲显示-->
+                    <ul class="music-list clearfix">
+                        <c:forEach items="${firstPageMap.hotMusicList}" var="music" varStatus="vs">
+                            <li>
+                                <div class="u-cover">
+                                    <img src="${music.mpicurl}">
+                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}" class="msk"></a>
+                                </div>
+                                <p class="dec">
+                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
+                                </p>
+                                <div class="author">${music.mauthor}</div>
+                            </li>
+                        </c:forEach>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="sidebar" style="min-height: 1094px; float: right">
+            <div class="right-module" style="background: #76cfff">
+                <h4>未完待续</h4>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="../../assets/js/jquery.min.js"></script>
+</body>
+</html>

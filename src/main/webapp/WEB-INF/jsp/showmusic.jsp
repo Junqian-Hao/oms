@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,9 +12,10 @@
     <link rel="stylesheet" href="../../assets/css/common.css">
     <link rel="stylesheet" href="../../assets/css/music.css">
     <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/userinfo.css">
 </head>
 <body>
-<header>
+<header class="showinfo">
     <div class="container">
         <div class="navbar-header">
             <a href="" class="navbar-brand">
@@ -35,13 +37,16 @@
                     <li><a href="/login">注册 / 登录</a></li>searchpage.html
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li><a href="#">${sessionScope.user.nickname}</a></li>
+                    <li class="uname"><a href="#">${sessionScope.user.nickname}</a>
+                    </li>
                     <li><a href="/exit">退出</a></li>
                 </c:if>
             </ul>
         </nav>
     </div>
+
 </header>
+
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
     <c:if test="${sessionScope.user != null}">
@@ -175,6 +180,7 @@
 
 
 $(document).ready(function () {
+
     var uid =${sessionScope.user.uid};
     var mid =${music.mid};
     var settings = {
@@ -236,5 +242,6 @@ $(document).ready(function () {
 
 
 </script>
+<script src="../../assets/js/userinfo.js"></script>
 </body>
 </html>

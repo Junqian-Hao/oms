@@ -1014,7 +1014,7 @@ textarea.moco-input-lg, select[multiple].moco-input-lg {
 
 .moco-tip-layer {
     position: absolute;
-    z-index: 99999;
+    z-index: 998;
     font-size: 12px;
     line-height: 16px;
     color: #07111b;
@@ -1294,7 +1294,7 @@ textarea.moco-input-lg, select[multiple].moco-input-lg {
 .moco-usercard-dialog {
     position: absolute;
     border-radius: 4px !important;
-    z-index: 1000 !important;
+    z-index: 998 !important;
     background-color: #fff;
     box-shadow: 0 12px 24px 0 rgba(0, 0, 0, 0.24)
 }
