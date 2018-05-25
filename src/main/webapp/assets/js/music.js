@@ -2,47 +2,6 @@
  * Created by macbookair on 2018/5/23.
  */
 
-$(document).ready(function () {
-
-    $("#heart").click(function () {
-        var uid =${sessionScope.user.uid};
-        var mid =${music.mid};
-        var kv = "uid" + uid + "&mid" + mid;
-        if ($("#heart").attr("src") == "../assets/images/心.png") {
-            $.ajax({
-                url: "/like",
-                type: "POST",
-                data: kv,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    if (data.code) {
-                        $("#heart").attr("src", "../assets/images/红心.png");
-                    }else {
-                        console.log("变白心失败");
-                    }
-                }
-
-            });
-        } else {
-            $.ajax({
-                url: "/like",
-                type: "POST",
-                data: kv,
-                dataType: "json",
-                success: function (data) {
-                    console.log(data);
-                    if (data.code) {
-                       console.log("变红心失败");
-                    }else {
-                        $("#heart").attr("src", "../assets/images/心.png");
-                    }
-                }
-
-            });
-        }
-    });
-});
 
 
 $("#download-music-img").click(function () {

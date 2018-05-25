@@ -171,6 +171,46 @@
 
         }
     });
+
+        $("#heart").click(function () {
+            var uid =${sessionScope.user.uid};
+            var mid =${music.mid};
+            var kv = "uid" + uid + "&mid" + mid;
+            if ($("#heart").attr("src") == "../assets/images/心.png") {
+
+                var settings1 = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://localhost:8080/user/unlike?uid=" + uid+"&mid"+mid,
+                    "method": "POST"
+                };
+
+                $.ajax(settings1).done(function (response) {
+                    if (response.code == 1) {
+                        $("#heart").attr("src", "../assets/images/红心.png");
+                    }else {
+                        console.log("变红心失败");
+                    }
+                });
+            } else {
+
+                var settings2 = {
+                    "async": true,
+                    "crossDomain": true,
+                    "url": "http://localhost:8080/user/like?uid=" + uid+"&mid"+mid,
+                    "method": "POST"
+                };
+
+                $.ajax(settings2).done(function (response) {
+                    if (response.code == 0) {
+                        $("#heart").attr("src", "../assets/images/心.png");
+                    }else {
+                        console.log("变白心失败");
+                    }
+                });
+            }
+        });
+
 </script>
 </body>
 </html>
