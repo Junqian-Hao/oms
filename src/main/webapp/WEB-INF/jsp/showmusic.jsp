@@ -130,6 +130,7 @@
 
 <script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
 <script>
+
     var is_first=true;
     var ap = new APlayer({
         element: document.getElementById('music-player'), // Optional, player element
@@ -172,44 +173,67 @@
         }
     });
 
-        $("#heart").click(function () {
-            var uid =${sessionScope.user.uid};
-            var mid =${music.mid};
-            var kv = "uid" + uid + "&mid" + mid;
-            if ($("#heart").attr("src") == "../assets/images/心.png") {
 
-                var settings1 = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "http://localhost:8080/user/unlike?uid=" + uid+"&mid"+mid,
-                    "method": "POST"
-                };
+$(document).ready(function () {
+    var uid =${sessionScope.user.uid};
+    var mid =${music.mid};
+    var settings = {
+        "async": true,
+        "crossDomain": true,
+        "url": "http://localhost:8080/islike?&mid="+mid,
+        "method": "POST"
+    };
 
-                $.ajax(settings1).done(function (response) {
-                    if (response.code == 1) {
-                        $("#heart").attr("src", "../assets/images/红心.png");
-                    }else {
-                        console.log("变红心失败");
-                    }
-                });
-            } else {
+    $.ajax(settings).done(function (response) {
+        if (response.code == 1) {
+            $("#heart").attr("src", "../assets/images/红心.png");
+            console.log("已经是粉丝了");
+        }else {
+            $("#heart").attr("src", "../assets/images/心.png");
+            console.log("目前并不是粉丝了");
 
-                var settings2 = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "http://localhost:8080/user/like?uid=" + uid+"&mid"+mid,
-                    "method": "POST"
-                };
+        }
+    });
 
-                $.ajax(settings2).done(function (response) {
-                    if (response.code == 0) {
-                        $("#heart").attr("src", "../assets/images/心.png");
-                    }else {
-                        console.log("变白心失败");
-                    }
-                });
-            }
-        });
+    $("#heart").on('click', function () {
+        var kv = "uid" + uid + "&mid" + mid;
+        if ($("#heart").attr("src") == "../assets/images/心.png") {
+
+            var settings1 = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:8080/like?uid=" + uid+"&mid="+mid,
+                "method": "POST"
+            };
+
+            $.ajax(settings1).done(function (response) {
+                if (response.code == 1) {
+                    $("#heart").attr("src", "../assets/images/红心.png");
+                }else {
+                    console.log("变红心失败");
+                }
+            });
+        } else {
+
+            var settings2 = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost:8080/unlike?uid=" + uid+"&mid="+mid,
+                "method": "POST"
+            };
+
+            $.ajax(settings2).done(function (response) {
+                if (response.code == 1) {
+                    $("#heart").attr("src", "../assets/images/心.png");
+                }else {
+                    console.log("变白心失败");
+                }
+            });
+        }
+    });
+
+});
+
 
 </script>
 </body>

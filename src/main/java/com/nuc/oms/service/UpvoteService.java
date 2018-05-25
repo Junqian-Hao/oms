@@ -1,5 +1,7 @@
 package com.nuc.oms.service;
 
+import com.nuc.oms.entity.User;
+
 public interface UpvoteService {
 
     /**
@@ -8,7 +10,7 @@ public interface UpvoteService {
      * @param uid 用户id
      * @return 点赞结果
      */
-    public boolean like(Integer mid, Integer uid);
+    boolean like(Integer mid, Integer uid);
 
     /**
      * 取消点赞
@@ -16,7 +18,9 @@ public interface UpvoteService {
      * @param uid 用户id
      * @return 取消结果
      */
-    public boolean unlike(Integer mid, Integer uid);
+    boolean unlike(Integer mid, Integer uid);
+
+    boolean islike(Integer mid, User uid);
 
 
     /**
