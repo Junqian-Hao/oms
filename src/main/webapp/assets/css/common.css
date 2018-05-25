@@ -160,7 +160,7 @@ header {
 }
 
 .main {
-
+    overfllow:Hidden;
     width: 100%;
     float: left;
     margin-right: -250px;

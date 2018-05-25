@@ -14,6 +14,7 @@
 }
 
 .content-box {
+    height: auto;
     padding-bottom: 0;
 }
 
@@ -27,16 +28,20 @@
 }
 
 .category-header-banner {
+
     height: inherit;
     position: relative;
 }
 
 .category-header-banner .content {
+    height: auto;
+    overfllow:Hidden;
     color: #ffffff;
     padding: 60px 50px;
 }
 
 .category-header-banner .content p {
+
     font-size: 14px;
     opacity: .8;
     margin: 0;
