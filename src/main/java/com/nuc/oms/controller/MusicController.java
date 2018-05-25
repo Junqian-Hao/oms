@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.nuc.oms.MyWebAppConfigurer;
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.Page;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
 import com.nuc.oms.service.UpvoteService;
@@ -83,12 +84,23 @@ public class MusicController {
     }
 
     @RequestMapping("/searchMusic")
-    public ModelAndView searchMusicPage(HttpServletRequest request) {
-        log.info("搜索音乐");
-        String input = request.getParameter("input");
-        ModelAndView modelAndView = new ModelAndView("search");
-        modelAndView.addObject("searchMusicList", musicService.searchMusic(input));
-        return modelAndView;
+    @ResponseBody
+    public Map<String,Object> searchMusicPage(@RequestBody String json, HttpServletRequest request) {
+            Map<String,Object> returnMap=new LinkedHashMap<>();
+            JSONObject object=JSON.parseObject(json);
+            int thispage=object.getInteger("thispage");
+            String input=object.getString("input");
+            Page<Music> page=musicService.searchMusic(input,thispage,12);
+            if(page!=null){
+                returnMap.put("code","1");
+                returnMap.put("musiclist",page.getObjectList());
+                return returnMap;
+            }
+            else {
+                returnMap.put("code","0");
+                return returnMap;
+            }
+
     }
     @RequestMapping("/judgePoints")
     @ResponseBody
@@ -133,12 +145,5 @@ public class MusicController {
         }
         responseOutputStream.flush();
         responseOutputStream.close();
-    }
-
-    @RequestMapping("/testSearch")
-    @ResponseBody
-    public List<Music> testttt(HttpServletRequest request) {
-        String input = request.getParameter("input");
-        return musicService.searchMusic(input);
     }
 }
