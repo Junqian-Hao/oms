@@ -2,8 +2,6 @@
  * Created by macbookair on 2018/5/23.
  */
 
-
-
 $("#download-music-img").click(function () {
     var r = confirm("此次下载将扣除您20积分，是否继续?");
     if (r == true) {

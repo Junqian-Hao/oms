@@ -32,7 +32,7 @@
                 <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
                 <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
-                    <li><a href="/login">注册 / 登录</a></li>
+                    <li><a href="/login">注册 / 登录</a></li>searchpage.html
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
                     <li><a href="#">${sessionScope.user.nickname}</a></li>
