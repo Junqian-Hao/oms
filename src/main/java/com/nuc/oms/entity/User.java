@@ -100,7 +100,7 @@ public class User implements Serializable {
         if (upointer < 100) {
             this.level = 1;
             this.totalSpace = 100d;
-        } else if (100 <= upointer && upointer <= 1000) {
+        } else if (100 <= upointer && upointer < 1000) {
             this.level = 2;
             this.totalSpace = 500d;
         } else {

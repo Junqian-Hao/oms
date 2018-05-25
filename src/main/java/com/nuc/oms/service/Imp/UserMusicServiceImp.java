@@ -1,7 +1,9 @@
 package com.nuc.oms.service.Imp;
 
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.MusicJPA;
+import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.MusicService;
 import com.nuc.oms.service.UserMusicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +18,7 @@ public class UserMusicServiceImp implements UserMusicService {
     @Autowired
     MusicService musicService;
     @Override
-    public Music uploadMusic(Music music) {
+    public Music uploadMusic(Music music, User user) {
         if (music.getMid() == null || music.getMid().intValue() == 0) {
             music.setIs_deleted(Music.NO_DELETED);
             music.setMuploaddate(new Date());
@@ -34,7 +36,6 @@ public class UserMusicServiceImp implements UserMusicService {
 
     @Override
     public Music findbyMid(Integer mid) {
-        musicService.addTimes(mid);
         return musicJPA.getOne(mid);
     }
 }

@@ -39,4 +39,7 @@ spring:
       view:
         suffix: .jsp
         prefix: /WEB-INF/jsp/
+  servlet:
+    multipart:
+      max-file-size: -1
 
