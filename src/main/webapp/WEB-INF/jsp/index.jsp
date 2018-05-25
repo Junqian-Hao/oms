@@ -5,12 +5,12 @@
 <head>
   <c:set value="${pageContext.request.contextPath}" var="path" scope="page"/>
   <title>千千静听</title>
-  <link rel="icon" href="${pageContext.request.contextPath}" mce_href="favicon.ico" type="image/x-icon">
+  <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
   <link rel="shortcut icon" href="./favicon.ico" mce_href="http://jt.hapboy.xyz/favicon.ico" type="image/x-icon">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css" type="text/css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css" type="text/css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slider.css" type="text/css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/css/reset.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/css/common.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/css/slider.css" type="text/css">
+  <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" type="text/css">
 </head>
 <body>
 <!-- 导航栏 -->
