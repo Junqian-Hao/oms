@@ -1,8 +1,11 @@
 package com.nuc.oms.service.Imp;
 
+import com.nuc.oms.entity.GoodRelate;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.Page;
+import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.CategoryJPA;
+import com.nuc.oms.jpa.GoodRelateJPA;
 import com.nuc.oms.jpa.MusicJPA;
 import com.nuc.oms.service.MusicService;
 import org.slf4j.Logger;
@@ -25,6 +28,8 @@ public class MusicServiceImp implements MusicService {
     private MusicJPA musicJPA;
     @Autowired
     private CategoryJPA categoryJPA;
+    @Autowired
+    GoodRelateJPA goodRelateJPA;
 
     @Autowired(required = false)
     public void setRedisTemplate(RedisTemplate redisTemplate) {
@@ -78,6 +83,16 @@ public class MusicServiceImp implements MusicService {
     @Override
     public void addTimes(Integer mid) {
         redisTemplate.opsForValue().increment(generateKey(mid),1);
+    }
+
+    @Override
+    public List<Music> findMusicByUser(User user) {
+        return musicJPA.findByUser(user);
+    }
+
+    @Override
+    public List<GoodRelate> findGoodRelateByUser(User user) {
+        return goodRelateJPA.findByUser(user);
     }
 
     public static String generateKey(Integer mid) {

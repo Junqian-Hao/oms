@@ -1,16 +1,18 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>${music.mtitle} - ${music.user.nickname} - 静听网 - 140202011032_陈晓东</title>
-    <link rel="stylesheet" href="../../assets/css/reset.css">
-    <link rel="stylesheet" href="../../assets/css/common.css">
-    <link rel="stylesheet" href="../../assets/css/music.css">
-    <link rel="stylesheet" href="../../assets/css/category.css">
-    <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="../../assets/css/userinfo.css">
+    <title>${username} - ${nickname} - 静听网 </title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/category.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/userinfo.css">
 
     <title>个人主页</title>
 </head>
@@ -20,16 +22,16 @@
     <div class="container">
         <div class="navbar-header">
             <a href="" class="navbar-brand">
-                <img src="assets/images/logo.png" alt="">
+                <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="">
             </a>
         </div>
         <nav>
             <ul class="nav navbar-nav navbar-link">
-                <li class="active"><a href="/firstpageRequest">首页</a></li>
-                <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
-                <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
-                <li><a href="/categorymusicView?cname=comic">动漫</a></li>
-                <li><a href="/categorymusicView?cname=electric">电子</a></li>
+                <li class="active"><a href="${pageContext.request.contextPath}/firstpageRequest">首页</a></li>
+                <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=piano">钢琴</a></li>
+                <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=guitar">吉他</a></li>
+                <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=comic">动漫</a></li>
+                <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=electric">电子</a></li>
             </ul>
 
             <ul class="nav navbar-nav navbar-right navbar-sm">
@@ -51,11 +53,11 @@
     <div class="category-header-banner">
         <div class="img" style="background-image: url('../../storage/category/cartoon.jpg')">
             <div class="content">
-                <h1 style="position: relative">YAO&nbsp;&nbsp;XIANGB <span style="display: inline-block;position: absolute;top: -15px;"><img src="奖章.png" width="60px" height="60px" alt="大会员"></span>
-                    <span style="display: inline;position: absolute;left: 126px; font-weight: 900">叁</span>
+                <h1 style="position: relative">${nickname} <span style="display: inline-block;position: absolute;top: -13px;"><img src="${pageContext.request.contextPath}/assets/images/奖章.png" width="60px" height="60px" alt="大会员"></span>
+                    <span style="display: inline-block;position: relative;left: 22px; font-weight: 900">${level}</span>
                 </h1>
                 <p style="position: relative">所爱隔山海，山有径可寻，海有舟可渡<span style="position: absolute;top: -10px;left: 250px;display: inline">
-                    <a href="#" style="display: inline-block;" ><img src="修改.png" width="25px" height="25px" alt="个人信息修改">
+                    <a href="#" style="display: inline-block;" ><img src="${pageContext.request.contextPath}/assets/images/修改.png" width="25px" height="25px" alt="个人信息修改">
                         </a></span>
                     <!--<span style="font-size: 2px;position: absolute;top: 4px;left: 275px">修改</span>-->
                 </p>
@@ -79,20 +81,20 @@
 
                         <div class="tab" style="position: relative;margin-left: 240px">
                             <div style="font-size: 15px;color: #74b1ed">容量</div>
-                            <div class="jindutiao"><div class="jindutiao-in"></div></div>
-                            <div style="position: absolute;right: -105px;top: 0px;color: #74b1ed;">123&nbsp;<span style="font-weight: 900">/</span>&nbsp;3213</div>
+                            <div class="jindutiao"><div class="jindutiao-in" style="width: ${rlpercent};"></div></div>
+                            <div style="position: absolute;right: -105px;top: 0px;color: #74b1ed;">${uspace}<span style="font-weight: 900">/</span>${totalSpace}</div>
                         </div>
                     </div>
                     <!--音乐显示区域-->
                     <ul class="music-list clearfix">
-                        <c:forEach items="${firstPageMap.hotMusicList}" var="music" varStatus="vs">
+                        <c:forEach items="${myMusics}" var="music" varStatus="vs">
                             <li>
                                 <div class="u-cover">
-                                    <img src="${music.mpicurl}">
-                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}" class="msk"></a>
+                                    <img src="${pageContext.request.contextPath}/${music.mpicurl}">
+                                    <a title="Refrain - Anan Ryoko" href="${pageContext.request.contextPath}/singlemusicView?Mid=${music.mid}" class="msk"></a>
                                 </div>
                                 <p class="dec">
-                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
+                                    <a title="Refrain - Anan Ryoko" href="${pageContext.request.contextPath}/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
                                 </p>
                                 <div class="author">${music.mauthor}</div>
                             </li>
@@ -107,16 +109,16 @@
                     </div>
                     <!--歌曲显示-->
                     <ul class="music-list clearfix">
-                        <c:forEach items="${firstPageMap.hotMusicList}" var="music" varStatus="vs">
+                        <c:forEach items="${mygood}" var="good" varStatus="vs">
                             <li>
                                 <div class="u-cover">
-                                    <img src="${music.mpicurl}">
-                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}" class="msk"></a>
+                                    <img src="${pageContext.request.contextPath}/${good.music.mpicurl}">
+                                    <a title="Refrain - Anan Ryoko" href="${pageContext.request.contextPath}/singlemusicView?Mid=${good.music.mid}" class="msk"></a>
                                 </div>
                                 <p class="dec">
-                                    <a title="Refrain - Anan Ryoko" href="/singlemusicView?Mid=${music.mid}">${music.mtitle}</a>
+                                    <a title="Refrain - Anan Ryoko" href="${pageContext.request.contextPath}/singlemusicView?Mid=${good.music.mid}">${good.music.mtitle}</a>
                                 </p>
-                                <div class="author">${music.mauthor}</div>
+                                <div class="author">${good.music.mauthor}</div>
                             </li>
                         </c:forEach>
                     </ul>

@@ -42,4 +42,9 @@ public class UserServiceImp implements UserService {
         user.setUpointer(user.getUpointer()-20);
         userJPA.save(user);
     }
+
+    @Override
+    public User findByID(Integer uid) {
+        return userJPA.getOne(uid);
+    }
 }
