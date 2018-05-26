@@ -130,6 +130,23 @@
             <div class="right-module" style="background: #76cfff">
                 <h4>未完待续</h4>
             </div>
+            <div style="padding: 20px 10px;position: relative;" >
+                <img src="/assets/images/积分.png" style="position: relative;top: 5px;margin-left: 10px">
+                <span style="display: inline-block; color: #00a0dc">我的积分</span>&nbsp;&nbsp;
+                <span style="display: inline-block; color: #ed376d">12345</span>
+            </div>
+            <%--积分规则--%>
+            <div style="border-top: 4px solid #ed5987; margin: 10px 20px;padding-top: 10px;position: relative">
+                <img src="/assets/images/积分规则.png" style="position: relative;top: 5px;">
+                <span style="display: inline-block;color: #ed5987;margin-bottom: 10px">积分规则</span><br>
+                <img src="/assets/images/红心.png" style="position: relative;top: 5px;">
+                <span style="margin-top: 5px;display:inline-block;font-size: 15px;color: #ed5987;" >&nbsp;Like：&nbsp;+1</span>
+                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #61b0ed;" >上传歌曲：&nbsp;+1</span>
+                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #61b0ed;" >下载歌曲：&nbsp;-20</span>
+                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #ed5987;" >收到Like：&nbsp;+1</span>
+
+
+            </div>
         </div>
     </div>
 </div>

@@ -221,7 +221,7 @@ header {
 }
 
 .music-list li {
-    float: left;
+    /*float: left;*/
     display: inline-block;
     width: 140px;
     overflow: hidden;
