@@ -73,7 +73,7 @@
             <div class="content-box">
                 <div class="hot-recommand">
                     <!--我来组成头部-->
-                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed">
+                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed;overflow: ">
                         <h2>
                             <i class="fa fa-music red"></i>
                             我已经上传的歌曲
@@ -131,6 +131,12 @@
                 <h4>未完待续</h4>
             </div>
             <div style="padding: 20px 10px;position: relative;" >
+
+                <a href="${pageContext.request.contextPath}/77150">
+                    <img src="/assets/images/添加音乐.png" style="position: relative;top: 5px;margin-left: 11px">
+                    <span style="display: inline-block; color: #ed5987">上传音乐</span>&nbsp;&nbsp;
+                </a>
+                <div style="height: 1px;background-color: white"></div>
                 <img src="/assets/images/积分.png" style="position: relative;top: 5px;margin-left: 10px">
                 <span style="display: inline-block; color: #00a0dc">我的积分</span>&nbsp;&nbsp;
                 <span style="display: inline-block; color: #ed376d">12345</span>
