@@ -5,6 +5,7 @@ import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.service.MusicService;
 import com.nuc.oms.service.UserService;
+import org.hibernate.validator.constraints.pl.REGON;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,16 +29,25 @@ public class UserCntroller {
     @RequestMapping("/updateUser")
     public ModelAndView updateUser(User user, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
-        userService.upadte(user);
+        User upadte = userService.upadte(user);
         User user1 = (User) session.getAttribute("user");
         if (user1.getUid().intValue() == user.getUid().intValue()) {
-            session.setAttribute("user", user);
+            session.setAttribute("user", upadte);
         }
         return modelAndView;
     }
 
+    @RequestMapping("userinfochange")
+    public ModelAndView userinfochange(HttpSession session) {
+        ModelAndView modelAndView = new ModelAndView("userinfochange");
+        User user = (User) session.getAttribute("user");
+        User byID = userService.findByID(user.getUid());
+        modelAndView.addObject("user", byID);
+        return modelAndView;
+    }
     @RequestMapping("/userinfo")
     public ModelAndView UserInfor(HttpSession session) {
+
         log.info("访问个人信息页面");
         ModelAndView modelAndView = new ModelAndView("userinfo");
         User user = (User) session.getAttribute("user");
@@ -56,7 +66,7 @@ public class UserCntroller {
         }
         modelAndView.addObject("uspace", byID.getUspace().intValue());
         modelAndView.addObject("totalSpace", byID.getTotalSpace().intValue());
-        modelAndView.addObject("rlpercent", ((int) (byID.getUspace() / byID.getTotalSpace()*100))+"%");
+        modelAndView.addObject("rlpercent", ((int) (byID.getUspace() / byID.getTotalSpace() * 100)) + "%");
 
         List<Music> musicByUser = musicService.findMusicByUser(byID);
         modelAndView.addObject("myMusics", musicByUser);

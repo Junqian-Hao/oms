@@ -34,7 +34,10 @@ public class UserServiceImp implements UserService {
         if (user == null || user.getUid() == null || user.getUid() == 0) {
             return null;
         }
-        return userJPA.save(user);
+        User one = userJPA.getOne(user.getUid());
+        one.setNickname(user.getNickname());
+        one.setPassword(user.getPassword());
+        return userJPA.save(one);
     }
 
     @Override

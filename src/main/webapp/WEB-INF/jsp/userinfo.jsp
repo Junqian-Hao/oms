@@ -57,7 +57,7 @@
                     <span style="display: inline-block;position: relative;left: 22px; font-weight: 900">${level}</span>
                 </h1>
                 <p style="position: relative">所爱隔山海，山有径可寻，海有舟可渡<span style="position: absolute;top: -10px;left: 250px;display: inline">
-                    <a href="#" style="display: inline-block;" ><img src="${pageContext.request.contextPath}/assets/images/修改.png" width="25px" height="25px" alt="个人信息修改">
+                    <a href="${pageContext.request.contextPath}/user/userinfochange" style="display: inline-block;" ><img src="${pageContext.request.contextPath}/assets/images/修改.png" width="25px" height="25px" alt="个人信息修改">
                         </a></span>
                     <!--<span style="font-size: 2px;position: absolute;top: 4px;left: 275px">修改</span>-->
                 </p>
