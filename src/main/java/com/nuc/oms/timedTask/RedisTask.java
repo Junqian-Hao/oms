@@ -52,6 +52,10 @@ public class RedisTask {
                 String mid = key.replaceAll("like:", "");
                 Music music = musicJPA.getOne(Integer.valueOf(mid));
                 music.setMgood(Integer.valueOf(s));
+                User user = music.getUser();
+                user = userJPA.getOne(user.getUid());
+                user.setUpointer(user.getUpointer() + 1);
+                userJPA.save(user);
                 musicJPA.save(music);
             } catch (Exception e) {
                 logger.error("redis数据刷入异常", e);
