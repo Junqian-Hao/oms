@@ -94,7 +94,6 @@
         order: 'random',
         preload: 'auto',
         volume: 0.7,
-
         mutex: true,
         listFolded: false,
         listMaxHeight: '90px',
@@ -103,21 +102,21 @@
                 name: '成都',
                 artist: '赵雷',
                 url: '../../music/chengdu.mp3',
-                cover: 'storage/category/piane.jpg',
+                cover: '../../storage/category/piane.jpg',
                 theme: '#ebd0c2'
             },
             {
                 name: '成都成都',
                 artist: '赵雷',
                 url: '../../music/chengdu.mp3',
-                cover: 'storage/category/piane.jpg',
+                cover: '../../storage/category/piane.jpg',
                 theme: '#46718b'
             },
             {
                 name: '成都',
                 artist: '赵雷',
                 url: '../../music/chengdu.mp3',
-                cover: 'storage/category/piane.jpg',
+                cover: '../../storage/category/piane.jpg',
                 theme: '#46718b'
             }
         ]

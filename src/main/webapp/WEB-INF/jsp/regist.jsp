@@ -73,7 +73,7 @@
                     <input type="password" class="form-control" name="password" id="password" placeholder="输入密码，见证律动" aria-describedby="inputSuccess3Status" onchange="check()">
                 </div>
                 <div class="form-group" >
-                    <label for="password"></label>
+                    <label for="secondpassword"></label>
                     <input type="password" class="form-control"  id="secondpassword" placeholder="再次输入密码，契合共鸣" onchange="check()">
                 </div>
                 <div style="opacity: 0; color: rgba(255,42,242,0.6);" id="error">两次输入密码不一致</div>

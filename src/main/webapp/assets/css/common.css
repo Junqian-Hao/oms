@@ -22,8 +22,6 @@ a:hover {
 }
 
 .clearfix {
-    overflow: auto;
-    zoom: 1;
 }
 
 .clearfix :after {
