@@ -80,7 +80,7 @@ public class UserMusicController {
 
     }
 
-    @RequestMapping("/music/{mid}")
+//    @RequestMapping("/music/{mid}")
     public void getMusic(@PathVariable Integer mid, HttpServletResponse httpServletResponse) throws IOException {
         log.info("播放："+mid);
         byte[] buffer = new byte[8192];
