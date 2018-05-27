@@ -104,7 +104,7 @@ public class UserMusicController {
         responseOutputStream.flush();
         responseOutputStream.close();
     }
-    @RequestMapping("/77151/{mid}")
+    @RequestMapping("/user/77151/{mid}")
     public ModelAndView updateMusic(@PathVariable Integer mid) throws IOException {
         ModelAndView modelAndView = new ModelAndView("77151");
         Music music = userMusicService.findbyMid(mid);

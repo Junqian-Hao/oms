@@ -68,7 +68,7 @@
             <div class="content-box article">
                 <div class="title">
                     <c:if test="${sessionScope.user.uid == music.user.uid}">
-                        <a href="${pageContext.request.contextPath}/user/77151">
+                        <a href="${pageContext.request.contextPath}/user/77151/${music.mid}">
                             <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px" height="24" width="24"/>
                         </a>
                     </c:if>
