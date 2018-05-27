@@ -1,6 +1,9 @@
 package com.nuc.oms.service;
 
+import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
+
+import java.util.List;
 
 public interface UserService {
     /**
@@ -28,4 +31,15 @@ public interface UserService {
      * 下载扣除积分
      */
     void decreasePoints(User user);
+
+
+    /**
+     * 通过id查找用户信息
+     * @param uid
+     * @return
+     */
+    User findByID(Integer uid);
+
+
+
 }

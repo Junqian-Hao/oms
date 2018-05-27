@@ -34,12 +34,20 @@ public class UserServiceImp implements UserService {
         if (user == null || user.getUid() == null || user.getUid() == 0) {
             return null;
         }
-        return userJPA.save(user);
+        User one = userJPA.getOne(user.getUid());
+        one.setNickname(user.getNickname());
+        one.setPassword(user.getPassword());
+        return userJPA.save(one);
     }
 
     @Override
     public void decreasePoints(User user) {
         user.setUpointer(user.getUpointer()-20);
         userJPA.save(user);
+    }
+
+    @Override
+    public User findByID(Integer uid) {
+        return userJPA.getOne(uid);
     }
 }

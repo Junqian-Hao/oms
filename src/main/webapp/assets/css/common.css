@@ -22,8 +22,6 @@ a:hover {
 }
 
 .clearfix {
-    overflow: auto;
-    zoom: 1;
 }
 
 .clearfix :after {
@@ -156,10 +154,11 @@ header {
 /* Main */
 
 .main, .sidebar {
+
 }
 
 .main {
-
+    overfllow:Hidden;
     width: 100%;
     float: left;
     margin-right: -250px;
@@ -222,7 +221,7 @@ header {
 }
 
 .music-list li {
-    float: left;
+    /*float: left;*/
     display: inline-block;
     width: 140px;
     overflow: hidden;

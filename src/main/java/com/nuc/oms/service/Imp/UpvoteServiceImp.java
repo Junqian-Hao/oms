@@ -54,7 +54,7 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()+1);
         userJPA.save(one);*/
-        incrementByuid(uid,1);
+        incrementByuid(uid, 1);
         return true;
     }
 
@@ -76,8 +76,16 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()-1);
         userJPA.save(one);*/
-        decrementByuid(uid,1);
+        decrementByuid(uid, 1);
         return true;
+    }
+
+    @Override
+    public boolean islike(Integer mid, User user) {
+        Music music = new Music();
+        music.setMid(mid);
+        GoodRelate byUserAndMusic = goodRelateJPA.findByUserAndMusic(user, music);
+        return byUserAndMusic != null;
     }
 
     @Override
@@ -86,8 +94,8 @@ public class UpvoteServiceImp implements UpvoteService {
     }
 
     @Override
-    public Long incrementByuid(Integer uid,int increasenum){
-        return redisTemplate.opsForValue().increment(generatePointKey(uid),increasenum);
+    public Long incrementByuid(Integer uid, int increasenum) {
+        return redisTemplate.opsForValue().increment(generatePointKey(uid), increasenum);
     }
 
 
@@ -97,15 +105,15 @@ public class UpvoteServiceImp implements UpvoteService {
     }
 
     @Override
-    public Long decrementByuid(Integer uid,int decreasenum){
-        return redisTemplate.opsForValue().increment(generatePointKey(uid),-decreasenum);
+    public Long decrementByuid(Integer uid, int decreasenum) {
+        return redisTemplate.opsForValue().increment(generatePointKey(uid), -decreasenum);
     }
 
     public static String generateKey(Integer mid) {
         return "like:" + mid;
     }
 
-    public static String generatePointKey(Integer uid){
-        return "points:"+uid;
+    public static String generatePointKey(Integer uid) {
+        return "points:" + uid;
     }
 }

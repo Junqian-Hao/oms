@@ -2,6 +2,7 @@ package com.nuc.oms.jpa;
 
 import com.nuc.oms.entity.Category;
 import com.nuc.oms.entity.Music;
+import com.nuc.oms.entity.User;
 import io.lettuce.core.dynamic.annotation.Param;
 import org.springframework.data.jpa.repository.Query;
 
@@ -25,5 +26,7 @@ public interface MusicJPA extends BaseJPA<Music,Integer>{
 
     @Query(value = "select * from music where mtitle like CONCAT('%',:keyname,'%') or mauthor like CONCAT('%',:keyname,'%') " ,nativeQuery = true)
     List<Music> searchMusic(@Param("keyname") String input);
+
+    List<Music> findByUser(User user);
 
 }

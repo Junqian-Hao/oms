@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
+
 <html>
 <head>
     <meta charset="UTF-8">
@@ -11,9 +12,10 @@
     <link rel="stylesheet" href="../../assets/css/common.css">
     <link rel="stylesheet" href="../../assets/css/music.css">
     <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/userinfo.css">
 </head>
 <body>
-<header>
+<header class="showinfo">
     <div class="container">
         <div class="navbar-header">
             <a href="" class="navbar-brand">
@@ -33,26 +35,30 @@
                 <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="/login">注册 / 登录</a></li>
+                    searchpage.html
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li><a href="#">${sessionScope.user.nickname}</a></li>
+                    <li class="uname"><a href="#">${sessionScope.user.nickname}</a>
+                    </li>
                     <li><a href="/exit">退出</a></li>
                 </c:if>
             </ul>
         </nav>
     </div>
+
 </header>
+
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
     <c:if test="${sessionScope.user != null}">
         <form action="/downloadMusic" id="download-music-form" method="post">
             <input name="mid" type="hidden" value="${music.mid}">
-            <img id="download-music-img" src="../../assets/images/download.png"
+            <img id="download-music-img" src="/assets/images/download.png"
                  style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
         </form>
     </c:if>
     <c:if test="${sessionScope.user == null}">
-        <img id="download-music-img2" src="../../assets/images/download.png"
+        <img id="download-music-img2" src="/assets/images/download.png"
              style="cursor: pointer;float:right;margin-top: -50px;margin-right: 10px">
     </c:if>
 </div>
@@ -61,7 +67,12 @@
         <div class="main-wrap">
             <div class="content-box article">
                 <div class="title">
-                    <img src="../../assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
+                    <c:if test="${sessionScope.user.uid == music.user.uid}">
+                        <a href="${pageContext.request.contextPath}/user/77151">
+                            <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px" height="24" width="24"/>
+                        </a>
+                    </c:if>
+                    <img src="/assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
                          width="24"/>
                     <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">
@@ -119,20 +130,14 @@
         </div>
     </div>
 </div>
-<footer>
-    <div class="container">
-        <div class="copyright">
-            <p>Copyright © <span class="update-year">2016</span> Chen Xiaodong - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2014级
-                软件工程1班 陈晓东</p>
-        </div>
-    </div>
-</footer>
+
 <script src="../../assets/js/jquery.min.js"></script>
 
 <script src="../../assets/js/music.js"></script>
 
 <script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
 <script>
+
     var is_first = true;
     var ap = new APlayer({
         element: document.getElementById('music-player'), // Optional, player element
@@ -176,19 +181,36 @@
     });
 
 
-</script>
-<script>
+    $(document).ready(function () {
 
-    $("#heart").on("click",function () {
-            var uid =${sessionScope.user.uid};
-            var mid =${music.mid};
-            console.log("dianjishijian");
+        var uid =${sessionScope.user.uid};
+        var mid =${music.mid};
+        var settings = {
+            "async": true,
+            "crossDomain": true,
+            "url": "http://localhost:8080/islike?&mid=" + mid,
+            "method": "POST"
+        };
+
+        $.ajax(settings).done(function (response) {
+            if (response.code == 1) {
+                $("#heart").attr("src", "../assets/images/红心.png");
+                console.log("已经是粉丝了");
+            } else {
+                $("#heart").attr("src", "../assets/images/心.png");
+                console.log("目前并不是粉丝了");
+
+            }
+        });
+
+        $("#heart").on('click', function () {
+            var kv = "uid" + uid + "&mid" + mid;
             if ($("#heart").attr("src") == "../assets/images/心.png") {
-                console.log("111111111");
+
                 var settings1 = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://localhost:8080/user/unlike?uid=" + uid + "&mid=" + mid,
+                    "url": "http://localhost:8080/like?uid=" + uid + "&mid=" + mid,
                     "method": "POST"
                 };
 
@@ -200,16 +222,16 @@
                     }
                 });
             } else {
-                console.log("222222");
+
                 var settings2 = {
                     "async": true,
                     "crossDomain": true,
-                    "url": "http://localhost:8080/user/like?uid=" + uid + "&mid=" + mid,
+                    "url": "http://localhost:8080/unlike?uid=" + uid + "&mid=" + mid,
                     "method": "POST"
                 };
 
                 $.ajax(settings2).done(function (response) {
-                    if (response.code == 0) {
+                    if (response.code == 1) {
                         $("#heart").attr("src", "../assets/images/心.png");
                     } else {
                         console.log("变白心失败");
@@ -218,8 +240,10 @@
             }
         });
 
+    });
 
 
 </script>
+<script src="../../assets/js/userinfo.js"></script>
 </body>
 </html>

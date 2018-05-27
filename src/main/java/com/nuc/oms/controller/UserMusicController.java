@@ -51,12 +51,13 @@ public class UserMusicController {
         }
         log.info("文件大小" + size);
         user.setUspace(user.getUspace()+size);
-        userJPA.save(user);
+
         if (music.getMid() == null) {
             String musicUrl = saveFile(musicfile);
             String mpicurl = saveFile(mpic);
             music.setMurl(musicUrl);
             music.setMpicurl(mpicurl);
+            user.setUpointer(user.getUpointer()+50);
         } else {
             Music one = musicJPA.getOne(music.getMid());
             String name = musicfile.getOriginalFilename();
@@ -75,12 +76,13 @@ public class UserMusicController {
                 music.setMpicurl(one.getMpicurl());
             }
         }
+        userJPA.save(user);
         userMusicService.uploadMusic(music,user);
         return modelAndView;
 
     }
 
-    @RequestMapping("/music/{mid}")
+//    @RequestMapping("/music/{mid}")
     public void getMusic(@PathVariable Integer mid, HttpServletResponse httpServletResponse) throws IOException {
         log.info("播放："+mid);
         byte[] buffer = new byte[8192];

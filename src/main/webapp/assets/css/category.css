@@ -1,7 +1,8 @@
 /* Category */
 
 .main-wrap {
-    margin: 0;
+    margin: 0px;
+
 }
 
 .music-list {
@@ -13,6 +14,7 @@
 }
 
 .content-box {
+    height: auto;
     padding-bottom: 0;
 }
 
@@ -26,23 +28,27 @@
 }
 
 .category-header-banner {
+
     height: inherit;
     position: relative;
 }
 
 .category-header-banner .content {
+    height: auto;
+    overfllow:Hidden;
     color: #ffffff;
     padding: 60px 50px;
 }
 
 .category-header-banner .content p {
+
     font-size: 14px;
     opacity: .8;
     margin: 0;
 }
 
 .category-header-banner .content h2 {
-    font-size: 24px;
+    font-size: 28px;
     margin-bottom: 16px;
 }
 

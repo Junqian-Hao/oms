@@ -1,7 +1,9 @@
 package com.nuc.oms.service;
 
+import com.nuc.oms.entity.GoodRelate;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.Page;
+import com.nuc.oms.entity.User;
 
 import java.util.List;
 import java.util.Map;
@@ -36,4 +38,18 @@ public interface MusicService {
      * 音乐播放次数+1
      */
     void addTimes(Integer mid);
+
+    /**
+     * 查找用户上传的音乐
+     * @param user
+     * @return
+     */
+    List<Music> findMusicByUser(User user);
+
+    /**
+     * 查找用户点赞的歌曲
+     * @param user
+     * @return
+     */
+    List<GoodRelate> findGoodRelateByUser(User user);
 }

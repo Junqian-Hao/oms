@@ -37,17 +37,18 @@ public class LoginController {
     }
 
     @RequestMapping("/register")
-    @ResponseBody
-    public Map<String, String> register(User user) {
+    public ModelAndView register(User user) {
+        ModelAndView modelAndView = new ModelAndView();
         log.info("注册");
         Map<String, String> map = new HashMap<>();
         User register = userService.register(user);
         if (register != null) {
-            map.put("code", "1");
+            modelAndView.setViewName("login");
         } else {
-            map.put("code", "0");
+            modelAndView.setViewName("regist");
+            modelAndView.addObject("error", "账号已存在");
         }
-        return map;
+        return modelAndView;
     }
 
     @RequestMapping("/exit")
