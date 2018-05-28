@@ -22,6 +22,7 @@ a:hover {
 }
 
 .clearfix {
+    width: 719px;
 }
 
 .clearfix :after {

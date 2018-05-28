@@ -9,10 +9,10 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface MusicJPA extends BaseJPA<Music,Integer>{
-    @Query(value = "select * from music order by mgood desc limit 5",nativeQuery = true)
+    @Query(value = "select * from music order by mgood desc limit 8",nativeQuery = true)
     List<Music> findBymgoodDESC();
 
-    @Query(value = "select * from music order by mtimes desc limit 8",nativeQuery = true)
+    @Query(value = "select * from music order by mtimes desc limit 5",nativeQuery = true)
     List<Music> findBytimesDESC();
 
     @Query(value = "select * from music limit 5",nativeQuery = true)

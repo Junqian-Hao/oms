@@ -37,7 +37,7 @@ public class UserCntroller {
         return modelAndView;
     }
 
-    @RequestMapping("userinfochange")
+    @RequestMapping("/userinfochange")
     public ModelAndView userinfochange(HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("userinfochange");
         User user = (User) session.getAttribute("user");

@@ -7,7 +7,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>${music.mtitle} - ${music.user.nickname} - 静听网 - 140202011032_陈晓东</title>
+    <title>${music.mtitle} - ${music.user.nickname}</title>
     <link rel="stylesheet" href="../../assets/css/reset.css">
     <link rel="stylesheet" href="../../assets/css/common.css">
     <link rel="stylesheet" href="../../assets/css/music.css">
@@ -35,10 +35,9 @@
                 <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="/login">注册 / 登录</a></li>
-                    searchpage.html
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li class="uname"><a href="#">${sessionScope.user.nickname}</a>
+                    <li class="uname"><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a>
                     </li>
                     <li><a href="/exit">退出</a></li>
                 </c:if>
@@ -68,7 +67,7 @@
             <div class="content-box article">
                 <div class="title">
                     <c:if test="${sessionScope.user.uid == music.user.uid}">
-                        <a href="${pageContext.request.contextPath}/user/77151/${music.mid}">
+                        <a href="${pageContext.request.contextPath}/user/77151">
                             <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px" height="24" width="24"/>
                         </a>
                     </c:if>
@@ -152,8 +151,8 @@
         music: {                                          // Required, music info
             title: '${music.mtitle}',                                 // Required, music title
             author: '${music.mauthor}',                          // Required, music author
-            url: '${music.murl}',  // Required, music url
-            pic: '${music.mpicurl}'  // Optional, music picture
+            url: '${pageContext.request.contextPath}/${music.murl}',  // Required, music url
+            pic: '${pageContext.request.contextPath}/${music.mpicurl}'  // Optional, music picture
         }
     });
 
@@ -181,9 +180,10 @@
     });
 
 
-    $(document).ready(function () {
-
+   $(document).ready(function () {
+        <c:if test="${sessionScope.user != null}">
         var uid =${sessionScope.user.uid};
+       </c:if>
         var mid =${music.mid};
         var settings = {
             "async": true,

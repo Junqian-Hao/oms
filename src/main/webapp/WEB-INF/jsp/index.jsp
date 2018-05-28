@@ -18,7 +18,7 @@
   <div class="container">
     <div class="navbar-header">
       <a href="" class="navbar-brand">
-        <img src="assets/images/logo.png" alt="">
+        <img src="assets/images/logo.png" alt="" style="padding-top: 15px">
       </a>
     </div>
     <nav>
@@ -37,7 +37,7 @@
         <li><a href="/login">注册 / 登录</a></li>
         </c:if>
         <c:if test="${sessionScope.user !=null}">
-          <li><a href="#">${sessionScope.user.nickname}</a></li>
+          <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
           <li><a href="/exit">退出</a></li>
         </c:if>
       </ul>
@@ -240,7 +240,7 @@
 <footer>
   <div class="container">
     <div class="copyright">
-      <p>Copyright © <span class="update-year">2016</span> Chen Xiaodong - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2014级
+      <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
         </p>
     </div>
   </div>

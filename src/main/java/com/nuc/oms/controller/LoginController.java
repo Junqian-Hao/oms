@@ -30,9 +30,17 @@ public class LoginController {
     @RequestMapping("/dologin")
     public ModelAndView login(User user, HttpSession session) {
         log.info("登录");
-        ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
+        ModelAndView modelAndView;
         User login = userService.login(user);
-        session.setAttribute("user", login);
+        if(login!=null){
+            modelAndView= new ModelAndView("redirect:/firstpageRequest");
+            session.setAttribute("user", login);
+        }
+        else{
+            modelAndView=new ModelAndView("login");
+            modelAndView.addObject("error","用户名或密码错误");
+
+        }
         return modelAndView;
     }
 

@@ -76,7 +76,14 @@
         </div>
     </div>
 </div>
-
+<footer>
+    <div class="container">
+        <div class="copyright">
+            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
+            </p>
+        </div>
+    </div>
+</footer>
 
 
 

@@ -17,7 +17,7 @@
   <div class="container">
     <div class="navbar-header">
       <a href="" class="navbar-brand">
-        <img src="../../assets/images/logo.png" alt="">
+        <img src="assets/images/logo.png" alt="" style="padding-top: 15px">
       </a>
     </div>
     <nav>
@@ -30,7 +30,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-sm">
         <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-        <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        <li><a href="${pageContext.request.contextPath}/user/userinfo" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <c:if test="${sessionScope.user == null}">
           <li><a href="/login">注册 / 登录</a></li>
         </c:if>
@@ -84,8 +84,8 @@
 <footer>
   <div class="container">
     <div class="copyright">
-      <p>Copyright © <span class="update-year">2016</span> Chen Xiaodong - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2014级
-        软件工程1班 陈晓东</p>
+      <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
+      </p>
     </div>
   </div>
 </footer>

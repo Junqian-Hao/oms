@@ -9,11 +9,10 @@
     <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <title>搁浅的心 - 董运昌 - 静听网 - 140202011032_陈晓东</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <style>
         body {
             background-image: url("");
@@ -124,5 +123,13 @@
         </div>
     </div>
 </form>
+<footer>
+    <div class="container">
+        <div class="copyright">
+            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
+            </p>
+        </div>
+    </div>
+</footer>
 </body>
 </html>

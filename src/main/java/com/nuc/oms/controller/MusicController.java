@@ -110,6 +110,7 @@ public class MusicController {
     public Map<String,String> judgePoints(HttpServletRequest request){
         Map<String,String> returnMap=new LinkedHashMap<>();
         User user=(User)request.getSession().getAttribute("user");
+        System.out.println(user);
         if(user.getUpointer()>=20){
             userService.decreasePoints(user);
             request.getSession().setAttribute("user",user);

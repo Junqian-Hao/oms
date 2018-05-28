@@ -60,11 +60,15 @@
                 <form action="${pageContext.request.contextPath}/dologin" method="post">
                     <div class="form-group">
                         <label for="username"></label>
-                        <input type="text" class="form-control" name="username" id="username" placeholder="你的音乐账号，你的视听窗口">
+                        <input type="text" class="form-control" name="username" id="username"
+                               placeholder="<c:if test="${error != null}">${error}</c:if>
+                        <c:if test="${error == null}">你的音乐账号，你的视听窗口</c:if>">
                     </div>
                     <div class="form-group" >
                         <label for="password"></label>
-                        <input type="password" class="form-control" name="password" id="password" placeholder="输入密码，见证音乐">
+                        <input type="password" class="form-control" name="password" id="password"
+                               placeholder="<c:if test="${error != null}">${error}</c:if>
+                        <c:if test="${error == null}">输入密码，见证音乐</c:if>">
                     </div>
                     <button type="submit" class="btn btn-link" style="color: rgba(187,11,255,0.6);font-size: 18px;font-weight: 1300; margin-left: 150px;text-decoration: none">
                         进&nbsp;&nbsp;入</button>

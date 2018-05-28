@@ -11,9 +11,9 @@
     <!--修改-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
 
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/base.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/moco.min.css" type="text/css"/>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/profile-less.css" type="text/css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/base.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/moco.min.css"/>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/profile-less.css"/>
 
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/category.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request. contextPath}/assets/css/userinfo.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <title>个人主页</title>
     <style>
         a.button-sumbit {
@@ -80,12 +81,12 @@
 
             <ul class="nav navbar-nav navbar-right navbar-sm">
                 <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-                <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="${pageContext.request.contextPath}/login">注册 / 登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li><a href="#">${sessionScope.user.nickname}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
                     <li><a href="${pageContext.request.contextPath}/exit">退出</a></li>
                 </c:if>
             </ul>
@@ -98,7 +99,7 @@
     <div class="category-header-banner">
         <div class="img" style="background-image: url('${pageContext.request.contextPath}/storage/category/cartoon.jpg')">
             <div class="content">
-                <h1 style="position: relative">YAO&nbsp;&nbsp;XIANGB <span
+                <h1 style="position: relative">${sessionScope.user.nickname} <span
                         style="display: inline-block;position: absolute;top: -15px;"><img
                         src="${pageContext.request.contextPath}/assets/images/奖章.png" width="60px" height="60px" alt="大会员"></span>
                     <span style="display: inline;position: absolute;left: 126px; font-weight: 900">叁</span>
@@ -167,7 +168,14 @@
         </div>
     </div>
 </div>
-
+<footer>
+    <div class="container">
+        <div class="copyright">
+            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
+            </p>
+        </div>
+    </div>
+</footer>
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 
