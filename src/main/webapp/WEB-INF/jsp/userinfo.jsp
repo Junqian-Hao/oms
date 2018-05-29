@@ -68,11 +68,11 @@
 <!--右侧边栏-->
 <div class="container-sm box">
     <div class="main" style="float: left">
-        <div class="main-wrap" style=" width: 700px;float: left">
+        <div class="main-wrap" style=" width: 700px;float: left;margin-right: 0px">
             <div class="content-box">
                 <div class="hot-recommand">
                     <!--我来组成头部-->
-                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed;overflow: ">
+                    <div class="content-header" style="border-bottom: 2px solid #7cb9ed;">
                         <h2>
                             <i class="fa fa-music red"></i>
                             我已经上传的歌曲
