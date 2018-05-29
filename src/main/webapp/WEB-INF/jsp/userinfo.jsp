@@ -138,7 +138,7 @@
                 <div style="height: 1px;background-color: white"></div>
                 <img src="/assets/images/积分.png" style="position: relative;top: 5px;margin-left: 10px">
                 <span style="display: inline-block; color: #00a0dc">我的积分</span>&nbsp;&nbsp;
-                <span style="display: inline-block; color: #ed376d">12345</span>
+                <span style="display: inline-block; color: #ed376d">${upointer}</span>
             </div>
             <%--积分规则--%>
             <div style="border-top: 4px solid #ed5987; margin: 10px 20px;padding-top: 10px;position: relative">

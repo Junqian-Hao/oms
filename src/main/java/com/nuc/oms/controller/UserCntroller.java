@@ -67,6 +67,7 @@ public class UserCntroller {
         modelAndView.addObject("uspace", byID.getUspace().intValue());
         modelAndView.addObject("totalSpace", byID.getTotalSpace().intValue());
         modelAndView.addObject("rlpercent", ((int) (byID.getUspace() / byID.getTotalSpace() * 100)) + "%");
+        modelAndView.addObject("upointer", byID.getUpointer());
 
         List<Music> musicByUser = musicService.findMusicByUser(byID);
         modelAndView.addObject("myMusics", musicByUser);
