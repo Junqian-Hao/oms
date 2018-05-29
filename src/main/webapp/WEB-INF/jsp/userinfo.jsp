@@ -50,7 +50,7 @@
 <!--左侧边栏-->
 <div class="container-sm category-header-wrap">
     <div class="category-header-banner">
-        <div class="img" style="background-image: url('../../storage/category/cartoon.jpg')">
+        <div class="img" style="background-image: url('../../storage/category/cartoon.jpg');">
             <div class="content">
                 <h1 style="position: relative">${nickname} <span style="display: inline-block;position: absolute;top: -13px;"><img src="${pageContext.request.contextPath}/assets/images/奖章.png" width="60px" height="60px" alt="大会员"></span>
                     <span style="display: inline-block;position: relative;left: 22px; font-weight: 900">${level}</span>
