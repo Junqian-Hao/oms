@@ -42,6 +42,16 @@ public class UserCntroller {
         ModelAndView modelAndView = new ModelAndView("userinfochange");
         User user = (User) session.getAttribute("user");
         User byID = userService.findByID(user.getUid());
+        int level = byID.getLevel();
+        if (level == 1) {
+            modelAndView.addObject("level", "壹");
+        } else if (level == 2) {
+            modelAndView.addObject("level", "贰");
+        } else if (level == 3) {
+            modelAndView.addObject("level", "叁");
+        } else {
+            modelAndView.addObject("level", "未知");
+        }
         modelAndView.addObject("user", byID);
         return modelAndView;
     }
