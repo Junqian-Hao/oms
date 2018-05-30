@@ -17,7 +17,7 @@ $("#search-btn").on("click", function () {
         $.ajax({
             url: "/searchMusic",
             type: "POST",
-            contentType :"application/json",
+            contentType :"application/json; charset=UTF-8",
             data: JSON.stringify(json),
 
             success: function (res) {

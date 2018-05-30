@@ -134,12 +134,12 @@
             var json =
                 {
                     thispage: 1,
-                    input: v['content']
+                    input: decodeURIComponent(v['content'])
                 };
             $.ajax({
                 url: "/searchMusic",
                 type: "POST",
-                contentType: "application/json",
+                contentType: "application/json; charset=UTF-8",
                 data: JSON.stringify(json),
                 success: function (res) {
                     if (res.code) {

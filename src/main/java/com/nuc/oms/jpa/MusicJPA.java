@@ -24,7 +24,7 @@ public interface MusicJPA extends BaseJPA<Music,Integer>{
 
     Music findMusicByMid(int mid);
 
-    @Query(value = "select * from music where mtitle like CONCAT('%',:inputkey,'%') or mauthor like CONCAT('%',:inputkey,'%') " ,nativeQuery = true)
+    @Query(value = "select * from music where mtitle like CONCAT('%',:inputkey,'%') or mauthor like CONCAT('%',:inputkey,'%')" ,nativeQuery = true)
     List<Music> searchMusic(@Param("inputkey")String input);
 
     List<Music> findByUser(User user);
