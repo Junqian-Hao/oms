@@ -137,7 +137,7 @@
         $(document).ready(
             function () {
                 var v = parseUrl();//解析所有参数
-                alert(v['content']);//就是你要的结果
+//                alert(v['content']);//就是你要的结果
 
                 var json =
                     {
@@ -151,14 +151,14 @@
                     data: JSON.stringify(json),
 
                     success: function (res) {
-                        alert("content"+v['content']);
+//                        alert("content"+v['content']);
                             if (res.code){
                                 alert("code"+res.code);
                                 total= res['pagenum'];
                                 pageSize= 12;
                                 totalPage=res['totalpage'];
                                 alert("totalpage="+totalPage+"pagesize="+pageSize+"totalpage="+totalPage);
-                                getPageBar();
+//                                getPageBar();
 
                             }
                     }

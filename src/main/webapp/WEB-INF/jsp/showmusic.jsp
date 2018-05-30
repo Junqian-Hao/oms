@@ -72,7 +72,7 @@
                     <div style="position: absolute;right: 70px;">
                     <img src="/assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
                          width="24"/>
-                    <span id="likenum" style="position: relative ;top: 30px; left: 28px; font-size: 12px;color: #888;">12</span>
+                    <span id="likenum" style="position: relative ;top: 30px; left: 26px; font-size: 12px;color: #888;">${music.mgood}</span>
                     </div>
                     <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">

@@ -34,7 +34,8 @@
         <li><input type="text" class="search-input" id="search-input" placeholder="歌名 / 歌手"></li>
         <li><a  style="padding-top: 25px" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <c:if test="${sessionScope.user == null}">
-        <li><a href="/login">注册 / 登录</a></li>
+          <li><a href="/regist">注册</a></li>
+          <li><a href="/login">登录</a></li>
         </c:if>
         <c:if test="${sessionScope.user !=null}">
           <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
