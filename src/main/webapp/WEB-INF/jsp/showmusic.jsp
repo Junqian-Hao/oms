@@ -18,7 +18,7 @@
 <header>
     <div class="container">
         <div class="navbar-header">
-            <a href="" class="navbar-brand">
+            <a href="${pageContext.request.contextPath}/firstpageRequest" class="navbar-brand">
                 <img src="assets/images/logo.png" alt="" style="padding-top: 15px">
             </a>
         </div>

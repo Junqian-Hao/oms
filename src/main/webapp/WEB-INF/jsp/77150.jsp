@@ -29,7 +29,7 @@
     <header>
         <div class="container-userinfo">
             <div class="navbar-header-userinfo">
-                <a href="" class="navbar-brand-userinfo">
+                <a href="${pageContext.request.contextPath}/firstpageRequest" class="navbar-brand-userinfo">
                     <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="">
                 </a>
             </div>

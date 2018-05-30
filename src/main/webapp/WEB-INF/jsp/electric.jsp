@@ -16,7 +16,7 @@
 <header>
   <div class="container">
     <div class="navbar-header">
-      <a href="" class="navbar-brand">
+      <a href="${pageContext.request.contextPath}/firstpageRequest" class="navbar-brand">
         <img src="assets/images/logo.png" alt="" style="padding-top: 15px">
       </a>
     </div>
@@ -30,7 +30,7 @@
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-sm">
         <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-        <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        <li><a href="${pageContext.request.contextPath}/firstpageRequest" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <c:if test="${sessionScope.user == null}">
           <li><a href="/login">注册 / 登录</a></li>
         </c:if>

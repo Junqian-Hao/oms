@@ -20,8 +20,8 @@
 <header>
     <div class="container">
         <div class="navbar-header">
-            <a href="" class="navbar-brand">
-                <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="">
+            <a href="${pageContext.request.contextPath}/firstpageRequest" class="navbar-brand">
+                <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="中北音乐理想国">
             </a>
         </div>
         <nav>
