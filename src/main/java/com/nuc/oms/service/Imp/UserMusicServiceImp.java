@@ -48,6 +48,7 @@ public class UserMusicServiceImp implements UserMusicService {
         }
         music=musicJPA.save(music);
         redisTemplate.opsForValue().set("times:"+music.getMid(),music.getMtimes().toString());
+        redisTemplate.opsForValue().set("like:"+music.getMid(),music.getMtimes().toString());
         return music;
     }
 

@@ -4,7 +4,7 @@ spring:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/music?characterEncoding=utf-8&useSSL=false&allowPublicKeyRetrieval=true
     username: root
-    password: 123
+    password: admin
     #配置监控拦截的filters，去掉后监控界面sql将无法统计，'wall'用于防火墙
     filters: stat,wall,log4j
     #最大活跃数

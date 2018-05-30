@@ -91,6 +91,7 @@ public class MusicServiceImp implements MusicService {
     public Music getMusicByMid(int Mid) {
         Music music=musicJPA.findMusicByMid(Mid);
         music.setMtimes(Integer.parseInt((String)redisTemplate.opsForValue().get("times:"+Mid)));
+        music.setMgood(Integer.parseInt((String)redisTemplate.opsForValue().get("like:"+Mid)));
         return music;
     }
 
