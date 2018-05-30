@@ -54,7 +54,7 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()+1);
         userJPA.save(one);*/
-        incrementByuid(uid, 1);
+        incrementByuid(music.getUser().getUid(), 1);
         return true;
     }
 
@@ -76,7 +76,7 @@ public class UpvoteServiceImp implements UpvoteService {
         /*User one = userJPA.getOne(uid);
         one.setUpointer(one.getUpointer()-1);
         userJPA.save(one);*/
-        decrementByuid(uid, 1);
+        decrementByuid(music.getUser().getUid(), 1);
         return true;
     }
 
