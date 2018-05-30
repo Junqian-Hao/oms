@@ -126,6 +126,9 @@ public class MusicController {
     @RequestMapping("/downloadMusic")
     public void downLoadMusic(@RequestParam Integer mid,HttpServletRequest request, HttpServletResponse response) throws Exception {
         log.info("下载音乐");
+        if(request.getSession().getAttribute("user")==null){
+            request.getRequestDispatcher("/firstpageRequest").forward(request,response);
+        }
         byte[] buffer = new byte[8192];
         int bytesRead = 0;
         Music music = musicService.getMusicByMid(mid);
