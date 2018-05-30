@@ -12,8 +12,7 @@ public class UserServiceImp implements UserService {
     UserJPA userJPA;
 
     @Override
-    public User login(User user) {
-        return userJPA.findByUsernameAndPassword(user.getUsername(), user.getPassword());
+    public User login(User user) { return userJPA.findByUsernameAndPassword(user.getUsername(), user.getPassword());
 
     }
 

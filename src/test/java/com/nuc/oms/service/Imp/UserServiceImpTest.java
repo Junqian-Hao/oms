@@ -3,12 +3,15 @@ package com.nuc.oms.service.Imp;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.UserService;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -23,28 +26,20 @@ public class UserServiceImpTest {
     UserService userService;
     @Autowired
     UserJPA userJPA;
-
-
     @Test
     public void register() {
+
         User user = new User();
         user.setUsername("test");
         user.setPassword("test");
         user.setNickname("test");
-        User register = userService.register(user);
+        User register = null;
+        register = userService.register(user);
         assertNotNull(register);
         userJPA.delete(register);
+
     }
 
-    @Test
-    public void regi() {
-        User user = new User();
-        user.setUid(1);
-        user.setUsername("1");
-        user.setPassword("1");
-        user.setNickname("222");
-        userJPA.save(user);
-    }
 
     @Test
     public void login() {
@@ -76,14 +71,11 @@ public class UserServiceImpTest {
             assertEquals(one.getUpointer(), Integer.valueOf(20));
         } catch (Exception e) {
             throw e;
-        }finally {
+        } finally {
             userJPA.delete(save);
         }
 
 
     }
 
-    @Test
-    public void findByID() {
-    }
 }

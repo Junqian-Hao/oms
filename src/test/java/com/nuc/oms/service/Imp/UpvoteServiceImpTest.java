@@ -18,9 +18,7 @@ public class UpvoteServiceImpTest {
     @Autowired
     UpvoteService upvoteService;
 
-    @Test
-    public void like() {
-    }
+
 
     @Test
     public void incrementBymid() {
