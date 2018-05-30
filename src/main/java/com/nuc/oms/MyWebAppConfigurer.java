@@ -64,10 +64,10 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
             return linux_path;
         }
     }
-    @Override
+    /*@Override
     public void addInterceptors(InterceptorRegistry registry) {
         registry.addInterceptor(new UserLoginInterceptor()).addPathPatterns("/user/**");
-    }
+    }*/
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {

@@ -88,6 +88,7 @@ public class MusicController {
     public Map<String,Object> searchMusicPage(@RequestBody String json, HttpServletRequest request) {
             Map<String,Object> returnMap=new LinkedHashMap<>();
             JSONObject object=JSON.parseObject(json);
+            log.info(json);
             int thispage=object.getInteger("thispage");
             String input=object.getString("input");
             Page<Music> page=musicService.searchMusic(input,thispage,12);

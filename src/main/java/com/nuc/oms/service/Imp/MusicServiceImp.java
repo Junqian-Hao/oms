@@ -16,6 +16,7 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.data.redis.serializer.StringRedisSerializer;
 import org.springframework.stereotype.Service;
 
+import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -59,8 +60,24 @@ public class MusicServiceImp implements MusicService {
     public Map<String,List<Music>> rightslide(){
         Map<String,List<Music>> rightslideMap=new LinkedHashMap<>();
         List<Music> newMusicList= musicJPA.findTop5music();
+        Iterator<Music> iterator=newMusicList.iterator();
+        int k=0;
+        while (iterator.hasNext()){
+            Music music=iterator.next();
+            music.setMtimes(Integer.parseInt((String)redisTemplate.opsForValue().get("times:"+music.getMid())));
+            newMusicList.set(k,music);
+            k++;
+        }
         rightslideMap.put("newMusicList",newMusicList);
         List<Music> timesMusicList= musicJPA.findBytimesDESC();
+        iterator=timesMusicList.iterator();
+        k=0;
+        while (iterator.hasNext()){
+            Music music=iterator.next();
+            music.setMtimes(Integer.parseInt((String)redisTemplate.opsForValue().get("times:"+music.getMid())));
+            timesMusicList.set(k,music);
+            k++;
+        }
         rightslideMap.put("timeMusicList",timesMusicList);
         return rightslideMap;
     }
@@ -72,7 +89,9 @@ public class MusicServiceImp implements MusicService {
 
     @Override
     public Music getMusicByMid(int Mid) {
-        return musicJPA.findMusicByMid(Mid);
+        Music music=musicJPA.findMusicByMid(Mid);
+        music.setMtimes(Integer.parseInt((String)redisTemplate.opsForValue().get("times:"+Mid)));
+        return music;
     }
 
     @Override

@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(properties = "spring.main.web-application-type = reactive")
 public class OmsApplicationTests {
 	@Autowired
 	private CategoryJPA categoryJPA;

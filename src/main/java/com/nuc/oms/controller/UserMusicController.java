@@ -40,8 +40,8 @@ public class UserMusicController {
             , @RequestParam("mpic") MultipartFile mpic, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
         User user = (User) session.getAttribute("user");
-        music.setUser(user);
         user = userJPA.getOne(user.getUid());
+        music.setUser(user);
         Double uspace = user.getUspace();
         Double size = (mpic.getSize() / 1024.0 / 1024)+(musicfile.getSize()/1024.0/1024);
         if ((uspace + size) > user.getTotalSpace()) {

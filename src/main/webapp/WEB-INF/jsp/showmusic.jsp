@@ -78,6 +78,7 @@
                         <span class="author">${music.user.nickname}</span> / <span class="date">
                         <fmt:formatDate value="${music.muploaddate}" pattern="yy-MM-dd"/>
                         </span>
+                        <span>       ${music.mtimes}次播放</span>
                     </div>
                 </div>
                 <div class="content">
@@ -171,7 +172,7 @@
                     if (res.code == 1) {
                         is_first = false;
                     } else {
-                        log.debug("增加失败");
+                        console.log("增加失败");
                     }
                 }
             })
