@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>静听网 - 140202011032_陈晓东</title>
+    <title>搜索</title>
     <link rel="icon" href="favicon.ico" mce_href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
 

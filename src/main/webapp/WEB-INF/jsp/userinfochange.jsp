@@ -14,50 +14,13 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/moco.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/profile-less.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/category.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
-    <link rel="stylesheet" href="${pageContext.request. contextPath}/assets/css/userinfo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
+    <link rel="stylesheet" href="${pageContext.request. contextPath}/assets/css/userinfo.css">
+
     <title>个人主页</title>
-    <style>
-        a.button-sumbit {
-            position: relative;
-            color: rgba(255, 255, 255, 1);
-            text-decoration: none;
-            background-color: rgba(219, 87, 5, 1);
-            font-family: 'Yanone Kaffeesatz';
-            font-weight: 700;
-            font-size: 1em;
-            display: block;
-            padding: 4px;
-            -webkit-border-radius: 8px;
-            -moz-border-radius: 8px;
-            border-radius: 8px;
-            -webkit-box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
-            -moz-box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
-            box-shadow: 0px 9px 0px rgba(219, 31, 5, 1), 0px 9px 25px rgba(0, 0, 0, .7);
-            width: 100px;
-            margin: 0 auto;
-            text-align: center;
-
-            -webkit-transition: all .1s ease;
-            -moz-transition: all .1s ease;
-            -ms-transition: all .1s ease;
-            -o-transition: all .1s ease;
-            transition: all .1s ease;
-        }
-
-        a.button-sumbit:active {
-            -webkit-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
-            -moz-box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
-            box-shadow: 0px 3px 0px rgba(219, 31, 5, 1), 0px 3px 6px rgba(0, 0, 0, .9);
-            position: relative;
-            top: 6px;
-        }
-
-    </style>
 </head>
 <body>
 <header>
@@ -90,7 +53,6 @@
         </nav>
     </div>
 </header>
-
 
 <div class="container-sm category-header-wrap">
     <div class="category-header-banner">
@@ -161,14 +123,7 @@
         </div>
     </div>
 </div>
-<footer>
-    <div class="container">
-        <div class="copyright">
-            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
-            </p>
-        </div>
-    </div>
-</footer>
+
 
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 
