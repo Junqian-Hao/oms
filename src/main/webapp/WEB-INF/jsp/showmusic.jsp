@@ -184,6 +184,9 @@
         <c:if test="${sessionScope.user != null}">
         var uid =${sessionScope.user.uid};
        </c:if>
+       <c:if test="${sessionScope.user == null}">
+       var uid = -1;
+       </c:if>
         var mid =${music.mid};
         var settings = {
             "async": true,
@@ -204,6 +207,9 @@
         });
 
         $("#heart").on('click', function () {
+            if (uid === -1) {
+                window.location.href = "/login"
+            }
             var kv = "uid" + uid + "&mid" + mid;
             if ($("#heart").attr("src") == "../assets/images/心.png") {
 

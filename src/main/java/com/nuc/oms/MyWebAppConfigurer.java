@@ -4,6 +4,7 @@ package com.nuc.oms;
 
 import com.alibaba.druid.support.logging.Log;
 import com.alibaba.druid.support.logging.LogFactory;
+import com.nuc.oms.interceptor.UserLoginInterceptor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.Ordered;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -65,7 +66,7 @@ public class MyWebAppConfigurer implements WebMvcConfigurer {
     }
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-//        registry.addInterceptor(new UserLoginInterceptor()).addPathPatterns("/user/**");
+        registry.addInterceptor(new UserLoginInterceptor()).addPathPatterns("/user/**");
     }
 
     @Override

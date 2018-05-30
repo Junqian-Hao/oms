@@ -20,5 +20,5 @@ $("#download-music-img").click(function () {
     }
 });
 $("#download-music-img2").click(function () {
-    alert("您尚未登录,请先登录");
+    window.location.href = "/login"
 });
