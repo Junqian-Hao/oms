@@ -10,12 +10,14 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.Assert.*;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @FixMethodOrder(MethodSorters.JVM)
+@Transactional
 public class UserServiceImpTest {
     @Autowired
     UserService userService;
@@ -59,4 +61,29 @@ public class UserServiceImpTest {
     }
 
 
+    @Test
+    public void decreasePoints() {
+        User user = new User();
+        user.setUsername("test");
+        user.setPassword("test");
+        user.setNickname("test");
+        user.setUpointer(40);
+        user.setUspace(0d);
+        User save = userJPA.save(user);
+        try {
+            userService.decreasePoints(save);
+            User one = userJPA.getOne(save.getUid());
+            assertEquals(one.getUpointer(), Integer.valueOf(20));
+        } catch (Exception e) {
+            throw e;
+        }finally {
+            userJPA.delete(save);
+        }
+
+
+    }
+
+    @Test
+    public void findByID() {
+    }
 }
