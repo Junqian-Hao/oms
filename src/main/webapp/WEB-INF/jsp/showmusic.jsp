@@ -25,10 +25,10 @@
         <nav>
             <ul class="nav navbar-nav navbar-link">
                 <li><a href="/firstpageRequest">首页</a></li>
-                <li ><a href="/categorymusicView?cname=piano">钢琴</a></li>
+                <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
                 <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
                 <li><a href="/categorymusicView?cname=comic">动漫</a></li>
-                <li ><a href="/categorymusicView?cname=electric">电子</a></li>
+                <li><a href="/categorymusicView?cname=electric">电子</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-sm">
                 <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
@@ -37,7 +37,8 @@
                     <li><a href="/login">注册 / 登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
+                    <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a>
+                    </li>
                     <li><a href="/exit">退出</a></li>
                 </c:if>
             </ul>
@@ -47,7 +48,7 @@
 
 <div class="container-sm player-wrap">
     <div id="music-player" class="aplayer"></div>
-    <c:if test="${sessionScope.user != null}">
+    <c:if test="${sessionScope.user != null && music.user.uid!=sessionScope.user.uid}">
         <form action="/downloadMusic" id="download-music-form" method="post">
             <input name="mid" type="hidden" value="${music.mid}">
             <img id="download-music-img" src="/assets/images/download.png"
@@ -60,19 +61,21 @@
     </c:if>
 </div>
 <div class="container-sm box">
-    <div class="main" >
+    <div class="main">
         <div class="main-wrap">
             <div class="content-box article" style="position: relative">
                 <div class="title">
                     <c:if test="${sessionScope.user.uid == music.user.uid}">
                         <a href="${pageContext.request.contextPath}/user/77151/${music.mid}">
-                            <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px" height="24" width="24"/>
+                            <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px"
+                                 height="24" width="24"/>
                         </a>
                     </c:if>
                     <div style="position: absolute;right: 70px;">
-                    <img src="/assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
-                         width="24"/>
-                    <span id="likenum" style="position: relative ;top: 30px; left: 26px; font-size: 12px;color: #888;">${music.mgood}</span>
+                        <img src="/assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
+                             width="24"/>
+                        <span id="likenum"
+                              style="position: relative ;top: 30px; left: 26px; font-size: 12px;color: #888;">${music.mgood}</span>
                     </div>
                     <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">
@@ -182,13 +185,13 @@
     });
 
 
-   $(document).ready(function () {
+    $(document).ready(function () {
         <c:if test="${sessionScope.user != null}">
         var uid =${sessionScope.user.uid};
-       </c:if>
-       <c:if test="${sessionScope.user == null}">
-       var uid = -1;
-       </c:if>
+        </c:if>
+        <c:if test="${sessionScope.user == null}">
+        var uid = -1;
+        </c:if>
         var mid =${music.mid};
         var settings = {
             "async": true,
@@ -213,49 +216,50 @@
         $("#heart").on('click', function () {
             if (uid === -1) {
                 window.location.href = "/login"
-            }
-            var kv = "uid" + uid + "&mid" + mid;
-            if ($("#heart").attr("src") == "../assets/images/心.png") {
-
-                var settings1 = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "http://localhost:8080/like?uid=" + uid + "&mid=" + mid,
-                    "method": "POST"
-                };
-
-                $.ajax(settings1).done(function (response) {
-                    if (response.code == 1) {
-
-                        $("#heart").attr("src", "../assets/images/红心.png");
-                        $("#likenum").css("color","red");
-                        var likenum=$("#likenum").html();
-                        likenum=parseInt(likenum)+1;
-                        $("#likenum").html(likenum);
-                    } else {
-                        console.log("变红心失败");
-                    }
-                });
             } else {
+                var kv = "uid" + uid + "&mid" + mid;
+                if ($("#heart").attr("src") == "../assets/images/心.png") {
 
-                var settings2 = {
-                    "async": true,
-                    "crossDomain": true,
-                    "url": "http://localhost:8080/unlike?uid=" + uid + "&mid=" + mid,
-                    "method": "POST"
-                };
+                    var settings1 = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://localhost:8080/like?uid=" + uid + "&mid=" + mid,
+                        "method": "POST"
+                    };
 
-                $.ajax(settings2).done(function (response) {
-                    if (response.code == 1) {
-                        $("#heart").attr("src", "../assets/images/心.png");
-                        $("#likenum").css("color","#888");
-                        var likenum=$("#likenum").html();
-                        likenum-=1;
-                        $("#likenum").html(likenum);
-                    } else {
-                        console.log("变白心失败");
-                    }
-                });
+                    $.ajax(settings1).done(function (response) {
+                        if (response.code == 1) {
+
+                            $("#heart").attr("src", "../assets/images/红心.png");
+                            $("#likenum").css("color", "red");
+                            var likenum = $("#likenum").html();
+                            likenum = parseInt(likenum) + 1;
+                            $("#likenum").html(likenum);
+                        } else {
+                            console.log("变红心失败");
+                        }
+                    });
+                } else {
+
+                    var settings2 = {
+                        "async": true,
+                        "crossDomain": true,
+                        "url": "http://localhost:8080/unlike?uid=" + uid + "&mid=" + mid,
+                        "method": "POST"
+                    };
+
+                    $.ajax(settings2).done(function (response) {
+                        if (response.code == 1) {
+                            $("#heart").attr("src", "../assets/images/心.png");
+                            $("#likenum").css("color", "#888");
+                            var likenum = $("#likenum").html();
+                            likenum -= 1;
+                            $("#likenum").html(likenum);
+                        } else {
+                            console.log("变白心失败");
+                        }
+                    });
+                }
             }
         });
 

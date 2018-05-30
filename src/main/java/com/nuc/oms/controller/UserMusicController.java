@@ -39,8 +39,8 @@ public class UserMusicController {
     public ModelAndView uploadMusic(Music music, @RequestParam("musicfile") MultipartFile musicfile
             , @RequestParam("mpic") MultipartFile mpic, HttpSession session) {
         ModelAndView modelAndView = new ModelAndView("redirect:/firstpageRequest");
-        User user = (User) session.getAttribute("user");
-        user = userJPA.getOne(user.getUid());
+        //User user = (User) session.getAttribute("user");
+        User user = userJPA.getOne(1);
         music.setUser(user);
         Double uspace = user.getUspace();
         Double size = (mpic.getSize() / 1024.0 / 1024)+(musicfile.getSize()/1024.0/1024);
