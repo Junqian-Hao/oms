@@ -4,6 +4,7 @@ import com.nuc.oms.entity.GoodRelate;
 import com.nuc.oms.entity.Music;
 import com.nuc.oms.entity.User;
 import com.nuc.oms.jpa.GoodRelateJPA;
+import com.nuc.oms.jpa.MusicJPA;
 import com.nuc.oms.jpa.UserJPA;
 import com.nuc.oms.service.UpvoteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,6 +22,8 @@ public class UpvoteServiceImp implements UpvoteService {
     GoodRelateJPA goodRelateJPA;
     @Autowired
     UserJPA userJPA;
+    @Autowired
+    MusicJPA musicJPA;
 
     @Autowired(required = false)
     public void setRedisTemplate(RedisTemplate redisTemplate) {
@@ -41,8 +44,7 @@ public class UpvoteServiceImp implements UpvoteService {
         GoodRelate goodRelate = new GoodRelate();
         User user = new User();
         user.setUid(uid);
-        Music music = new Music();
-        music.setMid(mid);
+        Music music = musicJPA.findMusicByMid(mid);
         GoodRelate byUserAndMusic = goodRelateJPA.findByUserAndMusic(user, music);
         if (byUserAndMusic != null) {
             return false;
@@ -65,8 +67,7 @@ public class UpvoteServiceImp implements UpvoteService {
         //删除点赞关系
         User user = new User();
         user.setUid(uid);
-        Music music = new Music();
-        music.setMid(mid);
+        Music music = musicJPA.findMusicByMid(mid);
         GoodRelate byUserAndMusic = goodRelateJPA.findByUserAndMusic(user, music);
         if (byUserAndMusic == null) {
             return false;
