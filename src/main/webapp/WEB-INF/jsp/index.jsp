@@ -237,15 +237,8 @@
     </div>
   </div>
 </div>
-<!-- 底部版权 -->
-<footer>
-  <div class="container">
-    <div class="copyright">
-      <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
-        </p>
-    </div>
-  </div>
-</footer>
+
+
 <!-- JS 脚本 -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/HBSlider.js"></script>

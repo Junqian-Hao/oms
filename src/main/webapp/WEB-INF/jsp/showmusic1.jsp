@@ -29,8 +29,8 @@
         <li><a href="../../category/elect">电子</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-sm">
-        <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-        <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        <li><input type="text" class="search-input" id="search-input" placeholder="歌名 / 歌手"></li>
+        <li><a id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <li><a href="#">注册 / 登录</a></li>
       </ul>
     </nav>
@@ -101,15 +101,10 @@
   </div>
 </div>
 </div>
-<footer>
-  <div class="container">
-    <div class="copyright">
-      <p>Copyright © <span class="update-year">2016</span> Chen Xiaodong - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2014级
-        软件工程1班 陈晓东</p>
-    </div>
-  </div>
-</footer>
+
 <script src="http://cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+
 <script>
   var ap = new APlayer({
     element: document.getElementById('music-player'), // Optional, player element

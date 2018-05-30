@@ -46,8 +46,8 @@
                 </ul>
 
                 <ul class="nav-userinfo navbar-nav-userinfo navbar-right-userinfo navbar-sm-userinfo">
-                    <li><input type="text" class="search-input-userinfo" placeholder="歌名 / 歌手"></li>
-                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                    <li><input type="text" class="search-input-userinfo" id="search-input" placeholder="歌名 / 歌手"></li>
+                    <li><a  style="padding-top: 25px" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                     <c:if test="${sessionScope.user == null}">
                         <li><a href="${pageContext.request.contextPath}/login">注册 / 登录</a></li>
                     </c:if>
@@ -79,7 +79,7 @@
                             <div class="form-group">
                                 <label for="eee">分&nbsp;&nbsp;类</label>
                                 <select class="form-control" id="eee" name="category.cid">
-                                    <option value="3" <c:if test="${music.category.cid == 3}"> selected</c:if>>动漫</option>
+                                    <option value="3"<c:if test="${music.category.cid == 3}"> selected</c:if>>动漫</option>
                                     <option value="4"<c:if test="${music.category.cid == 4}"> selected</c:if>>电子</option>
                                     <option value="1"<c:if test="${music.category.cid == 1}"> selected</c:if>>钢琴</option>
                                     <option value="2"<c:if test="${music.category.cid == 2}"> selected</c:if>>吉他</option>
@@ -129,6 +129,7 @@
         </div>
     </div>
 </form>
+<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
 
 </body>
 </html>

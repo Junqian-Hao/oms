@@ -29,8 +29,8 @@
         <li  class="active"><a href="/categorymusicView?cname=electric">电子</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right navbar-sm">
-        <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-        <li><a href="${pageContext.request.contextPath}/firstpageRequest" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+        <li><input type="text" class="search-input" id="search-input" placeholder="歌名 / 歌手"></li>
+        <li><a id="search-btn" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
         <c:if test="${sessionScope.user == null}">
           <li><a href="/login">注册 / 登录</a></li>
         </c:if>
@@ -81,13 +81,9 @@
     </div>
   </div>
 </div>
-<footer>
-  <div class="container">
-    <div class="copyright">
-      <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
-      </p>
-    </div>
-  </div>
-</footer>
+<script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
+
+<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+
 </body>
 </html>

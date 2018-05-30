@@ -89,6 +89,7 @@
 <script src="../../assets/js/APlayer_files/config.js"></script>
 <script src="../../assets/js/APlayer_files/APlayer.min.js"></script>
 <script src="../../assets/js/bootstrap.min.js"></script>
+
 <SCRIPT>
     const ap = new APlayer({
         container: document.getElementById('aplayer'),

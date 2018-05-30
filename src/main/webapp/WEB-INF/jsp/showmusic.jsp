@@ -31,8 +31,8 @@
                 <li ><a href="/categorymusicView?cname=electric">电子</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-sm">
-                <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-                <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li><input type="text" class="search-input" id="search-input" placeholder="歌名 / 歌手"></li>
+                <li><a href="#" style="padding-top: 25px" id="search-btn"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="/login">注册 / 登录</a></li>
                 </c:if>
@@ -263,5 +263,7 @@
 
 </script>
 <script src="../../assets/js/userinfo.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+
 </body>
 </html>

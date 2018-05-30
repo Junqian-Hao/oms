@@ -4,7 +4,6 @@
 
 $("#search-btn").on("click", function () {
     var content = $("#search-input").val();
-    alert(content);
 
     if (content==null){
 
@@ -22,7 +21,6 @@ $("#search-btn").on("click", function () {
             data: JSON.stringify(json),
 
             success: function (res) {
-                alert(res);
                 window.location.href = 'http://localhost:8080/searchpage?content='+content;
             }
 

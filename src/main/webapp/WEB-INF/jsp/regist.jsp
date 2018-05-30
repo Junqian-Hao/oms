@@ -96,7 +96,10 @@
 <script src="../../assets/js/APlayer_files/docute.js"></script>
 <script src="../../assets/js/APlayer_files/config.js"></script>
 <script src="../../assets/js/APlayer_files/APlayer.min.js"></script>
+
 <script src="../../assets/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+
 
 <script>
     function check() {
