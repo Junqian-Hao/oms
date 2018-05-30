@@ -10,12 +10,9 @@
 
     <!--修改-->
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/base.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/moco.min.css"/>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/profile-less.css"/>
-
-
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">

@@ -9,11 +9,15 @@
     <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
     <title>上传你的音乐</title>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/slider.css" type="text/css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/userinfo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
+
     <style>
         body {
             background-image: url("");
@@ -57,7 +61,7 @@
     </header>
 
     <div class="container-sm box">
-        <div class="main">
+        <div class="main" style="height: 600px">
                 <div class="content-box article">
                     <div style=" float:left;width: 40%;margin: 0 10%;margin-top: 0px;text-align: center;">
 
@@ -86,11 +90,11 @@
                                 <input type="text" class="form-control" id="fff" placeholder="abstract" name="msummary" value="${music.msummary}">
                             </div>
                             <label for="ccc">音&nbsp;乐&nbsp;文&nbsp;件</label></br>
-                            <input type="file" id="ccc" name="musicfile"></br>
-                            <p class="help-block">Choose your music.</p>
+                            <input type="file" id="ccc" name="musicfile" style="font-size: 14px"></br>
+                            <%--<p class="help-block">Choose your music.</p>--%>
                         </div>
 
-                        <input type="submit" class="btn btn-primary btn-lg" value="上传" >
+                        <input type="submit" class="btn btn-primary btn-lg" value="修改" >
 
 
                     </div>
@@ -125,13 +129,6 @@
         </div>
     </div>
 </form>
-<footer>
-    <div class="container">
-        <div class="copyright">
-            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
-            </p>
-        </div>
-    </div>
-</footer>
+
 </body>
 </html>

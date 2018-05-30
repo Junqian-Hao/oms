@@ -15,36 +15,34 @@
     <link rel="stylesheet" href="../../assets/css/userinfo.css">
 </head>
 <body>
-<header class="showinfo">
+<header>
     <div class="container">
         <div class="navbar-header">
             <a href="" class="navbar-brand">
-                <img src="../../assets/images/logo.png" alt="">
+                <img src="assets/images/logo.png" alt="" style="padding-top: 15px">
             </a>
         </div>
         <nav>
             <ul class="nav navbar-nav navbar-link">
                 <li><a href="/firstpageRequest">首页</a></li>
-                <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
+                <li ><a href="/categorymusicView?cname=piano">钢琴</a></li>
                 <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
-                <li class="active"><a href="/categorymusicView?cname=comic">动漫</a></li>
-                <li><a href="/categorymusicView?cname=electric">电子</a></li>
+                <li><a href="/categorymusicView?cname=comic">动漫</a></li>
+                <li ><a href="/categorymusicView?cname=electric">电子</a></li>
             </ul>
             <ul class="nav navbar-nav navbar-right navbar-sm">
-                <li><input type="text" class="search-input" id="search-input" placeholder="歌名 / 歌手"></li>
-                <li><a href="#" style="padding-top: 25px" ><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
+                <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="/login">注册 / 登录</a></li>
                 </c:if>
                 <c:if test="${sessionScope.user !=null}">
-                    <li class="uname"><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a>
-                    </li>
+                    <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
                     <li><a href="/exit">退出</a></li>
                 </c:if>
             </ul>
         </nav>
     </div>
-
 </header>
 
 <div class="container-sm player-wrap">
@@ -62,23 +60,26 @@
     </c:if>
 </div>
 <div class="container-sm box">
-    <div class="main">
+    <div class="main" >
         <div class="main-wrap">
-            <div class="content-box article">
+            <div class="content-box article" style="position: relative">
                 <div class="title">
                     <c:if test="${sessionScope.user.uid == music.user.uid}">
-                        <a href="${pageContext.request.contextPath}/user/77151">
+                        <a href="${pageContext.request.contextPath}/user/77151/${music.mid}">
                             <img src="/assets/images/修改音乐.png" id="editmusic" style="float: right;margin: 10px" height="24" width="24"/>
                         </a>
                     </c:if>
+                    <div style="position: absolute;right: 70px;">
                     <img src="/assets/images/心.png" id="heart" style="float: right;margin: 10px" height="24"
                          width="24"/>
+                    <span id="likenum" style="position: relative ;top: 30px; left: 28px; font-size: 12px;color: #888;">12</span>
+                    </div>
                     <h2>${music.mtitle} - ${music.mauthor}</h2>
                     <div class="info">
                         <span class="author">${music.user.nickname}</span> / <span class="date">
                         <fmt:formatDate value="${music.muploaddate}" pattern="yy-MM-dd"/>
                         </span>
-                        <span>       ${music.mtimes}次播放</span>
+                        <span> &nbsp;&nbsp;&nbsp;      ${music.mtimes}次播放</span>
                     </div>
                 </div>
                 <div class="content">
@@ -199,9 +200,11 @@
         $.ajax(settings).done(function (response) {
             if (response.code == 1) {
                 $("#heart").attr("src", "../assets/images/红心.png");
+
                 console.log("已经是粉丝了");
             } else {
                 $("#heart").attr("src", "../assets/images/心.png");
+
                 console.log("目前并不是粉丝了");
 
             }
@@ -223,7 +226,12 @@
 
                 $.ajax(settings1).done(function (response) {
                     if (response.code == 1) {
+
                         $("#heart").attr("src", "../assets/images/红心.png");
+                        $("#likenum").css("color","red");
+                        var likenum=$("#likenum").html();
+                        likenum=parseInt(likenum)+1;
+                        $("#likenum").html(likenum);
                     } else {
                         console.log("变红心失败");
                     }
@@ -240,6 +248,10 @@
                 $.ajax(settings2).done(function (response) {
                     if (response.code == 1) {
                         $("#heart").attr("src", "../assets/images/心.png");
+                        $("#likenum").css("color","#888");
+                        var likenum=$("#likenum").html();
+                        likenum-=1;
+                        $("#likenum").html(likenum);
                     } else {
                         console.log("变白心失败");
                     }
@@ -248,7 +260,6 @@
         });
 
     });
-
 
 </script>
 <script src="../../assets/js/userinfo.js"></script>

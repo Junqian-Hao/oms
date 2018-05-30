@@ -135,7 +135,7 @@
                     <img src="/assets/images/添加音乐.png" style="position: relative;top: 5px;margin-left: 11px">
                     <span style="display: inline-block; color: #ed5987">上传音乐</span>&nbsp;&nbsp;
                 </a>
-                <div style="height: 1px;background-color: white"></div>
+                <div style="height: 10px;background-color: white"></div>
                 <img src="/assets/images/积分.png" style="position: relative;top: 5px;margin-left: 10px">
                 <span style="display: inline-block; color: #00a0dc">我的积分</span>&nbsp;&nbsp;
                 <span style="display: inline-block; color: #ed376d">${upointer}</span>
@@ -145,10 +145,10 @@
                 <img src="/assets/images/积分规则.png" style="position: relative;top: 5px;">
                 <span style="display: inline-block;color: #ed5987;margin-bottom: 10px">积分规则</span><br>
                 <img src="/assets/images/红心.png" style="position: relative;top: 5px;">
-                <span style="margin-top: 5px;display:inline-block;font-size: 15px;color: #ed5987;" >&nbsp;Like：&nbsp;+1</span>
-                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #61b0ed;" >上传歌曲：&nbsp;+1</span>
+                <span style="margin-top: 5px;display:inline-block;font-size: 15px;color: #ed5987;" >&nbsp;收到Like：&nbsp;+1</span>
+                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #61b0ed;" >上传歌曲：&nbsp;+50</span>
                 <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #61b0ed;" >下载歌曲：&nbsp;-20</span>
-                <span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #ed5987;" >收到Like：&nbsp;+1</span>
+                <%--<span style="margin-top: 5px;margin-left: 29px;display:block;font-size: 15px;color: #ed5987;" >收到Like：&nbsp;+1</span>--%>
 
 
             </div>

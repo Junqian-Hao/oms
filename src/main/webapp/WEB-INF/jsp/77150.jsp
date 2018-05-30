@@ -7,11 +7,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta http-equiv="Content-Type" content="multipart/form-data; charset=utf-8" />
-    <title>搁浅的心 - 董运昌 - 静听网 - 140202011032_陈晓东</title>
+    <title>添加音乐</title>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
+
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/userinfo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
     <style>
         body {
@@ -85,7 +87,7 @@
                             </div>
                             <label for="ccc">音&nbsp;乐&nbsp;文&nbsp;件</label></br>
                             <input type="file" id="ccc" name="musicfile"></br>
-                            <p class="help-block">Choose your music.</p>
+                            <%--<p class="help-block">Choose your music.</p>--%>
                         </div>
 
                         <input type="submit" class="btn btn-primary btn-lg" value="上传" >
@@ -123,13 +125,6 @@
         </div>
     </div>
 </form>
-<footer>
-    <div class="container">
-        <div class="copyright">
-            <p>Copyright © <span class="update-year">2018</span> 586 - All Rights Reserved&nbsp;&nbsp;|&nbsp;&nbsp;2015级
-            </p>
-        </div>
-    </div>
-</footer>
+
 </body>
 </html>
