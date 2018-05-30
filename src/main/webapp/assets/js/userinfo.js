@@ -11,7 +11,7 @@
 //    $("#uname").onmouseover(function () {
 //        $(".userinfo").animate({opacity:'1'},"fast");
 //    });
-//     $("#uname").onmouseout(function () {
+//     $("#uname").onmouseout(functio   n () {
 //         $(".userinfo").animate({opacity:'0'},"fast");
 //     });
 //     $(".uname").onclick(function () {

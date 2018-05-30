@@ -64,23 +64,23 @@
 </head>
 <body>
 <header>
-    <div class="container">
-        <div class="navbar-header">
-            <a href="" class="navbar-brand">
+    <div class="container-userinfo">
+        <div class="navbar-header-userinfo">
+            <a href="" class="navbar-brand-userinfo">
                 <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="">
             </a>
         </div>
         <nav>
-            <ul class="nav navbar-nav navbar-link">
-                <li class="active"><a href="${pageContext.request.contextPath}/firstpageRequest">首页</a></li>
+            <ul class="nav-userinfo navbar-nav-userinfo navbar-link">
+                <li><a href="${pageContext.request.contextPath}/firstpageRequest">首页</a></li>
                 <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=piano">钢琴</a></li>
                 <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=guitar">吉他</a></li>
                 <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=comic">动漫</a></li>
                 <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=electric">电子</a></li>
             </ul>
 
-            <ul class="nav navbar-nav navbar-right navbar-sm">
-                <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
+            <ul class="nav-userinfo navbar-nav-userinfo navbar-right-userinfo navbar-sm-userinfo">
+                <li><input type="text" class="search-input-userinfo" placeholder="歌名 / 歌手"></li>
                 <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                 <c:if test="${sessionScope.user == null}">
                     <li><a href="${pageContext.request.contextPath}/login">注册 / 登录</a></li>
@@ -97,17 +97,13 @@
 
 <div class="container-sm category-header-wrap">
     <div class="category-header-banner">
-        <div class="img" style="background-image: url('${pageContext.request.contextPath}/storage/category/cartoon.jpg')">
+        <div class="img" style="background-image: url('../../storage/category/cartoon.jpg');">
             <div class="content">
-                <h1 style="position: relative">${sessionScope.user.nickname} <span
-                        style="display: inline-block;position: absolute;top: -15px;"><img
-                        src="${pageContext.request.contextPath}/assets/images/奖章.png" width="60px" height="60px" alt="大会员"></span>
-                    <span style="display: inline;position: absolute;left: 126px; font-weight: 900">叁</span>
+                <h1 style="position: relative">${user.nickname} <span style="display: inline-block;position: absolute;top: -13px;"><img src="${pageContext.request.contextPath}/assets/images/奖章.png" width="60px" height="60px" alt="大会员"></span>
+                    <span style="display: inline-block;position: relative;left: 22px; font-weight: 900">${level}</span>
                 </h1>
-                <p style="position: relative">所爱隔山海，山有径可寻，海有舟可渡<span
-                        style="position: absolute;top: -10px;left: 250px;display: inline">
-                    <a href="#" style="display: inline-block;"><img src="${pageContext.request.contextPath}/assets/images/修改.png" width="25px"
-                                                                    height="25px" alt="个人信息修改">
+                <p style="position: relative">所爱隔山海，山有径可寻，海有舟可渡<span style="position: absolute;top: -10px;left: 250px;display: inline">
+                    <a href="${pageContext.request.contextPath}/user/userinfochange" style="display: inline-block;" ><img src="${pageContext.request.contextPath}/assets/images/修改.png" width="25px" height="25px" alt="个人信息修改">
                         </a></span>
                     <!--<span style="font-size: 2px;position: absolute;top: 4px;left: 275px">修改</span>-->
                 </p>

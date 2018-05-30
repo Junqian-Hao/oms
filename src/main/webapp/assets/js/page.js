@@ -52,7 +52,8 @@ function getPageBar(){
 
     //如果是第一页
     if(curPage==1){
-        pageStr += "<span>首页</span><span>上一页</span>";
+        pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span><span><a href='javascript:void(0)' rel='"+(curPage-1)+"'>上一页</a></span>";
+
     }else{
         pageStr += "<span><a href='javascript:void(0)' rel='1'>首页</a></span><span><a href='javascript:void(0)' rel='"+(curPage-1)+"'>上一页</a></span>";
     }

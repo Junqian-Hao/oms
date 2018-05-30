@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jstl/fmt_rt" %>
 <html>
 <head>
     <meta charset="UTF-8">
@@ -12,26 +14,30 @@
     <link rel="stylesheet" href="../../assets/css/common.css">
     <link rel="stylesheet" href="../../assets/css/slider.css">
     <link rel="stylesheet" href="../../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../../assets/css/bootstrap.min.css">
     <style>
-        .pagecount{
+        .pagecount {
             text-align: center;
             margin-bottom: 5px;
-            padding:15px 15px 20px 0;
+            padding: 15px 15px 20px 0;
         }
-        .pagecount span{
+
+        .pagecount span {
             display: inline-block;
             background: #ddd;
-            margin:0 0 0 5px;
-            width:40px;
+            margin: 0 0 0 5px;
+            width: 40px;
             text-align: center;
-            padding:2px 8px 2px 8px;
-            border:1px solid #eee;
+            padding: 2px 8px 2px 8px;
+            border: 1px solid #eee;
             color: #666;
         }
-        .pagecount span a{
-            color:#333;
+
+        .pagecount span a {
+            color: #333;
         }
-        .pagecount span a:hover{
+
+        .pagecount span a:hover {
             text-decoration: underline;
         }
 
@@ -79,47 +85,82 @@
                         <li>
                             <div class="u-cover">
                                 <img src="http://p3.music.126.net/fNtMX44fvaGByURP0AbOZQ==/836728348761063.jpg">
-                                <a title="Refrain - Anan Ryoko" href="../../../../../../../../music-website-master/music/22712173.html" class="msk"></a>
+                                <a title="Refrain - Anan Ryoko"
+                                   href="../../../../../../../../music-website-master/music/22712173.html"
+                                   class="msk"></a>
                             </div>
                             <p class="dec">
-                                <a title="Refrain - Anan Ryoko" href="../../../../../../../../music-website-master/music/22712173.html">Refrain</a>
+                                <a title="Refrain - Anan Ryoko"
+                                   href="../../../../../../../../music-website-master/music/22712173.html">Refrain</a>
                             </p>
                             <div class="author">HaPBoy</div>
                         </li>
 
                     </ul>
+                </div>
+                <ul class="theme_body"></ul>
             </div>
-                <ul class="theme_body"></ul></div><div id="pagecount" class="pagecount"></div>
+            <div id="pagecount" class="pagecount"></div>
 
-            </div>
-
-    </div>
-
-
-    <!-- 侧边栏 -->
-    <div class="sidebar" style="min-height: 1094px">
-        <div class="right-module">
-            <h4>最新单曲</h4>
-            <ul class="new-artist-songs">
-                <li class="artist-song">
-                    <div class="avatar">
-                        <img src="../../../../../../../../music-website-master/storage/avatar/0.jpg">
-                    </div>
-                    <div class="info">
-                        <h3>Refrain</h3>
-                        <p>HaPBoy / <span>1595</span>次播放</p>
-                    </div>
-                    <a href="../../music/22712173.html" title="Refrain" class="cover-link"></a>
-                </li>
-            </ul>
         </div>
+
     </div>
 </div>
 
-<!-- JS 脚本 -->
-<script src="../../assets/js/page.js"></script>
+    <!-- JS 脚本 -->
 <script src="../../assets/js/jquery.min.js"></script>
+<script src="../../assets/css/bootstrap.min.css"></script>
+<script src="../../assets/js/page.js"></script>
 <script src="../../assets/js/HBSlider.js"></script>
+    <script>
+        function parseUrl() {
+            var url = location.href;
+            var i = url.indexOf('?');
+            if (i == -1)return;
+            var querystr = url.substr(i + 1);
+            var arr1 = querystr.split('&');
+            var arr2 = new Object();
+            for (i in arr1) {
+                var ta = arr1[i].split('=');
+                arr2[ta[0]] = ta[1];
+            }
+            return arr2;
+        }
+
+        $(document).ready(
+            function () {
+                var v = parseUrl();//解析所有参数
+                alert(v['content']);//就是你要的结果
+
+                var json =
+                    {
+                        thispage: 1,
+                        input: v['content']
+                    };
+                $.ajax({
+                    url: "/searchMusic",
+                    type: "POST",
+                    contentType: "application/json",
+                    data: JSON.stringify(json),
+
+                    success: function (res) {
+                        alert("content"+v['content']);
+                            if (res.code){
+                                alert("code"+res.code);
+                                total= res['pagenum'];
+                                pageSize= 12;
+                                totalPage=res['totalpage'];
+                                alert("totalpage="+totalPage+"pagesize="+pageSize+"totalpage="+totalPage);
+                                getPageBar();
+
+                            }
+                    }
+
+                });
+            }
+        )
+
+    </script>
 
 </body>
 </html>

@@ -25,30 +25,30 @@
 <form action="${pageContext.request.contextPath}/user/uploadMusic" method="post"
       enctype="multipart/form-data">
     <header>
-        <div class="container">
-            <div class="navbar-header">
-                <a href="" class="navbar-brand">
-                    <img src="assets/images/logo.png" alt="">
+        <div class="container-userinfo">
+            <div class="navbar-header-userinfo">
+                <a href="" class="navbar-brand-userinfo">
+                    <img src="${pageContext.request.contextPath}/assets/images/logo.png" alt="">
                 </a>
             </div>
             <nav>
-                <ul class="nav navbar-nav navbar-link">
-                    <li class="active"><a href="/firstpageRequest">首页</a></li>
-                    <li><a href="/categorymusicView?cname=piano">钢琴</a></li>
-                    <li><a href="/categorymusicView?cname=guitar">吉他</a></li>
-                    <li><a href="/categorymusicView?cname=comic">动漫</a></li>
-                    <li><a href="/categorymusicView?cname=electric">电子</a></li>
+                <ul class="nav-userinfo navbar-nav-userinfo navbar-link">
+                    <li><a href="${pageContext.request.contextPath}/firstpageRequest">首页</a></li>
+                    <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=piano">钢琴</a></li>
+                    <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=guitar">吉他</a></li>
+                    <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=comic">动漫</a></li>
+                    <li><a href="${pageContext.request.contextPath}/categorymusicView?cname=electric">电子</a></li>
                 </ul>
 
-                <ul class="nav navbar-nav navbar-right navbar-sm">
-                    <li><input type="text" class="search-input" placeholder="歌名 / 歌手"></li>
-                    <li><a href="#" style="padding-top: 25px"><i class="fa fa-search" aria-hidden="true"></i></a></li>
+                <ul class="nav-userinfo navbar-nav-userinfo navbar-right-userinfo navbar-sm-userinfo">
+                    <li><input type="text" class="search-input-userinfo" placeholder="歌名 / 歌手"></li>
+                    <li><a href="#"><i class="fa fa-search" aria-hidden="true"></i></a></li>
                     <c:if test="${sessionScope.user == null}">
-                        <li><a href="/login">注册 / 登录</a></li>
+                        <li><a href="${pageContext.request.contextPath}/login">注册 / 登录</a></li>
                     </c:if>
                     <c:if test="${sessionScope.user !=null}">
-                        <li><a href="#">${sessionScope.user.nickname}</a></li>
-                        <li><a href="/exit">退出</a></li>
+                        <li><a href="${pageContext.request.contextPath}/user/userinfo">${sessionScope.user.nickname}</a></li>
+                        <li><a href="${pageContext.request.contextPath}/exit">退出</a></li>
                     </c:if>
                 </ul>
             </nav>

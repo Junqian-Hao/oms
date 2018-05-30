@@ -55,6 +55,19 @@ h2 .fa {
     width: 980px;
 }
 
+.container-userinfo, .container-sm-userinfo {
+    margin-right: auto;
+    margin-left: auto;
+    transition: width .5s linear;
+}
+
+.container-userinfo {
+    width: 1080px;
+}
+
+.container-sm-userinfo {
+    width: 980px;
+}
 .row {
     overflow: auto;
 }
@@ -91,7 +104,73 @@ header {
     margin-right: 0.625em;
     vertical-align: middle;
 }
+/*userinfo*/
+.navbar-header-userinfo, .navbar-nav-userinfo {
+    float: left;
+    line-height: 65px;
+}
 
+.navbar-right-userinfo {
+    float: right;
+}
+
+.navbar-brand-userinfo {
+    display: block;
+    padding: 0 1em;
+}
+
+.navbar-brand-userinfo img {
+    width: 49px;
+    height: 34px;
+    margin-right: 0.625em;
+    vertical-align: middle;
+}
+.navbar-nav-userinfo > li {
+    position: relative;
+    float: left;
+    font-size: 10px;
+    letter-spacing: 0;
+    font-family: 'Montserrat', 'Helvetica', 'Arial', sans-serif;
+}
+
+.navbar-nav-userinfo li {
+    overflow: hidden;
+    height: 65px;
+}
+
+.navbar-nav-userinfo > li > a {
+    padding: 0 1.3em;
+    height: 100%;
+    display: block;
+    font-size: 14px;
+    color: #232323;
+    letter-spacing: 1px;
+    transition: height .2s ease-out;
+    border-bottom: 2px solid #B72712;
+}
+
+.navbar-nav-userinfo > li:hover > a {
+    color: #B72712;
+    opacity: 1;
+    height: 63px;
+}
+
+.navbar-nav-userinfo .active a {
+    color: #B72712;
+    height: 63px;
+}
+
+.nav-userinfo .search-input-userinfo {
+    padding: 4px 14px;
+    outline: none;
+    border: 1px solid #e0e0e0;
+    border-radius: 50px;
+}
+
+.navbar-sm-userinfo > li > a {
+    border: none;
+}
+/*-------------*/
 .navbar-nav > li {
     position: relative;
     float: left;
