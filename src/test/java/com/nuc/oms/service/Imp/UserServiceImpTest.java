@@ -22,60 +22,60 @@ import static org.junit.Assert.*;
 @FixMethodOrder(MethodSorters.JVM)
 @Transactional
 public class UserServiceImpTest {
-    @Autowired
-    UserService userService;
-    @Autowired
-    UserJPA userJPA;
-    @Test
-    public void register() {
-
-        User user = new User();
-        user.setUsername("test");
-        user.setPassword("test");
-        user.setNickname("test");
-        User register = null;
-        register = userService.register(user);
-        assertNotNull(register);
-        userJPA.delete(register);
-
-    }
-
-
-    @Test
-    public void login() {
-        User user = new User();
-        user.setUsername("test");
-        user.setPassword("test");
-        user.setNickname("test");
-        user.setUpointer(0);
-        user.setUspace(0d);
-        User save = userJPA.save(user);
-        User login = userService.login(save);
-        assertNotNull(login);
-        userJPA.delete(save);
-    }
-
-
-    @Test
-    public void decreasePoints() {
-        User user = new User();
-        user.setUsername("test");
-        user.setPassword("test");
-        user.setNickname("test");
-        user.setUpointer(40);
-        user.setUspace(0d);
-        User save = userJPA.save(user);
-        try {
-            userService.decreasePoints(save);
-            User one = userJPA.getOne(save.getUid());
-            assertEquals(one.getUpointer(), Integer.valueOf(20));
-        } catch (Exception e) {
-            throw e;
-        } finally {
-            userJPA.delete(save);
-        }
-
-
-    }
+//    @Autowired
+//    UserService userService;
+//    @Autowired
+//    UserJPA userJPA;
+//    @Test
+//    public void register() {
+//
+//        User user = new User();
+//        user.setUsername("test");
+//        user.setPassword("test");
+//        user.setNickname("test");
+//        User register = null;
+//        register = userService.register(user);
+//        assertNotNull(register);
+//        userJPA.delete(register);
+//
+//    }
+//
+//
+//    @Test
+//    public void login() {
+//        User user = new User();
+//        user.setUsername("test");
+//        user.setPassword("test");
+//        user.setNickname("test");
+//        user.setUpointer(0);
+//        user.setUspace(0d);
+//        User save = userJPA.save(user);
+//        User login = userService.login(save);
+//        assertNotNull(login);
+//        userJPA.delete(save);
+//    }
+//
+//
+//    @Test
+//    public void decreasePoints() {
+//        User user = new User();
+//        user.setUsername("test");
+//        user.setPassword("test");
+//        user.setNickname("test");
+//        user.setUpointer(40);
+//        user.setUspace(0d);
+//        User save = userJPA.save(user);
+//        try {
+//            userService.decreasePoints(save);
+//            User one = userJPA.getOne(save.getUid());
+//            assertEquals(one.getUpointer(), Integer.valueOf(20));
+//        } catch (Exception e) {
+//            throw e;
+//        } finally {
+//            userJPA.delete(save);
+//        }
+//
+//
+//    }
 
 }

@@ -19,29 +19,29 @@ public class UpvoteServiceImpTest {
     UpvoteService upvoteService;
 
 
-
-    @Test
-    public void incrementBymid() {
-        int i = 0;
-        long l = System.currentTimeMillis();
-        while (i < 1000) {
-            upvoteService.incrementBymid(1);
-            i++;
-        }
-        long l1 = System.currentTimeMillis();
-        System.out.println(l1 - l);
-
-    }
-
-    @Test
-    public void decrementBymid() {
-        int i = 0;
-        long l = System.currentTimeMillis();
-        while (i < 1000) {
-            upvoteService.decrementBymid(1);
-            i++;
-        }
-        long l1 = System.currentTimeMillis();
-        System.out.println(l1 - l);
-    }
+//
+//    @Test
+//    public void incrementBymid() {
+//        int i = 0;
+//        long l = System.currentTimeMillis();
+//        while (i < 1000) {
+//            upvoteService.incrementBymid(1);
+//            i++;
+//        }
+//        long l1 = System.currentTimeMillis();
+//        System.out.println(l1 - l);
+//
+//    }
+//
+//    @Test
+//    public void decrementBymid() {
+//        int i = 0;
+//        long l = System.currentTimeMillis();
+//        while (i < 1000) {
+//            upvoteService.decrementBymid(1);
+//            i++;
+//        }
+//        long l1 = System.currentTimeMillis();
+//        System.out.println(l1 - l);
+//    }
 }

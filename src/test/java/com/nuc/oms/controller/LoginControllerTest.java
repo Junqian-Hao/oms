@@ -18,13 +18,13 @@ import org.springframework.web.context.WebApplicationContext;
 @FixMethodOrder(MethodSorters.JVM)
 @WebMvcTest(LoginController.class)
 public class LoginControllerTest {
-    @Autowired
-    LoginController loginControlle;
-    @Autowired
-    private WebApplicationContext wac;
-    private MockMvc mockMvc;
-    @Autowired
-    UserJPA userJpa;
+//    @Autowired
+//    LoginController loginControlle;
+//    @Autowired
+//    private WebApplicationContext wac;
+//    private MockMvc mockMvc;
+//    @Autowired
+//    UserJPA userJpa;
 
 //    @Before
 //    public void setup() {

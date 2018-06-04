@@ -29,4 +29,6 @@ public interface MusicJPA extends BaseJPA<Music,Integer>{
 
     List<Music> findByUser(User user);
 
+    Music findByMurlLikeOrMpicurlLike(String name, String name1);
+
 }
