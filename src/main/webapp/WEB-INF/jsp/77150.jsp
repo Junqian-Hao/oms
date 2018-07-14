@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/bootstrap.min.css">
 
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/reset.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/music.css"　>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/font-awesome.min.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/userinfo.css">
     <link rel="stylesheet" href="${pageContext.request.contextPath}/assets/css/common.css">
