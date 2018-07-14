@@ -26,7 +26,7 @@ spring:
     testOneBorrow: false
     testOneReturn: false
   jpa:
-    show_sql: true
+    show_sql: false
     hibernate:
       ddl-auto: update
 #    properties:

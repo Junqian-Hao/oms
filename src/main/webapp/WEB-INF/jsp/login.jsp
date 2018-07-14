@@ -9,6 +9,7 @@
     <title>APlayer</title>
     <link rel="stylesheet" href="../../assets/css/APlayer_files/docute.css">
     <link rel="stylesheet" href="../../assets/css/APlayer_files/theme-github.css"/>
+    <link rel="stylesheet" type="text/css" href="../../assets/live2d/waifu.css"/>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-48084758-8"></script>
     <script>
@@ -73,15 +74,23 @@
                     </c:if>
                     <button type="submit" class="btn btn-link" style="color: rgba(187,11,255,0.6);font-size: 18px;font-weight: 1300; margin-left: 150px;text-decoration: none">
                         进&nbsp;&nbsp;入</button>
-
                 </form>
-
         </div>
         <div id="aplayer"></div>
-
-
     </div>
-
+</div>
+<div class="waifu">
+    <div class="waifu-tips"></div>
+    <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+    <div class="waifu-tool">
+        <span class="fui-home"></span>
+        <span class="fui-chat"></span>
+        <span class="fui-eye"></span>
+        <span class="fui-user"></span>
+        <span class="fui-photo"></span>
+        <span class="fui-info-circle"></span>
+        <span class="fui-cross"></span>
+    </div>
 </div>
 <script src="../../assets/js/APlayer_files/docsearch.js"></script>
 <script src="../../assets/js/APlayer_files/evanyou.min.js"></script>
@@ -89,6 +98,10 @@
 <script src="../../assets/js/APlayer_files/config.js"></script>
 <script src="../../assets/js/APlayer_files/APlayer.min.js"></script>
 <script src="../../assets/js/bootstrap.min.js"></script>
+<script src="../../assets/live2d/waifu-tips.js"></script>
+<script src="../../assets/live2d/live2d.js"></script>
+<script type="text/javascript">initModel("../../assets/live2d/")</script>
+
 
 <SCRIPT>
     const ap = new APlayer({

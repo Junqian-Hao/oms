@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../../assets/css/common.css" type="text/css">
   <link rel="stylesheet" href="../../assets/css/slider.css" type="text/css">
   <link rel="stylesheet" href="../../assets/css/font-awesome.min.css" type="text/css">
+  <link rel="stylesheet" type="text/css" href="../../assets/live2d/waifu.css"/>
 </head>
 <body>
 <!-- 导航栏 -->
@@ -236,13 +237,29 @@
       </ul>
     </div>
   </div>
-</div>
 
+</div>
+<div class="waifu" style="z-index: 999;">
+  <div class="waifu-tips"></div>
+  <canvas id="live2d" width="280" height="250" class="live2d"></canvas>
+  <div class="waifu-tool">
+    <span class="fui-home"></span>
+    <span class="fui-chat"></span>
+    <span class="fui-eye"></span>
+    <span class="fui-user"></span>
+    <span class="fui-photo"></span>
+    <span class="fui-info-circle"></span>
+    <span class="fui-cross"></span>
+  </div>
+</div>
 
 <!-- JS 脚本 -->
 <script src="${pageContext.request.contextPath}/assets/js/jquery.min.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/HBSlider.js"></script>
 <script src="${pageContext.request.contextPath}/assets/js/search.js"></script>
+<script src="../../assets/live2d/waifu-tips.js"></script>
+<script src="../../assets/live2d/live2d.js"></script>
+<script type="text/javascript">initModel("../../assets/live2d/")</script>
 <script>
   // 轮播图数据
   var sliderData = [
@@ -278,5 +295,6 @@
     HBSlider.play();
   });
 </script>
+
 </body>
 </html>
